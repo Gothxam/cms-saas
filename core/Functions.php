@@ -80,3 +80,14 @@ function send_credentials_email($email, $name, $password, $role) {
 
     return mail($email, $subject, $message, $headers);
 }
+/**
+ * Send a persistent notification to a user
+ */
+function notify($user_id, $title, $message, $type = 'normal', $link = '') {
+    $db = getDB();
+    $stmt = $db->prepare("
+        INSERT INTO notifications (user_id, title, message, type, link, created_at)
+        VALUES (?, ?, ?, ?, ?, NOW())
+    ");
+    return $stmt->execute([$user_id, $title, $message, $type, $link]);
+}

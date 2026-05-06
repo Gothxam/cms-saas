@@ -45,6 +45,16 @@ if ($action === 'start' && $_SERVER['REQUEST_METHOD'] === 'POST') {
     $update = $db->prepare("UPDATE appointments SET status = 'in_progress' WHERE id = ?");
     $update->execute([$apt_id]);
 
+    // Notify Patient (Live Call)
+    $doc_name = $_SESSION['user_name'];
+    notify(
+        $apt['patient_id'],
+        "Incoming Medical Call",
+        "Dr. $doc_name is ready for your consultation. Join now.",
+        "live_session",
+        "session.php?id=" . $apt_id
+    );
+
     echo json_encode(['success' => true, 'visit_id' => $visit_id]);
     exit;
 }
@@ -52,13 +62,66 @@ if ($action === 'start' && $_SERVER['REQUEST_METHOD'] === 'POST') {
 // --- UPDATE VISIT DATA (Auto-save) ---
 if ($action === 'update' && $_SERVER['REQUEST_METHOD'] === 'POST') {
     $visit_id = (int)$_POST['visit_id'];
-    $symptoms = $_POST['symptoms'] ?? '';
+    
+    // SOAP Basic Fields
+    $chief_complaint = $_POST['chief_complaint'] ?? '';
+    $symptoms_data = $_POST['symptoms_data'] ?? '[]';
+    $history_illness = $_POST['history_illness'] ?? '';
+    $vitals_data = $_POST['vitals_data'] ?? '{}';
+    $physical_exam = $_POST['physical_exam'] ?? '';
     $diagnosis = $_POST['diagnosis'] ?? '';
+    $differential_diagnosis = $_POST['differential_diagnosis'] ?? '';
     $notes = $_POST['notes'] ?? '';
+    $advice = $_POST['advice'] ?? '';
+    $follow_up_date = $_POST['follow_up_date'] ?: null;
+    $severity = $_POST['severity'] ?? 'mild';
+    $admission_needed = (int)($_POST['admission_needed'] ?? 0);
 
-    // Verify visit belongs to this doctor
-    $stmt = $db->prepare("UPDATE visits SET symptoms = ?, diagnosis = ?, notes = ? WHERE id = ? AND doctor_id = ? AND status = 'ongoing'");
-    $stmt->execute([$symptoms, $diagnosis, $notes, $visit_id, $user_id]);
+    // Verify visit belongs to this doctor and is ongoing
+    $stmt = $db->prepare("
+        UPDATE visits SET 
+            chief_complaint = ?, 
+            symptoms_data = ?, 
+            history_illness = ?, 
+            vitals_data = ?, 
+            physical_exam = ?, 
+            diagnosis = ?, 
+            differential_diagnosis = ?, 
+            notes = ?, 
+            advice = ?, 
+            follow_up_date = ?, 
+            severity = ?, 
+            admission_needed = ? 
+        WHERE id = ? AND doctor_id = ? AND status = 'ongoing'
+    ");
+    $stmt->execute([
+        $chief_complaint, $symptoms_data, $history_illness, $vitals_data, 
+        $physical_exam, $diagnosis, $differential_diagnosis, $notes, 
+        $advice, $follow_up_date, $severity, $admission_needed,
+        $visit_id, $user_id
+    ]);
+
+    // Handle Prescriptions Sync
+    if (isset($_POST['prescriptions'])) {
+        $prescriptions = json_decode($_POST['prescriptions'], true) ?: [];
+        $db->prepare("DELETE FROM prescriptions WHERE visit_id = ?")->execute([$visit_id]);
+        foreach ($prescriptions as $p) {
+            if (empty($p['medicine_name'])) continue;
+            $ins = $db->prepare("INSERT INTO prescriptions (visit_id, medicine_name, dosage, frequency, duration, instructions) VALUES (?, ?, ?, ?, ?, ?)");
+            $ins->execute([$visit_id, $p['medicine_name'], $p['dosage'] ?? '', $p['frequency'] ?? '', $p['duration'] ?? '', $p['instructions'] ?? '']);
+        }
+    }
+
+    // Handle Investigations Sync
+    if (isset($_POST['investigations'])) {
+        $tests = json_decode($_POST['investigations'], true) ?: [];
+        $db->prepare("DELETE FROM investigations WHERE visit_id = ?")->execute([$visit_id]);
+        foreach ($tests as $t) {
+            if (empty($t['test_name'])) continue;
+            $ins = $db->prepare("INSERT INTO investigations (visit_id, test_name, notes) VALUES (?, ?, ?)");
+            $ins->execute([$visit_id, $t['test_name'], $t['notes'] ?? '']);
+        }
+    }
 
     echo json_encode(['success' => true]);
     exit;
@@ -84,6 +147,20 @@ if ($action === 'end' && $_SERVER['REQUEST_METHOD'] === 'POST') {
     // Mark appointment as completed
     $db->prepare("UPDATE appointments SET status = 'completed' WHERE id = ?")->execute([$visit['appointment_id']]);
 
+    // Notify Patient
+    $v_data = $db->prepare("SELECT patient_id, doctor_id FROM visits WHERE id = ?");
+    $v_data->execute([$visit_id]);
+    $res = $v_data->fetch();
+    
+    $doc_name = $_SESSION['user_name'];
+    notify(
+        $res['patient_id'],
+        "Consultation Ready",
+        "Your summary and prescriptions from Dr. $doc_name are now available.",
+        "visit",
+        "view_summary.php?id=" . $visit['appointment_id']
+    );
+
     echo json_encode(['success' => true]);
     exit;
 }
@@ -93,7 +170,23 @@ if ($action === 'fetch') {
     $apt_id = (int)$_GET['appointment_id'];
     $stmt = $db->prepare("SELECT * FROM visits WHERE appointment_id = ?");
     $stmt->execute([$apt_id]);
-    echo json_encode($stmt->fetch() ?: (object)[]);
+    $visit = $stmt->fetch();
+
+    if ($visit) {
+        // Fetch Prescriptions
+        $p_stmt = $db->prepare("SELECT * FROM prescriptions WHERE visit_id = ?");
+        $p_stmt->execute([$visit['id']]);
+        $visit['prescriptions'] = $p_stmt->fetchAll();
+
+        // Fetch Investigations
+        $i_stmt = $db->prepare("SELECT * FROM investigations WHERE visit_id = ?");
+        $i_stmt->execute([$visit['id']]);
+        $visit['investigations'] = $i_stmt->fetchAll();
+
+        echo json_encode($visit);
+    } else {
+        echo json_encode((object)[]);
+    }
     exit;
 }
 ?>

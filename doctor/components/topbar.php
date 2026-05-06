@@ -90,14 +90,43 @@
             </div>
         </div>
 
-        <!-- User Profile -->
-        <div class="flex items-center gap-3 pl-2">
-            <div class="text-right hidden sm:block">
-                <p class="text-sm font-bold text-slate-900 leading-tight"><?php echo e($_SESSION['user_name']); ?></p>
-                <p class="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Administrator</p>
-            </div>
-            <div class="w-10 h-10 bg-slate-200 rounded-lg overflow-hidden border border-slate-200">
-                <img src="https://ui-avatars.com/api/?name=<?php echo urlencode($_SESSION['user_name']); ?>&background=random" class="w-full h-full object-cover">
+        <!-- User Profile Dropdown -->
+        <div class="relative" x-data="{ open: false }">
+            <button @click="open = !open" class="flex items-center gap-3 pl-2 focus:outline-none group">
+                <div class="text-right hidden sm:block">
+                    <p class="text-sm font-black text-slate-900 leading-tight group-hover:text-teal-600 transition-colors"><?php echo e($_SESSION['user_name']); ?></p>
+                    <p class="text-[10px] font-bold text-teal-600 uppercase tracking-widest mt-0.5">Doctor</p>
+                </div>
+                <div class="w-10 h-10 rounded-xl overflow-hidden border-2 border-slate-50 shadow-sm bg-teal-50 flex items-center justify-center group-hover:border-teal-200 transition-all">
+                    <img src="https://ui-avatars.com/api/?name=<?php echo urlencode($_SESSION['user_name']); ?>&background=random" class="w-full h-full object-cover">
+                </div>
+            </button>
+
+            <!-- Dropdown Menu -->
+            <div x-show="open" 
+                 @click.away="open = false"
+                 x-transition:enter="transition ease-out duration-200"
+                 x-transition:enter-start="opacity-0 translate-y-2"
+                 x-transition:enter-end="opacity-100 translate-y-0"
+                 class="absolute top-full right-0 mt-4 w-56 bg-white border border-slate-100 rounded-3xl shadow-2xl shadow-slate-200/50 overflow-hidden z-50" x-cloak>
+                
+                <div class="p-5 border-b border-slate-50 bg-slate-50/50 text-left">
+                    <p class="text-xs font-black text-slate-900"><?php echo e($_SESSION['user_name']); ?></p>
+                    <p class="text-[9px] font-bold text-slate-400 uppercase tracking-widest mt-1">Provider ID: #<?php echo $_SESSION['user_id']; ?></p>
+                </div>
+
+                <div class="p-2 text-left">
+                    <a href="profile.php" class="flex items-center gap-3 px-4 py-3 rounded-2xl text-xs font-bold text-slate-600 hover:bg-teal-50 hover:text-teal-700 transition-all">
+                        <i data-lucide="user" class="w-4 h-4 opacity-50"></i> My Profile
+                    </a>
+                    <a href="settings.php" class="flex items-center gap-3 px-4 py-3 rounded-2xl text-xs font-bold text-slate-600 hover:bg-teal-50 hover:text-teal-700 transition-all">
+                        <i data-lucide="settings" class="w-4 h-4 opacity-50"></i> Practice Settings
+                    </a>
+                    <div class="h-px bg-slate-50 my-2"></div>
+                    <a href="<?php echo base_url('logout.php'); ?>" class="flex items-center gap-3 px-4 py-3 rounded-2xl text-xs font-bold text-red-500 hover:bg-red-50 transition-all">
+                        <i data-lucide="log-out" class="w-4 h-4 opacity-50"></i> Sign Out
+                    </a>
+                </div>
             </div>
         </div>
     </div>

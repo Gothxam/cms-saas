@@ -55,7 +55,8 @@ $nav_items = [
     'Medical Records' => ['url' => 'records.php', 'icon' => 'folder'],
 ];
 
-$other_items = [
+$account_items = [
+    'My Profile' => ['url' => 'profile.php', 'icon' => 'user'],
     'Settings' => ['url' => 'settings.php', 'icon' => 'settings'],
 ];
 
@@ -99,7 +100,6 @@ function is_active($item, $current_page, $current_view) {
             <?php 
                 $has_sub = isset($data['sub_items']);
                 $active = is_active($data, $current_page, $current_view);
-                $primary_color = '#0d9488'; // Emerald
                 
                 $item_class = $active && !$has_sub 
                     ? "bg-teal-50/60 text-teal-700 shadow-sm border border-teal-100/50" 
@@ -152,9 +152,25 @@ function is_active($item, $current_page, $current_view) {
     </nav>
 
     <!-- Footer Area -->
-    <div class="p-6">
-        <a href="<?php echo base_url('logout.php'); ?>" class="flex items-center justify-center gap-3 px-4 py-3.5 rounded-2xl text-[13px] font-bold text-red-500 bg-red-50 hover:bg-red-100 transition-all border border-red-100/50">
-            <?php echo get_lucide_svg('log-out', "w-5 h-5"); ?>
+    <div class="p-4 border-t border-slate-50 space-y-1">
+        <p class="px-4 text-[9px] font-black text-slate-400 uppercase tracking-[0.2em] mb-3">Account</p>
+        <?php foreach ($account_items as $label => $data): ?>
+            <?php 
+                $active = ($data['url'] === $current_page);
+                $item_class = $active 
+                    ? "bg-teal-50/60 text-teal-700 shadow-sm border border-teal-100/50" 
+                    : "text-slate-600 hover:bg-slate-50 hover:text-slate-900 border border-transparent";
+            ?>
+            <a href="<?php echo base_url('doctor/' . $data['url']); ?>" class="flex items-center gap-3.5 px-4 py-3 rounded-2xl text-[12px] font-bold transition-all <?php echo $item_class; ?>">
+                <span class="<?php echo $active ? 'text-teal-600' : 'text-slate-400'; ?>">
+                    <?php echo get_lucide_svg($data['icon'], "w-4 h-4"); ?>
+                </span>
+                <?php echo $label; ?>
+            </a>
+        <?php endforeach; ?>
+
+        <a href="<?php echo base_url('logout.php'); ?>" class="flex items-center gap-3.5 px-4 py-3 mt-2 rounded-2xl text-[12px] font-bold text-red-500 hover:bg-red-50 transition-all">
+            <span class="text-red-400"><?php echo get_lucide_svg('log-out', "w-4 h-4"); ?></span>
             Sign Out
         </a>
     </div>

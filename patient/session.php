@@ -51,6 +51,9 @@ require_once 'components/sidebar.php';
     
     init() {
         this.fetchLiveUpdate();
+        // Silence Ringtone on entry
+        fetch('api/notifications.php?read_type=live_session');
+
         setInterval(() => this.fetchLiveUpdate(), 3000);
         
         if(this.status === 'in_progress') {
@@ -103,7 +106,7 @@ require_once 'components/sidebar.php';
     }
 }">
     <!-- Header Card -->
-    <div class="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-8 bg-white p-8 rounded-[2.5rem] border border-slate-100 shadow-sm">
+    <div class="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-8 bg-white p-8 rounded-[2.5rem] border border-slate-100 shadow-sm relative z-[10]">
         <div class="flex items-center gap-5">
             <div class="w-16 h-16 bg-teal-50 rounded-[1.5rem] flex items-center justify-center text-teal-600 shadow-inner">
                 <i data-lucide="video" class="w-8 h-8"></i>

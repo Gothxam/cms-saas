@@ -22,14 +22,81 @@ require_once 'components/sidebar.php';
 
 <div class="space-y-10 animate-in fade-in duration-700">
     <!-- Header -->
-    <header class="flex flex-col md:flex-row md:items-center justify-between gap-6">
+    <header class="flex flex-col md:flex-row md:items-center justify-between gap-6" x-data="{ showUpload: false }">
         <div>
             <h2 class="text-3xl font-black text-slate-900 tracking-tight">Medical <span class="text-teal-600">Records</span></h2>
             <p class="text-slate-500 text-sm font-medium mt-1">Access your clinical documents, prescriptions, and reports.</p>
         </div>
-        <div class="bg-white border border-slate-200 px-6 py-3 rounded-2xl flex items-center gap-3 shadow-sm">
-            <i data-lucide="shield-check" class="w-5 h-5 text-teal-500"></i>
-            <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Secure Vault Active</span>
+        <div class="flex items-center gap-4">
+            <button @click="showUpload = true" class="bg-slate-900 hover:bg-slate-800 text-white px-8 py-4 rounded-2xl font-black text-xs uppercase tracking-widest transition-all shadow-xl shadow-slate-900/20 flex items-center gap-3">
+                <i data-lucide="upload-cloud" class="w-5 h-5"></i>
+                Upload Document
+            </button>
+            <div class="hidden md:flex bg-white border border-slate-200 px-6 py-4 rounded-2xl items-center gap-3 shadow-sm">
+                <i data-lucide="shield-check" class="w-5 h-5 text-teal-500"></i>
+                <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Secure Vault Active</span>
+            </div>
+        </div>
+
+        <!-- Upload Modal -->
+        <div x-show="showUpload" class="fixed inset-0 z-[100] flex items-center justify-center p-6 bg-slate-900/40 backdrop-blur-md" x-cloak>
+            <div class="bg-white w-full max-w-xl rounded-[3rem] shadow-2xl overflow-hidden border-[6px] border-white" @click.away="showUpload = false">
+                <div class="p-10 border-b border-slate-50 flex items-center justify-between bg-slate-50/50">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-teal-600 rounded-2xl flex items-center justify-center text-white shadow-lg shadow-teal-600/20">
+                            <i data-lucide="plus" class="w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-black text-slate-800">Add Document</h3>
+                            <p class="text-slate-400 text-[10px] font-black uppercase tracking-widest mt-1">Secure Medical Vault</p>
+                        </div>
+                    </div>
+                    <button @click="showUpload = false" class="w-10 h-10 hover:bg-slate-100 rounded-xl flex items-center justify-center text-slate-400 transition-all">
+                        <i data-lucide="x" class="w-5 h-5"></i>
+                    </button>
+                </div>
+                
+                <form action="api/upload_record.php" method="POST" enctype="multipart/form-data" class="p-10 space-y-6">
+                    <div class="space-y-2">
+                        <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Document Title</label>
+                        <input type="text" name="title" required placeholder="e.g., Annual Blood Report 2024" class="w-full p-5 bg-slate-50 border-none rounded-2xl text-sm font-medium focus:ring-2 focus:ring-teal-500/20 transition-all outline-none">
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="space-y-2">
+                            <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Category</label>
+                            <select name="category" required class="w-full p-5 bg-slate-50 border-none rounded-2xl text-sm font-medium focus:ring-2 focus:ring-teal-500/20 transition-all outline-none appearance-none">
+                                <option value="Lab Report">Lab Report</option>
+                                <option value="Prescription">Prescription</option>
+                                <option value="Imaging/X-Ray">Imaging/X-Ray</option>
+                                <option value="Discharge Summary">Discharge Summary</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        <div class="space-y-2">
+                            <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Date of Record</label>
+                            <input type="date" name="record_date" class="w-full p-5 bg-slate-50 border-none rounded-2xl text-sm font-medium focus:ring-2 focus:ring-teal-500/20 transition-all outline-none">
+                        </div>
+                    </div>
+
+                    <div class="space-y-2">
+                        <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Select File (PDF, JPG, PNG)</label>
+                        <label class="w-full flex flex-col items-center justify-center p-10 border-2 border-dashed border-slate-200 rounded-3xl hover:bg-slate-50 transition-all cursor-pointer group">
+                            <div class="w-12 h-12 bg-teal-50 text-teal-600 rounded-xl flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+                                <i data-lucide="file-plus" class="w-6 h-6"></i>
+                            </div>
+                            <span class="text-xs font-bold text-slate-600">Choose file or drag & drop</span>
+                            <span class="text-[10px] font-medium text-slate-400 mt-1">Max file size: 10MB</span>
+                            <input type="file" name="report" required class="hidden" accept=".pdf,.jpg,.jpeg,.png">
+                        </label>
+                    </div>
+
+                    <button type="submit" class="w-full py-5 bg-teal-600 hover:bg-teal-500 text-white rounded-2xl font-black text-xs uppercase tracking-widest transition-all shadow-xl shadow-teal-600/20 mt-4 flex items-center justify-center gap-3">
+                        <i data-lucide="check" class="w-5 h-5"></i>
+                        Encrypt & Upload
+                    </button>
+                </form>
+            </div>
         </div>
     </header>
 
@@ -85,7 +152,10 @@ require_once 'components/sidebar.php';
                     </div>
                 </div>
                 
-                <h5 class="text-lg font-black text-slate-900 tracking-tight truncate"><?php echo basename($doc['file_url']); ?></h5>
+                <div class="flex items-center gap-2 mb-2">
+                    <span class="text-[9px] font-black text-teal-600 uppercase tracking-widest bg-teal-50 px-3 py-1 rounded-full"><?php echo e($doc['category'] ?? 'General'); ?></span>
+                </div>
+                <h5 class="text-lg font-black text-slate-900 tracking-tight truncate"><?php echo e($doc['title'] ?? basename($doc['file_url'])); ?></h5>
                 <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest mt-1"><?php echo $ext; ?> File • <?php echo date('M d, Y', strtotime($doc['created_at'])); ?></p>
                 
                 <div class="mt-8 pt-8 border-t border-slate-50 flex items-center justify-between">

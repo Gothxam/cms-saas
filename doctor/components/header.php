@@ -34,6 +34,9 @@ if (!isset($page_title)) {
             }
         }
     </script>
+    <!-- html2pdf.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
     <style>
         [x-cloak] { display: none !important; }
         
@@ -45,6 +48,20 @@ if (!isset($page_title)) {
 
         /* Smooth Transitions */
         .no-flicker { backface-visibility: hidden; transform: translateZ(0); }
+
+        @media print {
+            .no-print, aside, header, .quick-templates-bar, .fast-nav-tabs, .fixed.inset-0.z-\[100\] { position: static !important; display: block !important; background: white !important; }
+            .no-print, aside, header, .quick-templates-bar, .fast-nav-tabs, .bg-slate-900\/40, button, .border-t.border-slate-100 { display: none !important; }
+            body { background: white !important; padding: 0 !important; }
+            main { padding: 0 !important; margin: 0 !important; width: 100% !important; }
+            .fixed.inset-0.z-\[100\] { padding: 0 !important; overflow: visible !important; }
+            .max-w-4xl { max-width: 100% !important; width: 100% !important; box-shadow: none !important; border: none !important; border-radius: 0 !important; }
+            .overflow-hidden { overflow: visible !important; }
+            .max-h-\[80vh\] { max-height: none !important; height: auto !important; }
+            .print-card { border: 1px solid #e2e8f0 !important; box-shadow: none !important; border-radius: 1rem !important; margin-bottom: 2rem !important; break-inside: avoid; }
+            .print-bg-slate { background-color: #f8fafc !important; -webkit-print-color-adjust: exact; }
+            .print-text-emerald { color: #059669 !important; -webkit-print-color-adjust: exact; }
+        }
     </style>
 </head>
 <body class="bg-[#f8fafc] text-slate-800 font-sans antialiased selection:bg-primary selection:text-white">

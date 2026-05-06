@@ -36,9 +36,13 @@ class AgoraHandler {
         this.log(`Connecting...`);
 
         this.client.on("user-published", (user, mediaType) => this.handleUserPublished(user, mediaType));
+        this.client.on("user-joined", (user) => {
+            this.log(`Peer ${user.uid} Joined`);
+            this.remoteUsers[user.uid] = user;
+        });
         this.client.on("user-left", (user) => {
-            this.log(`Peer left`);
             delete this.remoteUsers[user.uid];
+            this.log(`Peer Disconnected`);
         });
 
         try {
@@ -49,24 +53,17 @@ class AgoraHandler {
             this.isJoining = false;
             this.log(`Online`);
 
-            this.discoveryInterval = setInterval(() => {
-                if(this.client.remoteUsers.length > 0) {
-                    this.client.remoteUsers.forEach(user => {
-                        if(!this.remoteUsers[user.uid]) {
-                            this.handleUserPublished(user, "video");
-                            this.handleUserPublished(user, "audio");
-                        }
-                    });
-                }
-            }, 1000);
-            
             try {
                 this.localTracks.audioTrack = await AgoraRTC.createMicrophoneAudioTrack();
                 this.localTracks.videoTrack = await AgoraRTC.createCameraVideoTrack({
-                    encoderConfig: { width: 640, height: 480, frameRate: 15 }
+                    encoderConfig: "480p_1"
                 });
                 
-                this.localTracks.videoTrack.play("local-video");
+                // RESTORE LOCAL MIRROR
+                if (document.getElementById("local-video")) {
+                    this.localTracks.videoTrack.play("local-video");
+                }
+                
                 await this.client.publish(Object.values(this.localTracks));
                 
                 this.log("Streaming Active");
@@ -81,21 +78,37 @@ class AgoraHandler {
         }
     }
 
-    async handleUserPublished(user, mediaType) {
+    async handleUserPublished(user, mediaType, retryCount = 0) {
+        // DEEP SYNC: Always try to get the freshest user object from the SDK's internal list
+        const freshUser = this.client.remoteUsers.find(u => u.uid === user.uid) || user;
+        
         try {
-            await this.client.subscribe(user, mediaType);
+            await this.client.subscribe(freshUser, mediaType);
+            this.log(`Linked ${mediaType}`);
+
             if (mediaType === "video") {
-                this.remoteUsers[user.uid] = user;
+                this.remoteUsers[freshUser.uid] = freshUser;
                 const remoteDiv = document.getElementById("remote-video");
                 if(remoteDiv) {
-                    user.videoTrack.play("remote-video");
+                    freshUser.videoTrack.play("remote-video");
                     if(this.onJoin) this.onJoin();
                 }
             }
             if (mediaType === "audio") {
-                user.audioTrack.play();
+                freshUser.audioTrack.play();
             }
-        } catch (e) { }
+        } catch (e) {
+            console.error("Subscription Error:", e);
+            
+            // If we've failed, the user might be in a 'joining' state. Retry with lookup.
+            if (retryCount < 10) { 
+                const delay = (retryCount + 1) * 300;
+                this.log(`Syncing... (${retryCount + 1})`);
+                setTimeout(() => this.handleUserPublished(user, mediaType, retryCount + 1), delay);
+            } else {
+                this.log("Connection Unstable", true);
+            }
+        }
     }
 
     async leave() {

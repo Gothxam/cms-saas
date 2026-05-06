@@ -14,6 +14,18 @@ if (isset($_GET['read_all'])) {
     exit;
 }
 
+if (isset($_GET['read_id'])) {
+    $db->prepare("UPDATE notifications SET is_read = 1 WHERE user_id = ? AND id = ?")->execute([$user_id, $_GET['read_id']]);
+    echo json_encode(['success' => true]);
+    exit;
+}
+
+if (isset($_GET['read_type'])) {
+    $db->prepare("UPDATE notifications SET is_read = 1 WHERE user_id = ? AND type = ?")->execute([$user_id, $_GET['read_type']]);
+    echo json_encode(['success' => true]);
+    exit;
+}
+
 // Fetch unread notifications
 $stmt = $db->prepare("
     SELECT * FROM notifications 
