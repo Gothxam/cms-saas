@@ -4,7 +4,7 @@ require_once 'core/init.php';
 
 // Redirect if already logged in
 if (Auth::check()) {
-    if (Auth::hasRole('Doctor')) redirect('doctor/index.php');
+    if (Auth::isClinicRole()) redirect('doctor/index.php');
     if (Auth::hasRole('Patient')) redirect('patient/index.php');
     redirect('index.php');
 }
@@ -12,6 +12,7 @@ if (Auth::check()) {
 $error = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    Middleware::checkCSRF();
     $email = $_POST['email'] ?? '';
     $password = $_POST['password'] ?? '';
 
@@ -22,7 +23,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
 
         // Successful login - role-based redirection
-        if (Auth::hasRole('Doctor')) redirect('doctor/index.php');
+        Middleware::audit('auth.login', 'User logged in as ' . ($_SESSION['user_role'] ?? 'unknown'));
+        if (Auth::isClinicRole()) redirect('doctor/index.php');
         if (Auth::hasRole('Patient')) redirect('patient/index.php');
         redirect('index.php');
     } else {
@@ -73,6 +75,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <?php endif; ?>
 
             <form method="POST" class="space-y-8">
+                <?php echo Middleware::csrfField(); ?>
                 <div class="space-y-3">
                     <label class="block text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Email Address</label>
                     <input type="email" name="email" required placeholder="your@email.com" class="w-full bg-slate-50/50 border border-slate-100 px-6 py-5 rounded-2xl focus:ring-4 focus:ring-teal-500/5 focus:border-teal-500 outline-none transition-all font-bold text-slate-700">

@@ -48,7 +48,8 @@ $stmt = $db->prepare("
     SELECT u.id, u.name, u.email, dp.specialization, dp.biography 
     FROM users u 
     LEFT JOIN doctor_profiles dp ON u.id = dp.user_id 
-    WHERE u.clinic_id = ? AND u.role_id = (SELECT id FROM roles WHERE name = 'Doctor')
+    WHERE u.clinic_id = ? AND u.role_id IN (SELECT id FROM roles WHERE name IN ('Doctor', 'Clinic Admin'))
+    AND u.deleted_at IS NULL
     ORDER BY u.name ASC
 ");
 $stmt->execute([$clinic_id]);

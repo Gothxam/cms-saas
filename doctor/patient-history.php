@@ -1,7 +1,7 @@
 <?php
 // clinic/patient-history.php
 require_once '../core/init.php';
-Auth::protect('Doctor');
+Auth::protect(['Clinic Admin', 'Doctor', 'Receptionist']);
 
 $db = getDB();
 $clinic_id = $_SESSION['clinic_id'];

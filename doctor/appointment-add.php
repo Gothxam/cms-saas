@@ -1,7 +1,7 @@
 <?php
 // clinic/appointment-add.php
 require_once '../core/init.php';
-Auth::protect('Doctor');
+Auth::protect(['Clinic Admin', 'Doctor', 'Receptionist']);
 
 $db = getDB();
 $clinic_id = $_SESSION['clinic_id'];
@@ -32,7 +32,7 @@ $patients = $db->prepare("SELECT id, name FROM users WHERE clinic_id = ? AND rol
 $patients->execute([$clinic_id]);
 $patient_list = $patients->fetchAll();
 
-$doctors = $db->prepare("SELECT id, name FROM users WHERE clinic_id = ? AND role_id = (SELECT id FROM roles WHERE name = 'Doctor') ORDER BY name ASC");
+$doctors = $db->prepare("SELECT id, name FROM users WHERE clinic_id = ? AND role_id IN (SELECT id FROM roles WHERE name IN ('Doctor', 'Clinic Admin')) AND deleted_at IS NULL ORDER BY name ASC");
 $doctors->execute([$clinic_id]);
 $doctor_list = $doctors->fetchAll();
 

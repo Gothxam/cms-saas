@@ -1,7 +1,7 @@
 <?php
 // clinic/doctor-add.php
 require_once '../core/init.php';
-Auth::protect('Doctor');
+Auth::protect(['Clinic Admin']);
 
 $error = '';
 $success = '';

@@ -13,16 +13,19 @@
         notifOpen: false, 
         unreadCount: 0, 
         notifications: [],
-        fetchNotifications() {
-            fetch('api/notifications.php')
-                .then(r => r.json())
-                .then(data => {
-                    if (data.unread_count > this.unreadCount) {
-                        this.playPing();
-                    }
-                    this.notifications = data.notifications;
-                    this.unreadCount = data.unread_count;
-                });
+        handleStreamData(data) {
+            if (data.unread_count > this.unreadCount) {
+                this.playPing();
+            }
+            this.notifications = data.notifications;
+            this.unreadCount = data.unread_count;
+        },
+        initStream() {
+            const source = new EventSource('api/notifications_stream.php');
+            source.onmessage = (event) => {
+                const data = JSON.parse(event.data);
+                this.handleStreamData(data);
+            };
         },
         playPing() {
             const audio = new Audio('https://assets.mixkit.co/active_storage/sfx/2358/2358-preview.mp3');
@@ -32,10 +35,9 @@
             fetch('api/notifications.php?read_all=1')
                 .then(() => {
                     this.unreadCount = 0;
-                    this.fetchNotifications();
                 });
         }
-    }" x-init="fetchNotifications(); setInterval(() => fetchNotifications(), 5000)">
+    }" x-init="initStream()">
         <!-- Icons -->
         <div class="flex items-center gap-2 border-r border-slate-100 pr-6">
             <div class="flex items-center gap-2 relative">
@@ -95,7 +97,7 @@
             <button @click="open = !open" class="flex items-center gap-3 pl-2 focus:outline-none group">
                 <div class="text-right hidden sm:block">
                     <p class="text-sm font-black text-slate-900 leading-tight group-hover:text-teal-600 transition-colors"><?php echo e($_SESSION['user_name']); ?></p>
-                    <p class="text-[10px] font-bold text-teal-600 uppercase tracking-widest mt-0.5">Doctor</p>
+                    <p class="text-[10px] font-bold text-teal-600 uppercase tracking-widest mt-0.5"><?php echo e($_SESSION['user_role']); ?></p>
                 </div>
                 <div class="w-10 h-10 rounded-xl overflow-hidden border-2 border-slate-50 shadow-sm bg-teal-50 flex items-center justify-center group-hover:border-teal-200 transition-all">
                     <img src="https://ui-avatars.com/api/?name=<?php echo urlencode($_SESSION['user_name']); ?>&background=random" class="w-full h-full object-cover">
@@ -119,9 +121,11 @@
                     <a href="profile.php" class="flex items-center gap-3 px-4 py-3 rounded-2xl text-xs font-bold text-slate-600 hover:bg-teal-50 hover:text-teal-700 transition-all">
                         <i data-lucide="user" class="w-4 h-4 opacity-50"></i> My Profile
                     </a>
+                    <?php if (Permissions::isAdmin()): ?>
                     <a href="settings.php" class="flex items-center gap-3 px-4 py-3 rounded-2xl text-xs font-bold text-slate-600 hover:bg-teal-50 hover:text-teal-700 transition-all">
                         <i data-lucide="settings" class="w-4 h-4 opacity-50"></i> Practice Settings
                     </a>
+                    <?php endif; ?>
                     <div class="h-px bg-slate-50 my-2"></div>
                     <a href="<?php echo base_url('logout.php'); ?>" class="flex items-center gap-3 px-4 py-3 rounded-2xl text-xs font-bold text-red-500 hover:bg-red-50 transition-all">
                         <i data-lucide="log-out" class="w-4 h-4 opacity-50"></i> Sign Out

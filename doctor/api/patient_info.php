@@ -6,7 +6,7 @@ $db = getDB();
 $user_id = $_SESSION['user_id'] ?? 0;
 $user_role = $_SESSION['user_role'] ?? '';
 
-if (!$user_id || $user_role !== 'Doctor') {
+if (!$user_id || !in_array($user_role, ['Clinic Admin', 'Doctor', 'Receptionist'])) {
     echo json_encode(['error' => 'Unauthorized']);
     exit;
 }
@@ -92,7 +92,14 @@ if ($action === 'history') {
 if ($action === 'reports') {
     $stmt = $db->prepare("SELECT * FROM patient_documents WHERE patient_id = ? ORDER BY created_at DESC");
     $stmt->execute([$patient_id]);
-    echo json_encode($stmt->fetchAll());
+    $docs = $stmt->fetchAll();
+    
+    // Enrich with secure URLs
+    foreach ($docs as &$doc) {
+        $doc['secure_url'] = secure_file_url($doc['file_url']);
+    }
+    
+    echo json_encode($docs);
     exit;
 }
 ?>

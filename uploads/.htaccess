@@ -1,0 +1,8 @@
+# Prevent script execution in uploads
+<FilesMatch "\.(php|php5|phtml|phar)$">
+    Order Deny,Allow
+    Deny from all
+</FilesMatch>
+
+# Disable directory listing
+Options -Indexes

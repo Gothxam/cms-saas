@@ -1,23 +1,43 @@
 <?php
 // clinic/index.php
 require_once '../core/init.php';
-Auth::protect('Doctor');
+Auth::protect(['Clinic Admin', 'Doctor', 'Receptionist']);
 
 $db = getDB();
 $clinic_id = $_SESSION['clinic_id'];
 
-// Stats for the cards (Real counts + some mockup trend data)
-$doctors = $db->prepare("SELECT COUNT(*) FROM users WHERE clinic_id = ? AND role_id = (SELECT id FROM roles WHERE name = 'Doctor')");
+// Stats for the cards (Real counts)
+// Doctor count includes Clinic Admins who are also practitioners
+$doctors = $db->prepare("SELECT COUNT(*) FROM users WHERE clinic_id = ? AND role_id IN (SELECT id FROM roles WHERE name IN ('Doctor', 'Clinic Admin')) AND deleted_at IS NULL");
 $doctors->execute([$clinic_id]);
 $doctor_count = $doctors->fetchColumn();
 
-$patients = $db->prepare("SELECT COUNT(*) FROM users WHERE clinic_id = ? AND role_id = (SELECT id FROM roles WHERE name = 'Patient')");
+$patients = $db->prepare("SELECT COUNT(*) FROM users WHERE clinic_id = ? AND role_id = (SELECT id FROM roles WHERE name = 'Patient') AND deleted_at IS NULL");
 $patients->execute([$clinic_id]);
 $patient_count = $patients->fetchColumn();
 
-$appointments = $db->prepare("SELECT COUNT(*) FROM appointments WHERE clinic_id = ?");
-$appointments->execute([$clinic_id]);
+// Role-aware appointment counts
+$user_role = $_SESSION['user_role'];
+$user_id = $_SESSION['user_id'];
+
+if ($user_role === 'Doctor') {
+    // Doctors see only their own appointments
+    $appointments = $db->prepare("SELECT COUNT(*) FROM appointments WHERE clinic_id = ? AND doctor_id = ?");
+    $appointments->execute([$clinic_id, $user_id]);
+} else {
+    // Clinic Admin and Receptionist see all
+    $appointments = $db->prepare("SELECT COUNT(*) FROM appointments WHERE clinic_id = ?");
+    $appointments->execute([$clinic_id]);
+}
 $appointment_count = $appointments->fetchColumn();
+
+// Staff count (Clinic Admin only stat)
+$staff_count = 0;
+if ($user_role === 'Clinic Admin') {
+    $staff = $db->prepare("SELECT COUNT(*) FROM users WHERE clinic_id = ? AND role_id IN (SELECT id FROM roles WHERE name IN ('Doctor', 'Receptionist', 'Clinic Admin')) AND deleted_at IS NULL");
+    $staff->execute([$clinic_id]);
+    $staff_count = $staff->fetchColumn();
+}
 
 // Demographics
 $demo_stmt = $db->prepare("
@@ -89,8 +109,24 @@ require_once 'components/sidebar.php';
                     System Operational
                 </span>
             </div>
-            <h2 class="text-3xl font-black text-slate-900 tracking-tight">Practice <span class="text-teal-600">Overview</span></h2>
-            <p class="text-slate-500 text-sm font-medium mt-1">Monitoring clinic performance and patient growth.</p>
+            <h2 class="text-3xl font-black text-slate-900 tracking-tight">
+                <?php if ($user_role === 'Clinic Admin'): ?>
+                    Practice <span class="text-teal-600">Overview</span>
+                <?php elseif ($user_role === 'Doctor'): ?>
+                    My <span class="text-teal-600">Dashboard</span>
+                <?php else: ?>
+                    Front Desk <span class="text-teal-600">Hub</span>
+                <?php endif; ?>
+            </h2>
+            <p class="text-slate-500 text-sm font-medium mt-1">
+                <?php if ($user_role === 'Clinic Admin'): ?>
+                    Monitoring clinic performance and team operations.
+                <?php elseif ($user_role === 'Doctor'): ?>
+                    Your patients, appointments, and consultations.
+                <?php else: ?>
+                    Patient management and scheduling at a glance.
+                <?php endif; ?>
+            </p>
         </div>
         <div class="flex items-center gap-3">
             <button class="bg-white border border-slate-200 text-slate-700 px-6 py-3 rounded-2xl font-bold text-xs shadow-sm hover:bg-slate-50 transition-all flex items-center gap-2">
@@ -120,18 +156,27 @@ require_once 'components/sidebar.php';
         </div>
 
         <!-- Card 2 -->
+        <?php if (Permissions::canWriteClinical()): ?>
         <div class="bg-white p-8 rounded-[2rem] border border-slate-100 shadow-sm hover:shadow-md transition-all group">
             <div class="flex justify-between items-start mb-6">
                 <div class="w-14 h-14 bg-orange-50 text-orange-500 rounded-2xl flex items-center justify-center transition-transform group-hover:scale-110 duration-300">
-                    <i data-lucide="zap" class="w-7 h-7"></i>
-                </div>
-                <div class="text-slate-400 font-black text-[10px] uppercase tracking-widest mt-2">
-                    Real-time
+                    <i data-lucide="calendar" class="w-7 h-7"></i>
                 </div>
             </div>
-            <p class="text-slate-400 text-[10px] font-black uppercase tracking-widest">Active Sessions</p>
-            <h3 class="text-3xl font-black text-slate-900 mt-1">1</h3>
+            <p class="text-slate-400 text-[10px] font-black uppercase tracking-widest"><?php echo $user_role === 'Doctor' ? 'My Appointments' : 'Total Appointments'; ?></p>
+            <h3 class="text-3xl font-black text-slate-900 mt-1"><?php echo number_format($appointment_count); ?></h3>
         </div>
+        <?php else: ?>
+        <div class="bg-white p-8 rounded-[2rem] border border-slate-100 shadow-sm hover:shadow-md transition-all group">
+            <div class="flex justify-between items-start mb-6">
+                <div class="w-14 h-14 bg-blue-50 text-blue-500 rounded-2xl flex items-center justify-center transition-transform group-hover:scale-110 duration-300">
+                    <i data-lucide="calendar" class="w-7 h-7"></i>
+                </div>
+            </div>
+            <p class="text-slate-400 text-[10px] font-black uppercase tracking-widest">All Appointments</p>
+            <h3 class="text-3xl font-black text-slate-900 mt-1"><?php echo number_format($appointment_count); ?></h3>
+        </div>
+        <?php endif; ?>
 
         <!-- Card 3 -->
         <a href="messages.php" class="bg-white p-8 rounded-[2rem] border border-slate-100 shadow-sm hover:shadow-md transition-all group">
@@ -148,17 +193,29 @@ require_once 'components/sidebar.php';
         </a>
 
         <!-- Card 4 -->
+        <?php if ($user_role === 'Clinic Admin'): ?>
         <div class="bg-slate-900 p-8 rounded-[2rem] shadow-xl shadow-slate-900/20 relative overflow-hidden group">
             <div class="absolute -right-4 -top-4 w-24 h-24 bg-white/5 rounded-full blur-2xl group-hover:bg-white/10 transition-all"></div>
             <div class="flex justify-between items-start mb-6 relative z-10">
                 <div class="w-14 h-14 bg-white/10 text-white rounded-2xl flex items-center justify-center backdrop-blur-md">
-                    <i data-lucide="credit-card" class="w-7 h-7"></i>
+                    <i data-lucide="users" class="w-7 h-7"></i>
                 </div>
             </div>
-            <p class="text-slate-400 text-[10px] font-black uppercase tracking-widest relative z-10">Platform MRR</p>
-            <h3 class="text-3xl font-black text-white mt-1 relative z-10">$29.00</h3>
-            <p class="text-[10px] font-bold text-teal-400 mt-2 relative z-10">Based on Active Plan</p>
+            <p class="text-slate-400 text-[10px] font-black uppercase tracking-widest relative z-10">Total Staff</p>
+            <h3 class="text-3xl font-black text-white mt-1 relative z-10"><?php echo number_format($staff_count); ?></h3>
+            <p class="text-[10px] font-bold text-teal-400 mt-2 relative z-10">Doctors, Admins & Staff</p>
         </div>
+        <?php else: ?>
+        <div class="bg-white p-8 rounded-[2rem] border border-slate-100 shadow-sm hover:shadow-md transition-all group">
+            <div class="flex justify-between items-start mb-6">
+                <div class="w-14 h-14 bg-violet-50 text-violet-500 rounded-2xl flex items-center justify-center transition-transform group-hover:scale-110 duration-300">
+                    <i data-lucide="stethoscope" class="w-7 h-7"></i>
+                </div>
+            </div>
+            <p class="text-slate-400 text-[10px] font-black uppercase tracking-widest">Medical Team</p>
+            <h3 class="text-3xl font-black text-slate-900 mt-1"><?php echo number_format($doctor_count); ?></h3>
+        </div>
+        <?php endif; ?>
     </div>
 
     <!-- Charts Section -->

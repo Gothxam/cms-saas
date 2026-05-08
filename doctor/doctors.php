@@ -1,7 +1,7 @@
 <?php
 // clinic/doctors.php
 require_once '../core/init.php';
-Auth::protect('Doctor');
+Auth::protect(['Clinic Admin', 'Doctor', 'Receptionist']);
 
 $db = getDB();
 $clinic_id = $_SESSION['clinic_id'];
@@ -13,7 +13,7 @@ $stmt = $db->prepare("
     JOIN roles r ON u.role_id = r.id
     LEFT JOIN doctor_profiles dp ON u.id = dp.user_id 
     WHERE u.clinic_id = ? 
-    AND r.name IN ('Doctor', 'Receptionist')
+    AND r.name IN ('Clinic Admin', 'Doctor', 'Receptionist')
     AND u.deleted_at IS NULL
 ");
 $stmt->execute([$clinic_id]);
@@ -31,12 +31,14 @@ require_once 'components/sidebar.php';
             <p class="text-slate-500 text-sm font-medium mt-1">Manage and view all healthcare professionals in your practice.</p>
         </div>
         <div class="flex items-center gap-3">
+            <?php if (Permissions::isAdmin()): ?>
             <a href="staff-add.php" class="bg-white border border-slate-200 text-slate-700 px-6 py-3 rounded-2xl font-bold text-xs shadow-sm hover:bg-slate-50 transition-all flex items-center gap-2">
                 <i data-lucide="users" class="w-4 h-4"></i> Add New Member
             </a>
             <a href="doctor-add.php" class="bg-teal-600 text-white px-6 py-3 rounded-2xl font-bold text-xs shadow-xl shadow-teal-600/20 hover:bg-teal-700 transition-all flex items-center gap-2">
                 <i data-lucide="plus" class="w-4 h-4"></i> Add New Doctor
             </a>
+            <?php endif; ?>
         </div>
     </header>
 
@@ -52,7 +54,7 @@ require_once 'components/sidebar.php';
                 </div>
                 
                 <h4 class="text-xl font-black text-slate-900"><?php echo e($doc['name']); ?></h4>
-                <p class="text-teal-600 text-[10px] font-black uppercase tracking-widest mt-1 mb-4"><?php echo e($doc['role_name'] === 'Doctor' ? ($doc['specialization'] ?? 'General Physician') : $doc['role_name']); ?></p>
+                <p class="text-teal-600 text-[10px] font-black uppercase tracking-widest mt-1 mb-4"><?php echo e(in_array($doc['role_name'], ['Doctor', 'Clinic Admin']) ? ($doc['specialization'] ?? 'General Physician') : $doc['role_name']); ?></p>
                 
                 <p class="text-slate-400 text-xs font-medium mb-8"><?php echo e($doc['email']); ?></p>
                 

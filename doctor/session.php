@@ -1,7 +1,7 @@
 <?php
 // doctor/session.php — Consultation Room (Agora Powered)
 require_once '../core/init.php';
-Auth::protect('Doctor');
+Auth::protect(['Clinic Admin', 'Doctor']);
 
 $agora_config = require_once '../config/agora.php';
 $db = getDB();
@@ -758,10 +758,10 @@ require_once 'components/sidebar.php';
                                 </div>
                             </div>
                             <div class="flex items-center gap-2 relative z-10">
-                                <a :href="'../' + doc.file_url" target="_blank" class="w-10 h-10 bg-slate-50 hover:bg-slate-900 hover:text-white rounded-xl flex items-center justify-center text-slate-400 transition-all shadow-sm border border-slate-100 group/view" title="View Fullscreen">
+                                <a :href="doc.secure_url" target="_blank" class="w-10 h-10 bg-slate-50 hover:bg-slate-900 hover:text-white rounded-xl flex items-center justify-center text-slate-400 transition-all shadow-sm border border-slate-100 group/view" title="View Fullscreen">
                                     <i data-lucide="external-link" class="w-4 h-4"></i>
                                 </a>
-                                <a :href="'../' + doc.file_url" download class="w-10 h-10 bg-slate-50 hover:bg-teal-600 hover:text-white rounded-xl flex items-center justify-center text-slate-400 transition-all shadow-sm border border-slate-100 group/down" title="Download">
+                                <a :href="doc.secure_url" download class="w-10 h-10 bg-slate-50 hover:bg-teal-600 hover:text-white rounded-xl flex items-center justify-center text-slate-400 transition-all shadow-sm border border-slate-100 group/down" title="Download">
                                     <i data-lucide="download" class="w-4 h-4"></i>
                                 </a>
                             </div>

@@ -10,7 +10,7 @@ if (!isset($_SESSION['user_id'])) {
 
 $db = getDB();
 $user_id = $_SESSION['user_id'];
-$user_type = strtolower($_SESSION['user_role']); // 'doctor' or 'patient'
+$user_type = in_array($_SESSION['user_role'], ['Doctor', 'Clinic Admin']) ? 'doctor' : 'patient';
 
 header('Content-Type: application/json');
 

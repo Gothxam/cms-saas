@@ -38,7 +38,7 @@ class Auth {
     }
 
 
-    public static function protect($role = null) {
+    public static function protect($roles = null) {
         if (!self::check()) {
             redirect('login.php');
             exit;
@@ -50,9 +50,19 @@ class Auth {
             exit;
         }
         
-        if ($role && !self::hasRole($role)) {
-            die("Unauthorized access.");
+        if ($roles) {
+            $roles = (array) $roles;
+            if (!in_array($_SESSION['user_role'], $roles)) {
+                die("Unauthorized access.");
+            }
         }
+    }
+
+    /**
+     * Check if the logged-in user has a clinic-side role (not Patient)
+     */
+    public static function isClinicRole() {
+        return in_array($_SESSION['user_role'] ?? '', ['Clinic Admin', 'Doctor', 'Receptionist']);
     }
 
     public static function logout($target = '') {

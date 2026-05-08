@@ -31,27 +31,33 @@ if (!isset($user_data['picture_url'])) {
         audioContext: null,
         ringInterval: null,
 
-        fetchNotifications() {
-            fetch('api/notifications.php')
-                .then(r => r.json())
-                .then(data => {
-                    if (data.unread_count > this.unreadCount) {
-                        const hasLive = data.notifications.some(n => n.type === 'live_session' && n.is_read == 0);
-                        if (!hasLive) this.playPing();
-                    }
+        handleStreamData(data) {
+            if (data.unread_count > this.unreadCount) {
+                const hasLive = data.notifications.some(n => n.type === 'live_session' && n.is_read == 0);
+                if (!hasLive) this.playPing();
+            }
 
-                    this.notifications = data.notifications;
-                    this.unreadCount = data.unread_count;
-                    
-                    const liveCall = this.notifications.find(n => n.type === 'live_session' && n.is_read == 0);
-                    if (liveCall && !this.incomingCall) {
-                        this.incomingCall = liveCall;
-                        this.playRingtone();
-                    } else if (!liveCall && this.incomingCall) {
-                        this.stopRingtone();
-                        this.incomingCall = null;
-                    }
-                });
+            this.notifications = data.notifications;
+            this.unreadCount = data.unread_count;
+            
+            const liveCall = this.notifications.find(n => n.type === 'live_session' && n.is_read == 0);
+            if (liveCall && !this.incomingCall) {
+                this.incomingCall = liveCall;
+                this.playRingtone();
+            } else if (!liveCall && this.incomingCall) {
+                this.stopRingtone();
+                this.incomingCall = null;
+            }
+        },
+        initStream() {
+            const source = new EventSource('api/notifications_stream.php');
+            source.onmessage = (event) => {
+                const data = JSON.parse(event.data);
+                this.handleStreamData(data);
+            };
+            source.onerror = () => {
+                console.log('SSE connection lost. Retrying...');
+            };
         },
         initAudio() {
             if (!this.audioContext) {
@@ -104,7 +110,7 @@ if (!isset($user_data['picture_url'])) {
                     this.unreadCount = 0;
                     this.stopRingtone();
                     this.incomingCall = null;
-                    this.fetchNotifications();
+                    // Trigger manual fetch or wait for next stream pulse
                 });
         },
         acceptCall() {
@@ -123,7 +129,7 @@ if (!isset($user_data['picture_url'])) {
             fetch(`api/notifications.php?read_id=${id}`);
             if (link) window.location.href = link;
         }
-    }" x-init="fetchNotifications(); setInterval(() => fetchNotifications(), 5000)">
+    }" x-init="initStream()">
         
         <!-- Icons -->
         <div class="flex items-center gap-2 border-r border-slate-100 pr-6">

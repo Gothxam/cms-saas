@@ -1,7 +1,7 @@
 <?php
 // clinic/patient-add.php
 require_once '../core/init.php';
-Auth::protect('Doctor');
+Auth::protect(['Clinic Admin', 'Doctor', 'Receptionist']);
 
 $db = getDB();
 $clinic_id = $_SESSION['clinic_id'];
@@ -9,6 +9,7 @@ $errors = [];
 $success = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    Middleware::checkCSRF();
     // Collect Data
     $first_name     = trim($_POST['first_name'] ?? '');
     $last_name      = trim($_POST['last_name'] ?? '');
@@ -67,22 +68,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // 2. Handle Picture Upload
             $picture_url = '';
             if (isset($_FILES['picture']) && $_FILES['picture']['error'] === 0) {
-                $ext = pathinfo($_FILES['picture']['name'], PATHINFO_EXTENSION);
-                $filename = 'patient_' . $user_id . '_' . time() . '.' . $ext;
-                
-                // Use absolute path from ROOT_PATH
-                $upload_dir = ROOT_PATH . '/uploads/patients/';
-                if (!is_dir($upload_dir)) mkdir($upload_dir, 0777, true);
-                
-                if (move_uploaded_file($_FILES['picture']['tmp_name'], $upload_dir . $filename)) {
-                    $picture_url = 'uploads/patients/' . $filename;
+                $validation = Middleware::validateUpload($_FILES['picture'], ['jpg', 'jpeg', 'png'], 5);
+                if ($validation === true) {
+                    $ext = pathinfo($_FILES['picture']['name'], PATHINFO_EXTENSION);
+                    $filename = 'patient_' . $user_id . '_' . time() . '.' . $ext;
+                    
+                    $upload_dir = ROOT_PATH . '/uploads/patients/';
+                    if (!is_dir($upload_dir)) mkdir($upload_dir, 0777, true);
+                    
+                    if (move_uploaded_file($_FILES['picture']['tmp_name'], $upload_dir . $filename)) {
+                        $picture_url = 'uploads/patients/' . $filename;
+                    }
                 } else {
-                    // Log error if move fails
-                    error_log("Failed to move uploaded file to: " . $upload_dir . $filename);
+                    error_log("Photo validation failed: " . $validation);
                 }
-            } elseif (isset($_FILES['picture']) && $_FILES['picture']['error'] !== 4) {
-                // Error 4 means no file was uploaded, which is fine. Other errors should be logged.
-                error_log("Upload Error Code: " . $_FILES['picture']['error']);
             }
 
             // 3. Create Patient Profile
@@ -106,6 +105,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             
             // Send Credentials Email (Suppress errors on local servers)
             @send_credentials_email($email, $full_name, $password, 'Patient');
+
+            Middleware::audit('patient.create', "Doctor registered new patient: $full_name", $user_id);
 
             $success = "Patient record created successfully! Credentials sent to email.";
             header("Refresh:2; url=patients.php");
@@ -173,6 +174,7 @@ require_once 'components/sidebar.php';
 
     <!-- Multi-Section Form -->
     <form method="POST" enctype="multipart/form-data" class="space-y-12">
+        <?php echo Middleware::csrfField(); ?>
         
         <!-- SECTION 1: Personal Information -->
         <div class="bg-white p-10 rounded-[1.5rem] border border-slate-100 shadow-sm space-y-8">

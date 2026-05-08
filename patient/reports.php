@@ -8,13 +8,15 @@ $patient_id = $_SESSION['user_id'];
 $clinic_id = $_SESSION['clinic_id'];
 
 // Handle Upload
-if (isset($_FILES['report_file'])) {
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['report_file'])) {
+    Middleware::checkCSRF();
     $title = trim($_POST['report_title'] ?? 'Medical Report');
     $file = $_FILES['report_file'];
     
-    if ($file['error'] === 0) {
+    $validation = Middleware::validateUpload($file);
+    if ($validation === true) {
         $ext = pathinfo($file['name'], PATHINFO_EXTENSION);
-        $filename = uniqid('report_') . '.' . $ext;
+        $filename = uniqid('report_') . '_' . bin2hex(random_bytes(4)) . '.' . $ext;
         $upload_dir = '../uploads/reports/';
         
         if (!is_dir($upload_dir)) mkdir($upload_dir, 0777, true);
@@ -22,9 +24,15 @@ if (isset($_FILES['report_file'])) {
         if (move_uploaded_file($file['tmp_name'], $upload_dir . $filename)) {
             $stmt = $db->prepare("INSERT INTO patient_documents (clinic_id, patient_id, title, file_url, category, created_at) VALUES (?, ?, ?, ?, 'Report', NOW())");
             $stmt->execute([$clinic_id, $patient_id, $title, 'uploads/reports/' . $filename]);
+            $doc_id = $db->lastInsertId();
+            
+            Middleware::audit('document.upload', "Patient uploaded report: $title", $doc_id);
+            
             header("Location: reports.php?success=uploaded");
             exit;
         }
+    } else {
+        $error = $validation;
     }
 }
 
@@ -32,7 +40,7 @@ if (isset($_FILES['report_file'])) {
 if (isset($_GET['delete'])) {
     $report_id = (int)$_GET['delete'];
     // Security: Check if report belongs to patient
-    $stmt = $db->prepare("SELECT file_url FROM patient_documents WHERE id = ? AND patient_id = ?");
+    $stmt = $db->prepare("SELECT title, file_url FROM patient_documents WHERE id = ? AND patient_id = ?");
     $stmt->execute([$report_id, $patient_id]);
     $report = $stmt->fetch();
     
@@ -42,6 +50,9 @@ if (isset($_GET['delete'])) {
         }
         $stmt = $db->prepare("DELETE FROM patient_documents WHERE id = ?");
         $stmt->execute([$report_id]);
+        
+        Middleware::audit('document.delete', "Patient deleted report: " . $report['title'], $report_id);
+        
         header("Location: reports.php?success=deleted");
         exit;
     }
@@ -150,7 +161,7 @@ require_once 'components/sidebar.php';
                     </div>
                     
                     <div class="mt-10 grid grid-cols-2 gap-3">
-                        <a href="../<?php echo $report['file_url']; ?>" target="_blank" class="flex items-center justify-center gap-2 py-4 bg-slate-900 text-white rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-teal-600 transition-all">
+                        <a href="<?php echo secure_file_url($report['file_url']); ?>" target="_blank" class="flex items-center justify-center gap-2 py-4 bg-slate-900 text-white rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-teal-600 transition-all">
                             <i data-lucide="eye" class="w-3.5 h-3.5"></i> Preview
                         </a>
                         <button onclick="shareReport(<?php echo $report['id']; ?>)" class="flex items-center justify-center gap-2 py-4 bg-slate-50 text-slate-600 rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-slate-100 transition-all">
@@ -190,6 +201,7 @@ require_once 'components/sidebar.php';
             </div>
 
             <form method="POST" enctype="multipart/form-data" class="space-y-8" id="uploadForm">
+                <?php echo Middleware::csrfField(); ?>
                 <div class="space-y-3">
                     <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Report Description</label>
                     <input type="text" name="report_title" required placeholder="e.g. Annual Health Check - Blood Work"

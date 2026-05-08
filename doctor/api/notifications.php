@@ -1,6 +1,6 @@
 <?php
 require_once '../../core/init.php';
-Auth::protect('Doctor');
+Auth::protect(['Clinic Admin', 'Doctor', 'Receptionist']);
 
 header('Content-Type: application/json');
 

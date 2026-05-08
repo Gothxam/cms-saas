@@ -29,36 +29,43 @@ function get_lucide_svg($name, $class = "w-4 h-4 opacity-70") {
 }
 
 $nav_items = [
-    'Dashboard' => ['url' => 'index.php', 'icon' => 'layout-dashboard'],
-    'Medical Team' => ['url' => 'doctors.php', 'icon' => 'stethoscope'],
+    'Dashboard' => ['url' => 'index.php', 'icon' => 'layout-dashboard', 'page' => 'index'],
+    'Medical Team' => ['url' => 'doctors.php', 'icon' => 'stethoscope', 'page' => 'doctors'],
     'Patients' => [
         'url' => 'patients.php',
         'icon' => 'users',
+        'page' => 'patients',
         'sub_items' => [
-            'add' => ['label' => 'Add Patient', 'url' => 'patient-add.php', 'icon' => 'plus-circle'],
-            'list' => ['label' => 'Patient List', 'url' => 'patients.php', 'icon' => 'list'],
-            'add-doc' => ['label' => 'Add Document', 'url' => 'patient-document-add.php', 'icon' => 'file-plus'],
-            'doc-list' => ['label' => 'Document List', 'url' => 'records.php', 'icon' => 'folder'],
+            'add' => ['label' => 'Add Patient', 'url' => 'patient-add.php', 'icon' => 'plus-circle', 'page' => 'patient-add'],
+            'list' => ['label' => 'Patient List', 'url' => 'patients.php', 'icon' => 'list', 'page' => 'patients'],
+            'add-doc' => ['label' => 'Add Document', 'url' => 'patient-document-add.php', 'icon' => 'file-plus', 'page' => 'patient-document-add'],
+            'doc-list' => ['label' => 'Document List', 'url' => 'records.php', 'icon' => 'folder', 'page' => 'records'],
         ]
     ],
     'Appointments' => [
         'url' => 'appointments.php?view=all',
         'icon' => 'calendar',
+        'page' => 'appointments',
         'sub_items' => [
-            'all' => ['label' => 'All Appointments', 'url' => 'appointments.php?view=all', 'icon' => 'list'],
-            'today' => ['label' => 'Today', 'url' => 'appointments.php?view=today', 'icon' => 'calendar-check'],
-            'upcoming' => ['label' => 'Upcoming', 'url' => 'appointments.php?view=upcoming', 'icon' => 'calendar-clock'],
-            'add' => ['label' => 'Add Appointment', 'url' => 'appointment-add.php', 'icon' => 'plus-circle'],
+            'all' => ['label' => 'All Appointments', 'url' => 'appointments.php?view=all', 'icon' => 'list', 'page' => 'appointments'],
+            'today' => ['label' => 'Today', 'url' => 'appointments.php?view=today', 'icon' => 'calendar-check', 'page' => 'appointments'],
+            'upcoming' => ['label' => 'Upcoming', 'url' => 'appointments.php?view=upcoming', 'icon' => 'calendar-clock', 'page' => 'appointments'],
+            'add' => ['label' => 'Add Appointment', 'url' => 'appointment-add.php', 'icon' => 'plus-circle', 'page' => 'appointment-add'],
         ]
     ],
-    'Messages' => ['url' => 'messages.php', 'icon' => 'message-square'],
-    'Medical Records' => ['url' => 'records.php', 'icon' => 'folder'],
+    'Messages' => ['url' => 'messages.php', 'icon' => 'message-square', 'page' => 'messages'],
+    'Medical Records' => ['url' => 'records.php', 'icon' => 'folder', 'page' => 'records'],
 ];
 
 $account_items = [
-    'My Profile' => ['url' => 'profile.php', 'icon' => 'user'],
-    'Settings' => ['url' => 'settings.php', 'icon' => 'settings'],
+    'My Profile' => ['url' => 'profile.php', 'icon' => 'user', 'page' => 'profile'],
+    'Settings' => ['url' => 'settings.php', 'icon' => 'settings', 'page' => 'settings'],
 ];
+
+// ── Permission Filter ──────────────────────────────────────────
+// Each role only sees the nav items they're allowed to access
+$nav_items = Permissions::filterNav($nav_items);
+$account_items = Permissions::filterNav($account_items);
 
 function is_active($item, $current_page, $current_view) {
     if (isset($item['sub_items'])) {
@@ -74,6 +81,15 @@ function is_active($item, $current_page, $current_view) {
     }
     return ($item['url'] === $current_page);
 }
+
+// Role badge styling
+$role_label = $_SESSION['user_role'] ?? 'Unknown';
+$role_colors = [
+    'Clinic Admin' => 'bg-emerald-50 text-emerald-700',
+    'Doctor' => 'bg-teal-50 text-teal-700',
+    'Receptionist' => 'bg-amber-50 text-amber-700',
+];
+$role_badge_class = $role_colors[$role_label] ?? 'bg-slate-50 text-slate-600';
 ?>
 
 <script defer src="https://unpkg.com/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
@@ -90,6 +106,13 @@ function is_active($item, $current_page, $current_view) {
                 <h1 class="text-xl font-black text-slate-900 tracking-tighter leading-none">MED<span class="text-teal-600">OS</span></h1>
                 <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-1">Practice Manager</p>
             </div>
+        </div>
+        <!-- Role Badge -->
+        <div class="mt-3">
+            <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-[9px] font-black uppercase tracking-widest <?php echo $role_badge_class; ?>">
+                <span class="w-1.5 h-1.5 rounded-full bg-current opacity-60"></span>
+                <?php echo e($role_label); ?>
+            </span>
         </div>
     </div>
 

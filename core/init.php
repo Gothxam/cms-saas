@@ -21,6 +21,11 @@ require_once ROOT_PATH . '/core/Auth.php';
 require_once ROOT_PATH . '/core/Mailer.php';
 require_once ROOT_PATH . '/core/Functions.php';
 require_once ROOT_PATH . '/core/TenantManager.php';
+require_once ROOT_PATH . '/core/Middleware.php';
+require_once ROOT_PATH . '/core/Permissions.php';
+
+// 5. Initialize Security
+Middleware::generateToken();
 
 // 5. Identify Tenant (Clinic)
 // This will still work for both localhost (?clinic=X) and Subdomains

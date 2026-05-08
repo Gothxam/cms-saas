@@ -1,7 +1,7 @@
 <?php
 // doctor/settings.php
 require_once '../core/init.php';
-Auth::protect('Doctor');
+Auth::protect(['Clinic Admin']);
 
 $db = getDB();
 $clinic_id = $_SESSION['clinic_id'];

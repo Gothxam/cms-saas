@@ -18,6 +18,18 @@ function base_url($path = '') {
 }
 
 /**
+ * Get a secure proxied URL for a file in protected storage
+ */
+function secure_file_url($path) {
+    if (empty($path)) return '';
+    // If it's already a full URL, return it
+    if (strpos($path, 'http') === 0) return $path;
+    
+    // Proxy through serve_file.php
+    return base_url('serve_file.php?path=' . urlencode($path));
+}
+
+/**
  * Safe redirect to a project path
  */
 function redirect($path) {

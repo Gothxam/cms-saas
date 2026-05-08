@@ -1,12 +1,41 @@
 <?php
 // doctor/appointments.php — Clean rebuild
 require_once '../core/init.php';
-Auth::protect('Doctor');
+Auth::protect(['Clinic Admin', 'Doctor', 'Receptionist']);
 
 $db = getDB();
 $clinic_id = $_SESSION['clinic_id'];
-$doctor_id = $_SESSION['user_id'];
+$user_id = $_SESSION['user_id'];
+$user_role = $_SESSION['user_role'];
 $view = $_GET['view'] ?? 'all';
+
+// ── Role-Based Scoping ──────────────────────────────────
+// Doctors see ONLY their own appointments
+// Clinic Admin & Receptionist see ALL, with optional doctor filter
+$is_doctor_only = ($user_role === 'Doctor');
+$filter_doctor_id = $_GET['doctor'] ?? '';
+
+if ($is_doctor_only) {
+    // Doctors always see only their own — ignore filter param
+    $scope_sql = " AND a.doctor_id = ?";
+    $scope_params = [$user_id];
+} elseif ($filter_doctor_id) {
+    // Admin/Receptionist filtering by a specific doctor
+    $scope_sql = " AND a.doctor_id = ?";
+    $scope_params = [(int)$filter_doctor_id];
+} else {
+    // Admin/Receptionist: see all
+    $scope_sql = "";
+    $scope_params = [];
+}
+
+// Fetch doctor list for filter dropdown (Admin/Receptionist only)
+$doctor_list = [];
+if (!$is_doctor_only) {
+    $doc_stmt = $db->prepare("SELECT id, name FROM users WHERE clinic_id = ? AND role_id IN (SELECT id FROM roles WHERE name IN ('Doctor', 'Clinic Admin')) AND deleted_at IS NULL ORDER BY name ASC");
+    $doc_stmt->execute([$clinic_id]);
+    $doctor_list = $doc_stmt->fetchAll();
+}
 
 if (isset($_GET['approve'])) {
     $apt_id = $_GET['approve'];
@@ -27,7 +56,7 @@ if (isset($_GET['approve'])) {
         "appointments.php"
     );
 
-    header('Location: appointments.php?view=' . $view);
+    header('Location: appointments.php?view=' . $view . ($filter_doctor_id ? '&doctor=' . $filter_doctor_id : ''));
     exit;
 }
 if (isset($_GET['reject'])) {
@@ -49,24 +78,26 @@ if (isset($_GET['reject'])) {
         "appointments.php"
     );
 
-    header('Location: appointments.php?view=' . $view);
+    header('Location: appointments.php?view=' . $view . ($filter_doctor_id ? '&doctor=' . $filter_doctor_id : ''));
     exit;
 }
 
-// ── Stats for Today ──
-$stats_stmt = $db->prepare("
+// ── Stats for Today (scoped) ──
+$stats_query = "
     SELECT 
         COUNT(*) as total,
         COUNT(CASE WHEN status = 'completed' THEN 1 END) as completed,
         COUNT(CASE WHEN status = 'pending' THEN 1 END) as pending_requests,
         COUNT(CASE WHEN status IN ('confirmed', 'in_progress') THEN 1 END) as confirmed
-    FROM appointments 
-    WHERE clinic_id = ? AND DATE(date_time) = CURDATE()
-");
-$stats_stmt->execute([$clinic_id]);
+    FROM appointments a
+    WHERE a.clinic_id = ? AND DATE(a.date_time) = CURDATE()
+    $scope_sql
+";
+$stats_stmt = $db->prepare($stats_query);
+$stats_stmt->execute(array_merge([$clinic_id], $scope_params));
 $stats = $stats_stmt->fetch();
 
-// ── Fetch Appointments with Search ──
+// ── Fetch Appointments with Search (scoped) ──
 $search = $_GET['search'] ?? '';
 $query = "
     SELECT a.*, p.name as patient_name, d.name as doctor_name, pp.id_no as patient_id_no
@@ -75,8 +106,9 @@ $query = "
     JOIN users d ON a.doctor_id = d.id
     LEFT JOIN patient_profiles pp ON p.id = pp.user_id
     WHERE a.clinic_id = ?
+    $scope_sql
 ";
-$params = [$clinic_id];
+$params = array_merge([$clinic_id], $scope_params);
 
 if ($search) {
     $query .= " AND (p.name LIKE ? OR pp.id_no LIKE ? OR p.id LIKE ?)";
@@ -98,16 +130,18 @@ $stmt = $db->prepare($query);
 $stmt->execute($params);
 $appointments = $stmt->fetchAll();
 
-// ── Overview Stats ──
-$all_stats = $db->prepare("
+// ── Overview Stats (scoped) ──
+$all_stats_query = "
     SELECT 
         COUNT(*) as total,
         COUNT(CASE WHEN status = 'completed' THEN 1 END) as completed,
         COUNT(CASE WHEN status = 'cancelled' THEN 1 END) as cancelled
-    FROM appointments 
-    WHERE clinic_id = ?
-");
-$all_stats->execute([$clinic_id]);
+    FROM appointments a
+    WHERE a.clinic_id = ?
+    $scope_sql
+";
+$all_stats = $db->prepare($all_stats_query);
+$all_stats->execute(array_merge([$clinic_id], $scope_params));
 $as = $all_stats->fetch();
 
 require_once 'components/header.php';
@@ -118,24 +152,59 @@ require_once 'components/sidebar.php';
     <!-- Header -->
     <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
         <div>
-            <h2 class="text-2xl font-black text-slate-900 tracking-tight">Clinical Schedule</h2>
-            <p class="text-slate-400 text-sm font-medium mt-1">Manage patient bookings and consultations.</p>
+            <?php if ($is_doctor_only): ?>
+                <h2 class="text-2xl font-black text-slate-900 tracking-tight">My Schedule</h2>
+                <p class="text-slate-400 text-sm font-medium mt-1">Your patient bookings and consultations.</p>
+            <?php else: ?>
+                <h2 class="text-2xl font-black text-slate-900 tracking-tight">Clinical Schedule</h2>
+                <p class="text-slate-400 text-sm font-medium mt-1">Manage patient bookings and consultations across all doctors.</p>
+            <?php endif; ?>
         </div>
+        <?php if (!$is_doctor_only && !empty($doctor_list)): ?>
+        <!-- Doctor Filter Dropdown -->
+        <div class="flex items-center gap-3">
+            <form method="GET" class="flex items-center gap-2">
+                <input type="hidden" name="view" value="<?php echo e($view); ?>">
+                <div class="relative">
+                    <select name="doctor" onchange="this.form.submit()" 
+                        class="appearance-none bg-white border border-slate-200 pl-10 pr-10 py-3 rounded-2xl text-xs font-bold text-slate-700 focus:ring-2 focus:ring-teal-500/10 focus:border-teal-500 outline-none transition-all shadow-sm cursor-pointer">
+                        <option value="">All Doctors</option>
+                        <?php foreach ($doctor_list as $dl): ?>
+                            <option value="<?php echo $dl['id']; ?>" <?php echo $filter_doctor_id == $dl['id'] ? 'selected' : ''; ?>>
+                                Dr. <?php echo e($dl['name']); ?>
+                            </option>
+                        <?php endforeach; ?>
+                    </select>
+                    <i data-lucide="stethoscope" class="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none"></i>
+                </div>
+                <?php if ($filter_doctor_id): ?>
+                    <a href="?view=<?php echo e($view); ?>" class="w-9 h-9 bg-red-50 text-red-400 hover:text-red-600 rounded-xl flex items-center justify-center transition-all border border-red-100" title="Clear filter">
+                        <i data-lucide="x" class="w-4 h-4"></i>
+                    </a>
+                <?php endif; ?>
+            </form>
+        </div>
+        <?php endif; ?>
     </div>
+
+    <?php
+    // Build the doctor param string for tab links
+    $doc_param = $filter_doctor_id ? '&doctor=' . urlencode($filter_doctor_id) : '';
+    ?>
 
     <!-- Navigation & Search -->
     <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6" x-data="{ search: '<?php echo e($search); ?>' }">
         <div class="flex flex-wrap items-center gap-2 p-2 bg-slate-100/50 w-fit rounded-[1.5rem] border border-slate-100">
-            <a href="?view=all" class="px-8 py-3.5 rounded-2xl text-[11px] font-black uppercase tracking-widest transition-all <?php echo $view === 'all' ? 'bg-white text-emerald-600 shadow-sm border border-emerald-100/50' : 'text-slate-500 hover:text-slate-700'; ?>">
+            <a href="?view=all<?php echo $doc_param; ?>" class="px-8 py-3.5 rounded-2xl text-[11px] font-black uppercase tracking-widest transition-all <?php echo $view === 'all' ? 'bg-white text-emerald-600 shadow-sm border border-emerald-100/50' : 'text-slate-500 hover:text-slate-700'; ?>">
                 All
             </a>
-            <a href="?view=pending" class="px-8 py-3.5 rounded-2xl text-[11px] font-black uppercase tracking-widest transition-all <?php echo $view === 'pending' ? 'bg-white text-amber-600 shadow-sm border border-amber-100/50' : 'text-slate-500 hover:text-slate-700'; ?>">
+            <a href="?view=pending<?php echo $doc_param; ?>" class="px-8 py-3.5 rounded-2xl text-[11px] font-black uppercase tracking-widest transition-all <?php echo $view === 'pending' ? 'bg-white text-amber-600 shadow-sm border border-amber-100/50' : 'text-slate-500 hover:text-slate-700'; ?>">
                 Requests (<?php echo $stats['pending_requests'] ?? 0; ?>)
             </a>
-            <a href="?view=today" class="px-8 py-3.5 rounded-2xl text-[11px] font-black uppercase tracking-widest transition-all <?php echo $view === 'today' ? 'bg-white text-emerald-600 shadow-sm border border-emerald-100/50' : 'text-slate-500 hover:text-slate-700'; ?>">
+            <a href="?view=today<?php echo $doc_param; ?>" class="px-8 py-3.5 rounded-2xl text-[11px] font-black uppercase tracking-widest transition-all <?php echo $view === 'today' ? 'bg-white text-emerald-600 shadow-sm border border-emerald-100/50' : 'text-slate-500 hover:text-slate-700'; ?>">
                 Today's List
             </a>
-            <a href="?view=upcoming" class="px-8 py-3.5 rounded-2xl text-[11px] font-black uppercase tracking-widest transition-all <?php echo $view === 'upcoming' ? 'bg-white text-blue-600 shadow-sm border border-blue-100/50' : 'text-slate-500 hover:text-slate-700'; ?>">
+            <a href="?view=upcoming<?php echo $doc_param; ?>" class="px-8 py-3.5 rounded-2xl text-[11px] font-black uppercase tracking-widest transition-all <?php echo $view === 'upcoming' ? 'bg-white text-blue-600 shadow-sm border border-blue-100/50' : 'text-slate-500 hover:text-slate-700'; ?>">
                 Upcoming
             </a>
         </div>

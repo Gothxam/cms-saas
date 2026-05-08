@@ -6,9 +6,14 @@ $db = getDB();
 $user_id = $_SESSION['user_id'] ?? 0;
 $user_role = $_SESSION['user_role'] ?? '';
 
-if (!$user_id || ($user_role !== 'Doctor' && $user_role !== 'Patient')) {
+if (!$user_id || !in_array($user_role, ['Clinic Admin', 'Doctor', 'Patient'])) {
     echo json_encode(['error' => 'Unauthorized', 'debug_role' => $user_role]);
     exit;
+}
+
+// Global CSRF Check for all POST actions in this API
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    Middleware::checkCSRF();
 }
 
 $action = $_GET['action'] ?? '';
@@ -54,6 +59,8 @@ if ($action === 'start' && $_SERVER['REQUEST_METHOD'] === 'POST') {
         "live_session",
         "session.php?id=" . $apt_id
     );
+
+    Middleware::audit('consultation.start', "Doctor started consultation for appointment #$apt_id", $visit_id);
 
     echo json_encode(['success' => true, 'visit_id' => $visit_id]);
     exit;
