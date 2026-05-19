@@ -8,7 +8,7 @@ require_once 'core/init.php';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pricing Plans | MedOS Patient Care</title>
+    <title>Pricing Plans | MedOS Clinical Systems</title>
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -73,273 +73,238 @@ require_once 'core/init.php';
         </div>
     </nav>
 
-    <!-- Page Header (Expansion Section) -->
-    <header class="relative pt-56 pb-40 overflow-hidden bg-white">
-        <div class="absolute inset-0 pointer-events-none">
-            <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full">
-                <div class="absolute top-[-10%] left-[-10%] w-[60%] h-[60%] bg-emerald-50/50 rounded-full blur-[120px] animate-pulse"></div>
-                <div class="absolute bottom-[-10%] right-[-10%] w-[60%] h-[60%] bg-teal-50/50 rounded-full blur-[120px] animate-pulse" style="animation-delay: 3s;"></div>
-            </div>
-            <div class="absolute inset-0 opacity-[0.03]" style="background-image: radial-gradient(#059669 0.5px, transparent 0.5px); background-size: 24px 24px;"></div>
+    <!-- Interactive Hero -->
+    <header class="relative pt-48 pb-32 overflow-hidden bg-white">
+        <!-- Ambient Background Glows -->
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full -z-10">
+            <div class="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-emerald-50 rounded-full blur-[120px] opacity-60 animate-pulse"></div>
+            <div class="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-teal-50 rounded-full blur-[120px] opacity-60 animate-pulse" style="animation-delay: 2s;"></div>
         </div>
 
         <div class="max-w-5xl mx-auto px-6 text-center relative z-10">
-            <div class="inline-flex items-center gap-2 px-4 py-1.5 bg-white border border-slate-100 rounded-full shadow-sm mb-12">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 bg-emerald-50 border border-emerald-100 rounded-full shadow-sm mb-12">
                 <span class="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse"></span>
-                <span class="text-[10px] font-black text-slate-900 uppercase tracking-widest">Pricing Plans</span>
+                <span class="text-[10px] font-black text-emerald-600 uppercase tracking-[0.2em]">Predictable Pricing</span>
             </div>
-
-            <h1 class="text-5xl md:text-6xl lg:text-7xl font-black text-slate-900 tracking-tightest mb-10 leading-[1.05]">
-                Personalized medical care, <br>
-                <span class="text-emerald-600">on your schedule.</span>
+            <h1 class="text-5xl md:text-7xl lg:text-8xl font-black text-slate-900 tracking-tightest mb-10 leading-[1.05]">
+                Scale your practice, <br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-emerald-400">not your costs.</span>
             </h1>
-            
-            <p class="text-lg md:text-xl text-slate-500 font-medium leading-relaxed max-w-2xl mx-auto mb-20">
-                Choose a plan that fits your needs and get direct access to professional medical care. Simple, secure, and designed around you.
+            <p class="text-xl md:text-2xl text-slate-500 font-medium leading-relaxed max-w-3xl mx-auto mb-16 italic">
+                Predictable plans for growing clinics. No hidden fees, no per-patient charges—just pure clinical efficiency.
             </p>
-            
-            <!-- Trust Boxes -->
-            <div class="flex flex-wrap items-center justify-center gap-4">
-                <!-- Privacy -->
-                <div class="flex items-center gap-4 px-6 py-4 bg-white border border-slate-100 rounded-2xl shadow-sm hover:shadow-md hover:border-emerald-100 transition-all group">
-                    <div class="w-10 h-10 bg-emerald-50 text-emerald-600 rounded-xl flex items-center justify-center group-hover:bg-emerald-500 group-hover:text-white transition-all duration-500 shadow-sm">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-                    </div>
-                    <div class="text-left">
-                        <p class="text-[9px] font-black text-slate-400 uppercase tracking-widest leading-none mb-1">Privacy</p>
-                        <p class="text-xs font-bold text-slate-900">100% Confidential</p>
-                    </div>
-                </div>
-
-                <!-- Availability -->
-                <div class="flex items-center gap-4 px-6 py-4 bg-white border border-slate-100 rounded-2xl shadow-sm hover:shadow-md hover:border-emerald-100 transition-all group">
-                    <div class="w-10 h-10 bg-emerald-50 text-emerald-600 rounded-xl flex items-center justify-center group-hover:bg-emerald-500 group-hover:text-white transition-all duration-500 shadow-sm">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/><path d="M12 5 9.04 7.96a2.17 2.17 0 0 0 0 3.08v0c.82.82 2.13.82 2.96 0"/><path d="m12 10 2.96 2.96a2.17 2.17 0 0 0 3.08 0v0c.82-.82.82-2.13 0-2.96L15 7"/></svg>
-                    </div>
-                    <div class="text-left">
-                        <p class="text-[9px] font-black text-slate-400 uppercase tracking-widest leading-none mb-1">Availability</p>
-                        <p class="text-xs font-bold text-slate-900">Direct Access</p>
-                    </div>
-                </div>
-
-                <!-- Support -->
-                <div class="flex items-center gap-4 px-6 py-4 bg-white border border-slate-100 rounded-2xl shadow-sm hover:shadow-md hover:border-emerald-100 transition-all group">
-                    <div class="w-10 h-10 bg-emerald-50 text-emerald-600 rounded-xl flex items-center justify-center group-hover:bg-emerald-500 group-hover:text-white transition-all duration-500 shadow-sm">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-                    </div>
-                    <div class="text-left">
-                        <p class="text-[9px] font-black text-slate-400 uppercase tracking-widest leading-none mb-1">Support</p>
-                        <p class="text-xs font-bold text-slate-900">Expert Guidance</p>
-                    </div>
-                </div>
-            </div>
         </div>
     </header>
 
-    <!-- Pricing Cards Section -->
-    <section class="py-24 bg-[#f8fafc] border-y border-slate-100 relative">
+    <!-- Pricing Grid -->
+    <section class="py-24 bg-[#f8fafc] border-y border-slate-100 relative overflow-hidden">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-20">
-                <div class="inline-flex items-center gap-2 px-3 py-1 bg-emerald-500/5 border border-emerald-500/10 rounded-full text-[10px] font-black text-emerald-600 uppercase tracking-widest mb-6">
-                    Pricing Plans
-                </div>
-                <h2 class="text-3xl md:text-4xl lg:text-5xl font-black text-slate-900 tracking-tightest mb-4 leading-tight">
-                    Choose the right plan <br>
-                    <span class="text-emerald-600">for your care needs.</span>
-                </h2>
-                <p class="text-slate-500 text-base font-medium max-w-xl mx-auto">Flexible plans designed to help patients connect with expert medical care anytime, anywhere.</p>
-            </div>
-
-            <div class="grid lg:grid-cols-3 gap-8 items-stretch mb-12">
-                <!-- Basic Plan -->
-                <div class="group relative p-10 bg-white border border-slate-200 rounded-[2.5rem] hover:shadow-2xl hover:shadow-slate-200/50 transition-all duration-500 flex flex-col">
-                    <div class="mb-8">
-                        <div class="inline-flex items-center px-3 py-1 bg-slate-50 border border-slate-100 rounded-lg text-[9px] font-black text-slate-400 uppercase tracking-widest mb-6 uppercase">Essential Care</div>
-                        <h4 class="text-xl font-bold text-slate-900 tracking-tight mb-2">Basic</h4>
-                        <div class="flex items-baseline gap-1 mt-4">
-                            <span class="text-4xl font-black text-slate-900 tracking-tightest">Free</span>
+            <div class="grid lg:grid-cols-3 gap-8 items-stretch mb-20">
+                
+                <!-- Solo Plan -->
+                <div class="p-12 bg-white border border-slate-200 rounded-[3rem] hover:shadow-2xl transition-all duration-700 group flex flex-col">
+                    <div class="mb-10">
+                        <div class="inline-flex items-center px-3 py-1 bg-slate-50 border border-slate-100 rounded-lg text-[10px] font-black text-slate-400 uppercase tracking-widest mb-8">Solo Practitioner</div>
+                        <h3 class="text-3xl font-black text-slate-900 tracking-tight">Starter</h3>
+                        <div class="flex items-baseline gap-2 mt-6">
+                            <span class="text-5xl font-black text-slate-900 tracking-tightest">$49</span>
+                            <span class="text-slate-400 font-bold text-sm tracking-tight">/mo</span>
                         </div>
-                        <p class="text-slate-500 text-sm mt-4 font-medium leading-relaxed">Get started with simple access to doctor consultations and appointment booking.</p>
                     </div>
                     
-                    <ul class="space-y-4 mb-10 border-t border-slate-50 pt-8 flex-grow">
-                        <li class="flex items-center gap-3 text-sm font-semibold text-slate-700">
-                            <div class="w-6 h-6 bg-emerald-50 rounded-full flex items-center justify-center text-emerald-600 flex-shrink-0">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                    <ul class="space-y-5 mb-12 flex-grow">
+                        <li class="flex items-center gap-3 text-sm font-bold text-slate-600">
+                            <div class="w-5 h-5 bg-emerald-50 text-emerald-600 rounded-full flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="check" class="w-3 h-3"></i>
                             </div>
-                            Book Appointments
+                            Up to 2 Staff Seats
                         </li>
-                        <li class="flex items-center gap-3 text-sm font-semibold text-slate-700">
-                            <div class="w-6 h-6 bg-emerald-50 rounded-full flex items-center justify-center text-emerald-600 flex-shrink-0">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                        <li class="flex items-center gap-3 text-sm font-bold text-slate-600">
+                            <div class="w-5 h-5 bg-emerald-50 text-emerald-600 rounded-full flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="check" class="w-3 h-3"></i>
                             </div>
-                            Secure Messaging
+                            Unlimited Appointments
                         </li>
-                        <li class="flex items-center gap-3 text-sm font-semibold text-slate-700">
-                            <div class="w-6 h-6 bg-emerald-50 rounded-full flex items-center justify-center text-emerald-600 flex-shrink-0">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                        <li class="flex items-center gap-3 text-sm font-bold text-slate-600">
+                            <div class="w-5 h-5 bg-emerald-50 text-emerald-600 rounded-full flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="check" class="w-3 h-3"></i>
                             </div>
-                            Basic Health Support
-                        </li>
-                        <li class="flex items-center gap-3 text-sm font-semibold text-slate-700">
-                            <div class="w-6 h-6 bg-emerald-50 rounded-full flex items-center justify-center text-emerald-600 flex-shrink-0">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-                            </div>
-                            Limited Chat Access
+                            Basic Patient Records
                         </li>
                     </ul>
-                    
-                    <a href="login.php" class="mt-auto block text-center w-full py-5 bg-slate-50 text-slate-900 rounded-2xl font-black text-[10px] uppercase tracking-widest hover:bg-emerald-500 hover:text-white transition-all border border-slate-100 hover:border-emerald-500">Get Started</a>
+
+                    <a href="login.php" class="w-full py-5 bg-slate-50 text-slate-900 rounded-2xl font-black text-[10px] uppercase tracking-widest hover:bg-emerald-600 hover:text-white transition-all border border-slate-100 hover:border-emerald-600 text-center">Get Started</a>
                 </div>
 
-                <!-- Premium Plan -->
-                <div class="group relative p-10 bg-white border-2 border-emerald-500 rounded-[3rem] shadow-2xl shadow-emerald-900/10 lg:-translate-y-6 z-10 flex flex-col">
+                <!-- Professional Plan -->
+                <div class="p-12 bg-white border-2 border-emerald-500 rounded-[3.5rem] shadow-2xl shadow-emerald-900/10 lg:-translate-y-8 relative z-10 group flex flex-col">
                     <div class="absolute -top-5 left-1/2 -translate-x-1/2 px-4 py-1.5 bg-emerald-500 text-white rounded-full text-[10px] font-black uppercase tracking-widest shadow-lg shadow-emerald-500/30">Most Popular</div>
                     
-                    <div class="mb-8">
-                        <div class="inline-flex items-center px-3 py-1 bg-emerald-50 border border-emerald-100 rounded-lg text-[9px] font-black text-emerald-600 uppercase tracking-widest mb-6">Complete Care</div>
-                        <h4 class="text-xl font-bold text-slate-900 tracking-tight mb-2 text-emerald-600">Premium</h4>
-                        <div class="flex items-baseline gap-1 mt-4">
-                            <span class="text-4xl font-black text-slate-900 tracking-tightest">$19</span>
-                            <span class="text-slate-400 font-bold text-sm tracking-tight">/month</span>
+                    <div class="mb-10">
+                        <div class="inline-flex items-center px-3 py-1 bg-emerald-50 border border-emerald-100 rounded-lg text-[10px] font-black text-emerald-600 uppercase tracking-widest mb-8">Growing Clinics</div>
+                        <h3 class="text-3xl font-black text-slate-900 tracking-tight">Professional</h3>
+                        <div class="flex items-baseline gap-2 mt-6">
+                            <span class="text-5xl font-black text-slate-900 tracking-tightest">$149</span>
+                            <span class="text-slate-400 font-bold text-sm tracking-tight">/mo</span>
                         </div>
-                        <p class="text-slate-500 text-sm mt-4 font-medium leading-relaxed">Ideal for patients who need regular communication and faster medical support.</p>
                     </div>
                     
-                    <ul class="space-y-4 mb-10 border-t border-slate-50 pt-8 flex-grow">
-                        <li class="flex items-center gap-3 text-sm font-semibold text-slate-700">
-                            <div class="w-6 h-6 bg-emerald-500 text-white rounded-full flex items-center justify-center flex-shrink-0 shadow-sm">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                    <ul class="space-y-5 mb-12 flex-grow">
+                        <li class="flex items-center gap-3 text-sm font-bold text-slate-900">
+                            <div class="w-5 h-5 bg-emerald-500 text-white rounded-full flex items-center justify-center flex-shrink-0 shadow-sm">
+                                <i data-lucide="check" class="w-3 h-3"></i>
                             </div>
-                            Unlimited Doctor Chat
+                            Up to 10 Staff Seats
                         </li>
-                        <li class="flex items-center gap-3 text-sm font-semibold text-slate-700">
-                            <div class="w-6 h-6 bg-emerald-500 text-white rounded-full flex items-center justify-center flex-shrink-0 shadow-sm">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                        <li class="flex items-center gap-3 text-sm font-bold text-slate-900">
+                            <div class="w-5 h-5 bg-emerald-500 text-white rounded-full flex items-center justify-center flex-shrink-0 shadow-sm">
+                                <i data-lucide="check" class="w-3 h-3"></i>
                             </div>
-                            Priority Appointment Booking
+                            Advanced Analytics
                         </li>
-                        <li class="flex items-center gap-3 text-sm font-semibold text-slate-700">
-                            <div class="w-6 h-6 bg-emerald-500 text-white rounded-full flex items-center justify-center flex-shrink-0 shadow-sm">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                        <li class="flex items-center gap-3 text-sm font-bold text-slate-900">
+                            <div class="w-5 h-5 bg-emerald-500 text-white rounded-full flex items-center justify-center flex-shrink-0 shadow-sm">
+                                <i data-lucide="check" class="w-3 h-3"></i>
                             </div>
-                            Prescription Updates
+                            Digital Prescriptions
                         </li>
-                        <li class="flex items-center gap-3 text-sm font-semibold text-slate-700">
-                            <div class="w-6 h-6 bg-emerald-500 text-white rounded-full flex items-center justify-center flex-shrink-0 shadow-sm">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-                            </div>
-                            Consultation History
-                        </li>
-                        <li class="flex items-center gap-3 text-sm font-semibold text-slate-700">
-                            <div class="w-6 h-6 bg-emerald-500 text-white rounded-full flex items-center justify-center flex-shrink-0 shadow-sm">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-                            </div>
-                            Health Reminders
-                        </li>
-                    </ul>
-                    
-                    <a href="login.php" class="mt-auto block text-center w-full py-5 emerald-gradient text-white rounded-2xl font-black text-[10px] uppercase tracking-widest shadow-xl shadow-emerald-600/20 hover:scale-105 active:scale-95 transition-all">Start Free Trial</a>
-                </div>
-
-                <!-- VIP Care Plan -->
-                <div class="group relative p-10 bg-white border border-slate-200 rounded-[2.5rem] hover:shadow-2xl hover:shadow-slate-200/50 transition-all duration-500 flex flex-col">
-                    <div class="mb-8">
-                        <div class="inline-flex items-center px-3 py-1 bg-slate-900 border border-slate-800 rounded-lg text-[9px] font-black text-white uppercase tracking-widest mb-6">Personalized Care</div>
-                        <h4 class="text-xl font-bold text-slate-900 tracking-tight mb-2">VIP Care</h4>
-                        <div class="flex items-baseline gap-1 mt-4">
-                            <span class="text-4xl font-black text-slate-900 tracking-tightest">$49</span>
-                            <span class="text-slate-400 font-bold text-sm tracking-tight">/month</span>
-                        </div>
-                        <p class="text-slate-500 text-sm mt-4 font-medium leading-relaxed">Personalized healthcare access with priority support and direct consultation.</p>
-                    </div>
-                    
-                    <ul class="space-y-4 mb-10 border-t border-slate-50 pt-8 flex-grow">
-                        <li class="flex items-center gap-3 text-sm font-semibold text-slate-700">
-                            <div class="w-6 h-6 bg-emerald-50 rounded-full flex items-center justify-center text-emerald-600 flex-shrink-0">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-                            </div>
-                            Instant Doctor Messaging
-                        </li>
-                        <li class="flex items-center gap-3 text-sm font-semibold text-slate-700">
-                            <div class="w-6 h-6 bg-emerald-50 rounded-full flex items-center justify-center text-emerald-600 flex-shrink-0">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                        <li class="flex items-center gap-3 text-sm font-bold text-slate-900">
+                            <div class="w-5 h-5 bg-emerald-500 text-white rounded-full flex items-center justify-center flex-shrink-0 shadow-sm">
+                                <i data-lucide="check" class="w-3 h-3"></i>
                             </div>
                             Video Consultations
                         </li>
-                        <li class="flex items-center gap-3 text-sm font-semibold text-slate-700">
-                            <div class="w-6 h-6 bg-emerald-50 rounded-full flex items-center justify-center text-emerald-600 flex-shrink-0">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                    </ul>
+
+                    <a href="login.php" class="w-full py-5 emerald-gradient text-white rounded-2xl font-black text-[10px] uppercase tracking-widest shadow-xl shadow-emerald-600/20 hover:scale-105 active:scale-95 transition-all text-center">Start Free Trial</a>
+                </div>
+
+                <!-- Network Plan -->
+                <div class="p-12 bg-slate-900 border border-white/10 rounded-[3rem] hover:shadow-2xl transition-all duration-700 group flex flex-col text-white">
+                    <div class="mb-10">
+                        <div class="inline-flex items-center px-3 py-1 bg-white/5 border border-white/10 rounded-lg text-[10px] font-black text-emerald-400 uppercase tracking-widest mb-8">Large Networks</div>
+                        <h3 class="text-3xl font-black tracking-tight">Enterprise</h3>
+                        <div class="flex items-baseline gap-2 mt-6">
+                            <span class="text-4xl font-black tracking-tightest leading-none italic">Custom</span>
+                        </div>
+                    </div>
+                    
+                    <ul class="space-y-5 mb-12 flex-grow">
+                        <li class="flex items-center gap-3 text-sm font-bold text-slate-300">
+                            <div class="w-5 h-5 bg-white/5 text-emerald-400 rounded-full flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="check" class="w-3 h-3"></i>
                             </div>
-                            24/7 Priority Access
+                            Unlimited Staff Seats
                         </li>
-                        <li class="flex items-center gap-3 text-sm font-semibold text-slate-700">
-                            <div class="w-6 h-6 bg-emerald-50 rounded-full flex items-center justify-center text-emerald-600 flex-shrink-0">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                        <li class="flex items-center gap-3 text-sm font-bold text-slate-300">
+                            <div class="w-5 h-5 bg-white/5 text-emerald-400 rounded-full flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="check" class="w-3 h-3"></i>
                             </div>
-                            Personalized Health Monitoring
+                            Multi-Location Sync
                         </li>
-                        <li class="flex items-center gap-3 text-sm font-semibold text-slate-700">
-                            <div class="w-6 h-6 bg-emerald-50 rounded-full flex items-center justify-center text-emerald-600 flex-shrink-0">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                        <li class="flex items-center gap-3 text-sm font-bold text-slate-300">
+                            <div class="w-5 h-5 bg-white/5 text-emerald-400 rounded-full flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="check" class="w-3 h-3"></i>
                             </div>
-                            Dedicated Support
+                            Custom API Access
+                        </li>
+                        <li class="flex items-center gap-3 text-sm font-bold text-slate-300">
+                            <div class="w-5 h-5 bg-white/5 text-emerald-400 rounded-full flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="check" class="w-3 h-3"></i>
+                            </div>
+                            Dedicated Success Manager
                         </li>
                     </ul>
-                    
-                    <a href="contact.php" class="mt-auto block text-center w-full py-5 bg-slate-900 text-white rounded-2xl font-black text-[10px] uppercase tracking-widest hover:bg-slate-800 transition-all shadow-xl shadow-slate-900/10">Subscribe Now</a>
-                </div>
-            </div>
 
-            <!-- Trust Note -->
-            <div class="text-center">
-                <p class="text-xs font-bold text-slate-400 uppercase tracking-widest flex items-center justify-center gap-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-                    Private, secure, and confidential healthcare communication.
-                </p>
+                    <a href="contact.php" class="w-full py-5 bg-white text-slate-900 rounded-2xl font-black text-[10px] uppercase tracking-widest hover:bg-emerald-500 hover:text-white transition-all text-center">Contact Sales</a>
+                </div>
+
             </div>
         </div>
     </section>
 
-    <!-- Comparison Table (White Background) -->
-    <section class="py-24 bg-white relative">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-16">
-                <div class="inline-flex items-center gap-2 px-3 py-1 bg-emerald-500/5 border border-emerald-500/10 rounded-full text-[10px] font-black text-emerald-600 uppercase tracking-widest mb-6">Care Deep Dive</div>
-                <h2 class="text-3xl md:text-4xl font-black text-slate-900 tracking-tightest mb-4">Detailed Comparison</h2>
-                <p class="text-slate-500 font-medium text-base">Choose the plan that fits your care needs perfectly.</p>
+    <!-- "Included Standard" Grid -->
+    <section class="py-32 bg-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 relative z-10 text-center">
+            <h2 class="text-3xl md:text-5xl font-black text-slate-900 tracking-tightest mb-20 leading-tight">
+                Standard on every plan. <br>
+                <span class="text-emerald-600">No compromises.</span>
+            </h2>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div class="space-y-4">
+                    <div class="w-12 h-12 bg-emerald-50 text-emerald-600 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-sm">
+                        <i data-lucide="shield-check" class="w-6 h-6"></i>
+                    </div>
+                    <h4 class="font-black text-slate-900 text-xs uppercase tracking-widest">HIPAA Ready</h4>
+                    <p class="text-xs text-slate-400 font-medium leading-relaxed">Top-tier patient data protection.</p>
+                </div>
+                <div class="space-y-4">
+                    <div class="w-12 h-12 bg-emerald-50 text-emerald-600 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-sm">
+                        <i data-lucide="history" class="w-6 h-6"></i>
+                    </div>
+                    <h4 class="font-black text-slate-900 text-xs uppercase tracking-widest">Daily Backups</h4>
+                    <p class="text-xs text-slate-400 font-medium leading-relaxed">Your data, backed up every 24hrs.</p>
+                </div>
+                <div class="space-y-4">
+                    <div class="w-12 h-12 bg-emerald-50 text-emerald-600 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-sm">
+                        <i data-lucide="headphones" class="w-6 h-6"></i>
+                    </div>
+                    <h4 class="font-black text-slate-900 text-xs uppercase tracking-widest">24/7 Support</h4>
+                    <p class="text-xs text-slate-400 font-medium leading-relaxed">Direct access to clinical experts.</p>
+                </div>
+                <div class="space-y-4">
+                    <div class="w-12 h-12 bg-emerald-50 text-emerald-600 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-sm">
+                        <i data-lucide="refresh-cw" class="w-6 h-6"></i>
+                    </div>
+                    <h4 class="font-black text-slate-900 text-xs uppercase tracking-widest">Free Migration</h4>
+                    <p class="text-xs text-slate-400 font-medium leading-relaxed">We help move your legacy data.</p>
+                </div>
             </div>
+        </div>
+    </section>
+
+    <!-- Detailed Comparison -->
+    <section class="py-32 bg-slate-50 relative overflow-hidden">
+        <div class="max-w-5xl mx-auto px-6 relative z-10">
+            <div class="text-center mb-20">
+                <h2 class="text-3xl font-black text-slate-900 tracking-tighter">Detailed Comparison</h2>
+            </div>
+            
             <div class="overflow-x-auto">
                 <table class="w-full text-left border-collapse">
                     <thead>
-                        <tr class="border-b border-slate-100">
-                            <th class="py-6 px-6 text-[10px] font-black text-slate-400 uppercase tracking-widest">Feature Group</th>
-                            <th class="py-6 px-6 text-[10px] font-black text-slate-900 uppercase tracking-widest">Basic</th>
-                            <th class="py-6 px-6 text-[10px] font-black text-emerald-600 uppercase tracking-widest">Premium</th>
-                            <th class="py-6 px-6 text-[10px] font-black text-slate-900 uppercase tracking-widest">VIP Care</th>
+                        <tr class="border-b border-slate-200">
+                            <th class="py-6 text-[10px] font-black text-slate-400 uppercase tracking-widest">Feature</th>
+                            <th class="py-6 px-4 text-[10px] font-black text-slate-900 uppercase tracking-widest">Starter</th>
+                            <th class="py-6 px-4 text-[10px] font-black text-emerald-600 uppercase tracking-widest">Professional</th>
+                            <th class="py-6 px-4 text-[10px] font-black text-slate-900 uppercase tracking-widest">Enterprise</th>
                         </tr>
                     </thead>
-                    <tbody class="divide-y divide-slate-50">
-                        <tr class="bg-slate-50/30">
-                            <td class="py-5 px-6 font-bold text-slate-900 text-sm tracking-tight" colspan="4">Consultation Features</td>
+                    <tbody class="divide-y divide-slate-100">
+                        <tr>
+                            <td class="py-5 text-sm font-bold text-slate-600">Staff Seats</td>
+                            <td class="py-5 px-4 text-sm font-black text-slate-900">2</td>
+                            <td class="py-5 px-4 text-sm font-black text-emerald-600">10</td>
+                            <td class="py-5 px-4 text-sm font-black text-slate-900 italic">Unlimited</td>
                         </tr>
                         <tr>
-                            <td class="py-5 px-6 text-sm font-medium text-slate-500">Booking Access</td>
-                            <td class="py-5 px-6 text-sm font-bold text-slate-700">Standard</td>
-                            <td class="py-5 px-6 text-sm font-bold text-emerald-600">Priority</td>
-                            <td class="py-5 px-6 text-sm font-bold text-slate-700">Instant</td>
+                            <td class="py-5 text-sm font-bold text-slate-600">Patient Dashboard</td>
+                            <td class="py-5 px-4 text-emerald-500"><i data-lucide="check" class="w-5 h-5"></i></td>
+                            <td class="py-5 px-4 text-emerald-500"><i data-lucide="check" class="w-5 h-5"></i></td>
+                            <td class="py-5 px-4 text-emerald-500"><i data-lucide="check" class="w-5 h-5"></i></td>
                         </tr>
                         <tr>
-                            <td class="py-5 px-6 text-sm font-medium text-slate-500">Messaging</td>
-                            <td class="py-5 px-6 text-sm font-bold text-slate-700">Limited</td>
-                            <td class="py-5 px-6 text-sm font-bold text-emerald-600">Unlimited</td>
-                            <td class="py-5 px-6 text-sm font-bold text-slate-700">Direct 24/7</td>
+                            <td class="py-5 text-sm font-bold text-slate-600">Video Consultations</td>
+                            <td class="py-5 px-4 text-slate-300">—</td>
+                            <td class="py-5 px-4 text-emerald-500"><i data-lucide="check" class="w-5 h-5"></i></td>
+                            <td class="py-5 px-4 text-emerald-500"><i data-lucide="check" class="w-5 h-5"></i></td>
                         </tr>
                         <tr>
-                            <td class="py-5 px-6 text-sm font-medium text-slate-500">Secure Records</td>
-                            <td class="py-5 px-6 text-sm text-emerald-500"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></td>
-                            <td class="py-5 px-6 text-sm text-emerald-500"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></td>
-                            <td class="py-5 px-6 text-sm text-emerald-500"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></td>
+                            <td class="py-5 text-sm font-bold text-slate-600">API Access</td>
+                            <td class="py-5 px-4 text-slate-300">—</td>
+                            <td class="py-5 px-4 text-slate-300">—</td>
+                            <td class="py-5 px-4 text-emerald-500"><i data-lucide="check" class="w-5 h-5"></i></td>
                         </tr>
                     </tbody>
                 </table>
@@ -347,88 +312,36 @@ require_once 'core/init.php';
         </div>
     </section>
 
-    <!-- FAQ Section (Soft Slate Background) -->
-    <section class="py-24 bg-slate-50/50 border-y border-slate-100 relative overflow-hidden">
+    <!-- B2B FAQ -->
+    <section class="py-32 bg-white relative overflow-hidden">
         <div class="max-w-4xl mx-auto px-6 relative z-10" x-data="{ active: null }">
-            <div class="text-center mb-16">
-                <div class="inline-flex items-center gap-2 px-3 py-1 bg-emerald-500/5 border border-emerald-500/10 rounded-full text-[10px] font-black text-emerald-600 uppercase tracking-widest mb-6">
-                    FAQ
-                </div>
-                <h2 class="text-3xl font-black text-slate-900 tracking-tightest mb-4">Patient FAQ</h2>
-                <p class="text-slate-500 font-medium text-base">Everything you need to know about your healthcare access.</p>
+            <div class="text-center mb-24">
+                <h2 class="text-4xl md:text-5xl font-black text-slate-900 tracking-tightest">Common Questions</h2>
             </div>
-            <div class="space-y-3">
+
+            <div class="space-y-4">
                 <!-- Q1 -->
-                <div class="bg-white border border-slate-200/60 rounded-2xl overflow-hidden transition-all duration-500 hover:shadow-xl hover:shadow-slate-200/50" :class="active === 1 ? 'ring-2 ring-emerald-500/20 border-emerald-500/30' : ''">
-                    <button @click="active = (active === 1 ? null : 1)" class="w-full px-7 py-5 text-left flex justify-between items-center group">
-                        <span class="text-base font-semibold text-slate-900 tracking-tight group-hover:text-emerald-600 transition-colors">Is my medical data safe?</span>
-                        <div class="w-8 h-8 rounded-full flex items-center justify-center transition-all duration-500" :class="active === 1 ? 'bg-emerald-500 text-white rotate-45' : 'bg-slate-50 text-slate-400'">
-                            <i data-lucide="plus" class="w-4 h-4"></i>
-                        </div>
+                <div class="bg-slate-50 border border-slate-100 rounded-3xl overflow-hidden transition-all duration-500" :class="active === 1 ? 'bg-white ring-2 ring-emerald-500/20 border-emerald-500/30' : ''">
+                    <button @click="active = (active === 1 ? null : 1)" class="w-full px-8 py-7 text-left flex justify-between items-center group">
+                        <span class="text-lg font-bold text-slate-900 group-hover:text-emerald-600 transition-colors">Can I change plans at any time?</span>
+                        <i data-lucide="plus" class="w-5 h-5 text-slate-400 transition-transform duration-500" :class="active === 1 ? 'rotate-45 text-emerald-600' : ''"></i>
                     </button>
                     <div x-show="active === 1" x-collapse x-cloak>
-                        <div class="px-7 pb-6 text-slate-500 text-sm font-medium leading-relaxed">
-                            Yes, your personal and medical information is fully encrypted and securely stored. Your privacy and confidentiality are always protected.
+                        <div class="px-8 pb-8 text-slate-500 text-sm font-medium leading-relaxed">
+                            Yes, you can upgrade or downgrade your plan directly from your dashboard. Plan changes are prorated immediately.
                         </div>
                     </div>
                 </div>
 
                 <!-- Q2 -->
-                <div class="bg-white border border-slate-200/60 rounded-2xl overflow-hidden transition-all duration-500 hover:shadow-xl hover:shadow-slate-200/50" :class="active === 2 ? 'ring-2 ring-emerald-500/20 border-emerald-500/30' : ''">
-                    <button @click="active = (active === 2 ? null : 2)" class="w-full px-7 py-5 text-left flex justify-between items-center group">
-                        <span class="text-base font-semibold text-slate-900 tracking-tight group-hover:text-emerald-600 transition-colors">How can I contact the doctor?</span>
-                        <div class="w-8 h-8 rounded-full flex items-center justify-center transition-all duration-500" :class="active === 2 ? 'bg-emerald-500 text-white rotate-45' : 'bg-slate-50 text-slate-400'">
-                            <i data-lucide="plus" class="w-4 h-4"></i>
-                        </div>
+                <div class="bg-slate-50 border border-slate-100 rounded-3xl overflow-hidden transition-all duration-500" :class="active === 2 ? 'bg-white ring-2 ring-emerald-500/20 border-emerald-500/30' : ''">
+                    <button @click="active = (active === 2 ? null : 2)" class="w-full px-8 py-7 text-left flex justify-between items-center group">
+                        <span class="text-lg font-bold text-slate-900 group-hover:text-emerald-600 transition-colors">Do you offer discounts for non-profits?</span>
+                        <i data-lucide="plus" class="w-5 h-5 text-slate-400 transition-transform duration-500" :class="active === 2 ? 'rotate-45 text-emerald-600' : ''"></i>
                     </button>
                     <div x-show="active === 2" x-collapse x-cloak>
-                        <div class="px-7 pb-6 text-slate-500 text-sm font-medium leading-relaxed">
-                            You can connect with the doctor through secure chat or by booking an appointment directly from the platform.
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Q3 -->
-                <div class="bg-white border border-slate-200/60 rounded-2xl overflow-hidden transition-all duration-500 hover:shadow-xl hover:shadow-slate-200/50" :class="active === 3 ? 'ring-2 ring-emerald-500/20 border-emerald-500/30' : ''">
-                    <button @click="active = (active === 3 ? null : 3)" class="w-full px-7 py-5 text-left flex justify-between items-center group">
-                        <span class="text-base font-semibold text-slate-900 tracking-tight group-hover:text-emerald-600 transition-colors">Can I book and manage appointments online?</span>
-                        <div class="w-8 h-8 rounded-full flex items-center justify-center transition-all duration-500" :class="active === 3 ? 'bg-emerald-500 text-white rotate-45' : 'bg-slate-50 text-slate-400'">
-                            <i data-lucide="plus" class="w-4 h-4"></i>
-                        </div>
-                    </button>
-                    <div x-show="active === 3" x-collapse x-cloak>
-                        <div class="px-7 pb-6 text-slate-500 text-sm font-medium leading-relaxed">
-                            Yes, you can easily book, reschedule, or cancel appointments anytime through your account.
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Q4 -->
-                <div class="bg-white border border-slate-200/60 rounded-2xl overflow-hidden transition-all duration-500 hover:shadow-xl hover:shadow-slate-200/50" :class="active === 4 ? 'ring-2 ring-emerald-500/20 border-emerald-500/30' : ''">
-                    <button @click="active = (active === 4 ? null : 4)" class="w-full px-7 py-5 text-left flex justify-between items-center group">
-                        <span class="text-base font-semibold text-slate-900 tracking-tight group-hover:text-emerald-600 transition-colors">What benefits do I get with a paid plan?</span>
-                        <div class="w-8 h-8 rounded-full flex items-center justify-center transition-all duration-500" :class="active === 4 ? 'bg-emerald-500 text-white rotate-45' : 'bg-slate-50 text-slate-400'">
-                            <i data-lucide="plus" class="w-4 h-4"></i>
-                        </div>
-                    </button>
-                    <div x-show="active === 4" x-collapse x-cloak>
-                        <div class="px-7 pb-6 text-slate-500 text-sm font-medium leading-relaxed">
-                            Paid plans offer enhanced access, including unlimited messaging, priority responses, appointment scheduling, and additional healthcare support features.
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Q5 -->
-                <div class="bg-white border border-slate-200/60 rounded-2xl overflow-hidden transition-all duration-500 hover:shadow-xl hover:shadow-slate-200/50" :class="active === 5 ? 'ring-2 ring-emerald-500/20 border-emerald-500/30' : ''">
-                    <button @click="active = (active === 5 ? null : 5)" class="w-full px-7 py-5 text-left flex justify-between items-center group">
-                        <span class="text-base font-semibold text-slate-900 tracking-tight group-hover:text-emerald-600 transition-colors">What should I do in case of an emergency?</span>
-                        <div class="w-8 h-8 rounded-full flex items-center justify-center transition-all duration-500" :class="active === 5 ? 'bg-emerald-500 text-white rotate-45' : 'bg-slate-50 text-slate-400'">
-                            <i data-lucide="plus" class="w-4 h-4"></i>
-                        </div>
-                    </button>
-                    <div x-show="active === 5" x-collapse x-cloak>
-                        <div class="px-7 pb-6 text-slate-500 text-sm font-medium leading-relaxed">
-                            This platform is not intended for emergency situations. Please contact your local emergency services immediately for urgent medical help.
+                        <div class="px-8 pb-8 text-slate-500 text-sm font-medium leading-relaxed">
+                            We are committed to helping community clinics. Contact our sales team to discuss non-profit and educational discount options.
                         </div>
                     </div>
                 </div>
@@ -436,27 +349,24 @@ require_once 'core/init.php';
         </div>
     </section>
 
-    <!-- Final CTA -->
-    <section class="py-24 bg-white relative overflow-hidden">
-        <div class="max-w-6xl mx-auto px-6 relative z-10">
-            <div class="bg-[#0b1120] rounded-[3rem] p-10 md:p-16 text-center relative overflow-hidden shadow-2xl border border-white/5">
-                <div class="absolute -top-[10%] -left-[10%] w-[50%] h-[50%] bg-emerald-500/20 rounded-full blur-[100px] pointer-events-none animate-pulse"></div>
-                <div class="absolute -bottom-[10%] -right-[10%] w-[50%] h-[50%] bg-emerald-600/10 rounded-full blur-[100px] pointer-events-none animate-pulse" style="animation-delay: 1s;"></div>
-                <div class="relative z-10">
-                    <h2 class="text-3xl md:text-4xl lg:text-5xl font-black text-white tracking-tightest mb-6 leading-tight">
-                        Experience care <br> without the wait.
-                    </h2>
-                    <p class="text-base text-slate-400 max-w-xl mx-auto mb-10 font-medium leading-relaxed">
-                        Connect with expert medical care anytime, anywhere. Start your personalized health journey today.
-                    </p>
-                    <div class="flex flex-col sm:flex-row items-center justify-center gap-5">
-                        <a href="login.php" class="w-full sm:w-auto px-8 py-4 bg-white text-slate-900 rounded-full font-black text-xs uppercase tracking-widest hover:scale-105 active:scale-95 transition-all shadow-xl shadow-white/10 flex items-center justify-center gap-2 group">
-                            Start Your Journey
-                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="group-hover:translate-x-1 transition-transform"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-                        </a>
-                    </div>
-                </div>
+    <!-- Final CTA (Green Theme Sync) -->
+    <section class="py-32 bg-emerald-600 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(circle, white 1px, transparent 1px); background-size: 20px 20px;"></div>
+        <div class="max-w-6xl mx-auto px-6 text-center relative z-10">
+            <h2 class="text-5xl md:text-7xl font-black text-white tracking-tightest mb-12 leading-[1.1]">
+                Your modern practice <br> starts right here.
+            </h2>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-6 mb-16">
+                <a href="login.php" class="w-full sm:w-auto px-10 py-5 bg-white text-emerald-600 rounded-2xl font-black text-xs uppercase tracking-widest shadow-2xl shadow-emerald-900/20 hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-2">
+                    Launch MedOS Now
+                </a>
+                <a href="contact.php" class="w-full sm:w-auto px-10 py-5 bg-emerald-800 text-white rounded-2xl font-black text-xs uppercase tracking-widest hover:bg-emerald-900 transition-all flex items-center justify-center gap-2">
+                    Book Implementation
+                </a>
             </div>
+            <p class="text-[10px] font-black text-emerald-100 uppercase tracking-[0.4em] opacity-60">
+                No hidden fees. No patient limits. Professional standards only.
+            </p>
         </div>
     </section>
 
@@ -471,8 +381,8 @@ require_once 'core/init.php';
                     </div>
                     <span class="text-2xl font-black tracking-tighter uppercase text-slate-900">MED<span class="text-emerald-600">OS</span></span>
                 </a>
-                <p class="text-sm text-slate-500 font-medium leading-relaxed max-w-sm mb-10">
-                    The OS for modern practices. High-fidelity clinical management built for the next generation of healthcare delivery.
+                <p class="text-sm text-slate-500 font-medium leading-relaxed max-sm mb-10">
+                    The OS for modern practices. High-fidelity clinical management built for the next generation.
                 </p>
                 <div class="flex gap-3">
                     <a href="#" class="w-10 h-10 bg-slate-50 text-slate-600 rounded-xl flex items-center justify-center hover:bg-emerald-500 hover:text-white hover:shadow-xl hover:shadow-emerald-500/30 transition-all duration-300 border border-slate-100/50">
@@ -525,6 +435,16 @@ require_once 'core/init.php';
             </p>
         </div>
     </footer>
+
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
+        });
+    </script>
+</body>
+
+</html>
+
 
     <script>
         window.addEventListener('DOMContentLoaded', () => {

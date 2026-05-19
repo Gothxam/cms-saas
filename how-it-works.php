@@ -8,7 +8,7 @@ require_once 'core/init.php';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>How it Works | MedOS Service Flow</title>
+    <title>How it Works | MedOS Clinical Implementation</title>
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -42,8 +42,6 @@ require_once 'core/init.php';
         .glass { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(12px); }
         .emerald-gradient { background: linear-gradient(135deg, #059669 0%, #10b981 100%); }
         .text-gradient { background: linear-gradient(135deg, #064e3b 0%, #059669 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .animate-float { animation: float 6s ease-in-out infinite; }
-        @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-10px); } 100% { transform: translateY(0px); } }
         [x-cloak] { display: none !important; }
     </style>
 </head>
@@ -75,174 +73,209 @@ require_once 'core/init.php';
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <header class="relative pt-[8rem] pb-20 overflow-hidden bg-white">
+    <!-- Interactive Hero -->
+    <header class="relative pt-48 pb-32 overflow-hidden bg-white">
         <!-- Ambient Background Glows -->
         <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full -z-10">
             <div class="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-emerald-50 rounded-full blur-[120px] opacity-60 animate-pulse"></div>
             <div class="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-teal-50 rounded-full blur-[120px] opacity-60 animate-pulse" style="animation-delay: 2s;"></div>
         </div>
 
-        <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-20 items-center">
-            <div class="text-left relative z-10">
-                <div class="inline-flex items-center gap-2 px-3 py-1 bg-emerald-500/5 border border-emerald-500/10 rounded-full text-[10px] font-black text-emerald-600 uppercase tracking-widest mb-10">
-                    <span class="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse"></span>
-                    AVERAGE SETUP TIME: UNDER 30 MINUTES
-                </div>
-                
-                <h1 class="text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 tracking-tightest leading-[1.1] mb-8">
-                    Clinical Management <br>
-                    <span class="text-gradient">That Runs Itself.</span>
-                </h1>
-                <p class="text-lg text-slate-500 font-medium leading-relaxed mb-10 max-w-xl">
-                    Experience a zero-friction migration. MedOS is designed to integrate seamlessly into your clinic's daily workflow without the learning curve.
-                </p>
-
-                <div class="flex items-center gap-6">
-                    <div class="flex -space-x-3">
-                        <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&q=80&w=100&h=100" alt="Doctor" class="w-11 h-11 rounded-full border-2 border-white shadow-lg object-cover">
-                        <img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?auto=format&fit=crop&q=80&w=100&h=100" alt="Doctor" class="w-11 h-11 rounded-full border-2 border-white shadow-lg object-cover">
-                        <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&q=80&w=100&h=100" alt="Doctor" class="w-11 h-11 rounded-full border-2 border-white shadow-lg object-cover">
-                    </div>
-                    <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Join 3,200+ Professionals</p>
-                </div>
+        <div class="max-w-7xl mx-auto px-6 text-center relative z-10">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 bg-emerald-50 border border-emerald-100 rounded-full shadow-sm mb-12">
+                <span class="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse"></span>
+                <span class="text-[10px] font-black text-emerald-600 uppercase tracking-[0.2em]">Zero-Migration Stress</span>
             </div>
-
-            <div class="relative">
-                <!-- Subtle Ambient Glow -->
-                <div class="absolute -inset-20 bg-emerald-500/5 blur-[120px] rounded-full -z-10 opacity-50"></div>
-                <div class="mix-blend-multiply">
-                    <img src="Adobe Express - file.png" alt="MedOS Clinical Workflow" class="w-full h-auto" style="mask-image: linear-gradient(to top right, transparent 0%, black 25%); -webkit-mask-image: linear-gradient(to top right, transparent 0%, black 25%);">
+            <h1 class="text-5xl md:text-7xl lg:text-8xl font-black text-slate-900 tracking-tightest mb-10 leading-[1.05]">
+                Onboard in minutes. <br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-emerald-400">Save hours every day.</span>
+            </h1>
+            <p class="text-xl md:text-2xl text-slate-500 font-medium leading-relaxed max-w-3xl mx-auto mb-16 italic">
+                We've eliminated the technical friction of medical software. Here is your roadmap to a more efficient, modern clinic.
+            </p>
+            
+            <!-- Process Progress Bar Visual -->
+            <div class="max-w-3xl mx-auto flex items-center justify-between relative mt-24">
+                <div class="absolute top-1/2 left-0 w-full h-1 bg-slate-100 -translate-y-1/2 -z-10 rounded-full">
+                    <div class="w-1/2 h-full bg-emerald-500 rounded-full"></div>
+                </div>
+                <div class="w-12 h-12 bg-emerald-600 text-white rounded-2xl flex items-center justify-center shadow-lg shadow-emerald-500/30">
+                    <i data-lucide="shield-check" class="w-6 h-6"></i>
+                </div>
+                <div class="w-12 h-12 bg-emerald-600 text-white rounded-2xl flex items-center justify-center shadow-lg shadow-emerald-500/30">
+                    <i data-lucide="database" class="w-6 h-6"></i>
+                </div>
+                <div class="w-12 h-12 bg-white text-slate-300 border border-slate-100 rounded-2xl flex items-center justify-center shadow-sm">
+                    <i data-lucide="zap" class="w-6 h-6"></i>
                 </div>
             </div>
         </div>
     </header>
 
-    <!-- Roadmap Introduction -->
-    <section class="py-16 bg-[#f8fafc] border-y border-slate-100/50 relative overflow-hidden">
-        <div class="max-w-7xl mx-auto px-6 text-center relative z-10">
-            <p class="text-[10px] font-black text-slate-400 uppercase tracking-[0.3em] mb-4">The Implementation Roadmap</p>
-            <h2 class="text-3xl font-black text-slate-900 tracking-tightest">4 Steps to Clinical Excellence</h2>
-        </div>
-    </section>
-
-    <!-- Steps Section -->
-    <section class="py-32 relative overflow-hidden bg-white">
-        <!-- Subtle Connecting Line -->
-        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-px h-full bg-slate-100 hidden lg:block"></div>
-
-        <div class="max-w-7xl mx-auto px-6 relative z-10">
-            <div class="grid lg:grid-cols-2 gap-x-24 gap-y-32">
+    <!-- The 3-Step Clinical Roadmap -->
+    <section class="py-32 bg-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid lg:grid-cols-3 gap-12">
                 
-                <!-- Step 01 -->
-                <div class="flex gap-10 group">
-                    <span class="text-6xl font-black text-slate-100 group-hover:text-emerald-500 transition-all duration-500 tracking-tightest leading-none">01</span>
-                    <div class="space-y-6">
-                        <h3 class="text-2xl font-bold text-slate-900 tracking-tight">Easy Registration</h3>
-                        <p class="text-lg text-slate-500 font-medium leading-relaxed">Create your personal health profile and connect with your doctor in minutes. Our simple, secure setup guide makes it effortless to get started.</p>
-                        <div class="flex flex-wrap gap-2 pt-2">
-                            <span class="px-3 py-1 bg-emerald-50 border border-emerald-100/50 rounded-lg text-[9px] font-black text-emerald-600 uppercase tracking-widest">Personal Profile</span>
-                            <span class="px-3 py-1 bg-emerald-50 border border-emerald-100/50 rounded-lg text-[9px] font-black text-emerald-600 uppercase tracking-widest">Secure Access</span>
-                        </div>
+                <!-- Step 1 -->
+                <div class="relative p-10 bg-slate-50 border border-slate-100 rounded-[3rem] hover:bg-white hover:shadow-2xl transition-all duration-700 group">
+                    <div class="absolute -top-6 -left-6 w-16 h-16 bg-slate-900 text-white rounded-2xl flex items-center justify-center font-black text-2xl shadow-xl">01</div>
+                    <div class="w-14 h-14 bg-emerald-50 text-emerald-600 rounded-xl flex items-center justify-center mb-8 group-hover:bg-emerald-600 group-hover:text-white transition-all duration-500">
+                        <i data-lucide="settings" class="w-7 h-7"></i>
                     </div>
+                    <h3 class="text-2xl font-black text-slate-900 mb-4 tracking-tight">Connect Your Clinic</h3>
+                    <p class="text-slate-500 font-medium leading-relaxed text-sm">
+                        Create your account and personalize your clinical portal with your logo, colors, and staff details. Our wizard handles the technical heavy lifting.
+                    </p>
+                    <ul class="mt-8 space-y-3">
+                        <li class="flex items-center gap-2 text-[10px] font-black text-emerald-600 uppercase tracking-widest">
+                            <i data-lucide="check" class="w-3 h-3"></i> Custom Branding
+                        </li>
+                        <li class="flex items-center gap-2 text-[10px] font-black text-emerald-600 uppercase tracking-widest">
+                            <i data-lucide="check" class="w-3 h-3"></i> Staff Permissions
+                        </li>
+                    </ul>
                 </div>
 
-                <!-- Step 02 -->
-                <div class="flex gap-10 group lg:translate-y-16">
-                    <span class="text-6xl font-black text-slate-100 group-hover:text-emerald-500 transition-all duration-500 tracking-tightest leading-none">02</span>
-                    <div class="space-y-6">
-                        <h3 class="text-2xl font-bold text-slate-900 tracking-tight">Direct Booking</h3>
-                        <p class="text-lg text-slate-500 font-medium leading-relaxed">Schedule consultations and manage your appointments with ease. No more waiting rooms—just expert care when you need it.</p>
-                        <div class="flex flex-wrap gap-2 pt-2">
-                            <span class="px-3 py-1 bg-emerald-50 border border-emerald-100/50 rounded-lg text-[9px] font-black text-emerald-600 uppercase tracking-widest">Instant Booking</span>
-                            <span class="px-3 py-1 bg-emerald-50 border border-emerald-100/50 rounded-lg text-[9px] font-black text-emerald-600 uppercase tracking-widest">Reminders</span>
-                        </div>
+                <!-- Step 2 -->
+                <div class="relative p-10 bg-slate-50 border border-slate-100 rounded-[3rem] hover:bg-white hover:shadow-2xl transition-all duration-700 group lg:translate-y-12">
+                    <div class="absolute -top-6 -left-6 w-16 h-16 bg-slate-900 text-white rounded-2xl flex items-center justify-center font-black text-2xl shadow-xl">02</div>
+                    <div class="w-14 h-14 bg-emerald-50 text-emerald-600 rounded-xl flex items-center justify-center mb-8 group-hover:bg-emerald-600 group-hover:text-white transition-all duration-500">
+                        <i data-lucide="refresh-cw" class="w-7 h-7"></i>
                     </div>
+                    <h3 class="text-2xl font-black text-slate-900 mb-4 tracking-tight">Migrate with Ease</h3>
+                    <p class="text-slate-500 font-medium leading-relaxed text-sm">
+                        Use our Smart Import tools to move patient history and medical records into the cloud. Our team is available to assist with custom data mapping.
+                    </p>
+                    <ul class="mt-8 space-y-3">
+                        <li class="flex items-center gap-2 text-[10px] font-black text-emerald-600 uppercase tracking-widest">
+                            <i data-lucide="check" class="w-3 h-3"></i> Bulk File Upload
+                        </li>
+                        <li class="flex items-center gap-2 text-[10px] font-black text-emerald-600 uppercase tracking-widest">
+                            <i data-lucide="check" class="w-3 h-3"></i> History Preservation
+                        </li>
+                    </ul>
                 </div>
 
-                <!-- Step 03 -->
-                <div class="flex gap-10 group">
-                    <span class="text-6xl font-black text-slate-100 group-hover:text-emerald-500 transition-all duration-500 tracking-tightest leading-none">03</span>
-                    <div class="space-y-6">
-                        <h3 class="text-2xl font-bold text-slate-900 tracking-tight">Seamless Consultations</h3>
-                        <p class="text-lg text-slate-500 font-medium leading-relaxed">Connect through secure messaging or video. Get prescriptions and medical advice instantly, without the hassle of administrative static.</p>
-                        <div class="flex flex-wrap gap-2 pt-2">
-                            <span class="px-3 py-1 bg-emerald-50 border border-emerald-100/50 rounded-lg text-[9px] font-black text-emerald-600 uppercase tracking-widest">Secure Chat</span>
-                            <span class="px-3 py-1 bg-emerald-50 border border-emerald-100/50 rounded-lg text-[9px] font-black text-emerald-600 uppercase tracking-widest">E-Prescriptions</span>
-                        </div>
+                <!-- Step 3 -->
+                <div class="relative p-10 bg-slate-50 border border-slate-100 rounded-[3rem] hover:bg-white hover:shadow-2xl transition-all duration-700 group lg:translate-y-24">
+                    <div class="absolute -top-6 -left-6 w-16 h-16 bg-slate-900 text-white rounded-2xl flex items-center justify-center font-black text-2xl shadow-xl">03</div>
+                    <div class="w-14 h-14 bg-emerald-50 text-emerald-600 rounded-xl flex items-center justify-center mb-8 group-hover:bg-emerald-600 group-hover:text-white transition-all duration-500">
+                        <i data-lucide="rocket" class="w-7 h-7"></i>
                     </div>
-                </div>
-
-                <!-- Step 04 -->
-                <div class="flex gap-10 group lg:translate-y-16">
-                    <span class="text-6xl font-black text-slate-100 group-hover:text-emerald-500 transition-all duration-500 tracking-tightest leading-none">04</span>
-                    <div class="space-y-6">
-                        <h3 class="text-2xl font-bold text-slate-900 tracking-tight">Health Management</h3>
-                        <p class="text-lg text-slate-500 font-medium leading-relaxed">Track your progress, manage medications, and view your history in one unified dashboard. Complete healthcare in your pocket.</p>
-                        <div class="flex flex-wrap gap-2 pt-2">
-                            <span class="px-3 py-1 bg-emerald-50 border border-emerald-100/50 rounded-lg text-[9px] font-black text-emerald-600 uppercase tracking-widest">Health Tracking</span>
-                            <span class="px-3 py-1 bg-emerald-50 border border-emerald-100/50 rounded-lg text-[9px] font-black text-emerald-600 uppercase tracking-widest">Medication Logs</span>
-                        </div>
-                    </div>
+                    <h3 class="text-2xl font-black text-slate-900 mb-4 tracking-tight">Launch & Optimize</h3>
+                    <p class="text-slate-500 font-medium leading-relaxed text-sm">
+                        Activate your patient-facing booking site and start using the clinical dashboard. Experience immediate relief from administrative paperwork.
+                    </p>
+                    <ul class="mt-8 space-y-3">
+                        <li class="flex items-center gap-2 text-[10px] font-black text-emerald-600 uppercase tracking-widest">
+                            <i data-lucide="check" class="w-3 h-3"></i> Live in 30 mins
+                        </li>
+                        <li class="flex items-center gap-2 text-[10px] font-black text-emerald-600 uppercase tracking-widest">
+                            <i data-lucide="check" class="w-3 h-3"></i> 24/7 Support
+                        </li>
+                    </ul>
                 </div>
 
             </div>
         </div>
     </section>
 
-    <!-- FAQ Section -->
-    <section class="py-32 bg-[#fcfdfd] relative overflow-hidden">
-        <div class="max-w-4xl mx-auto px-6 relative z-10" x-data="{ active: null }">
-            <div class="text-center mb-20">
-                <div class="inline-flex items-center gap-2 px-3 py-1 bg-emerald-500/5 border border-emerald-500/10 rounded-full text-[10px] font-black text-emerald-600 uppercase tracking-widest mb-6">
-                    FAQ
+    <!-- The Efficiency Engine (Visual) -->
+    <section class="py-40 bg-[#0b1120] relative overflow-hidden mt-32">
+        <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10"></div>
+        <div class="max-w-7xl mx-auto px-6 relative z-10 grid lg:grid-cols-2 gap-24 items-center">
+            <div class="space-y-10">
+                <div class="inline-flex items-center gap-2 px-3 py-1 bg-emerald-500/10 border border-emerald-500/20 rounded-full text-[10px] font-black text-emerald-400 uppercase tracking-widest">
+                    The Clinical Engine
                 </div>
-                <h2 class="text-4xl font-black text-slate-900 tracking-tightest mb-4">Common Questions</h2>
-                <p class="text-slate-500 font-medium text-lg">Everything you need to know about MedOS.</p>
+                <h2 class="text-4xl md:text-6xl font-black text-white tracking-tighter leading-tight">
+                    Behind the scenes <br>
+                    <span class="text-emerald-500">of your success.</span>
+                </h2>
+                <p class="text-slate-400 text-lg font-medium leading-relaxed italic">
+                    "MedOS isn't just a database. It's an intelligent engine that predicts your staff's needs and automates the busiest parts of your day."
+                </p>
+                <div class="space-y-6">
+                    <div class="flex items-start gap-6 group">
+                        <div class="w-12 h-12 bg-emerald-500/10 text-emerald-400 rounded-xl flex items-center justify-center border border-emerald-500/20 group-hover:bg-emerald-500 group-hover:text-white transition-all">
+                            <i data-lucide="clock" class="w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-white font-bold text-lg">Smart Scheduling</h4>
+                            <p class="text-slate-500 text-sm">Automated reminders reduce no-shows by up to 60%.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-6 group">
+                        <div class="w-12 h-12 bg-emerald-500/10 text-emerald-400 rounded-xl flex items-center justify-center border border-emerald-500/20 group-hover:bg-emerald-500 group-hover:text-white transition-all">
+                            <i data-lucide="bar-chart" class="w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-white font-bold text-lg">Predictive Analytics</h4>
+                            <p class="text-slate-500 text-sm">See your clinic's performance and peak hours in real-time.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="relative group">
+                <div class="absolute inset-0 bg-emerald-500/20 rounded-full blur-[120px] -z-10 animate-pulse"></div>
+                <img src="how_it_works_workflow_v2_1777718830106.png" alt="Workflow Dashboard" class="w-full h-auto rounded-[3rem] shadow-2xl group-hover:scale-105 transition-transform duration-700">
+            </div>
+        </div>
+    </section>
+
+    <!-- Advanced FAQ (Clinical Focus) -->
+    <section class="py-32 bg-white relative overflow-hidden">
+        <div class="max-w-4xl mx-auto px-6 relative z-10" x-data="{ active: null }">
+            <div class="text-center mb-24">
+                <div class="inline-flex items-center gap-2 px-3 py-1 bg-emerald-500/5 border border-emerald-500/10 rounded-full text-[10px] font-black text-emerald-600 uppercase tracking-widest mb-6">
+                    Logistics & Trust
+                </div>
+                <h2 class="text-4xl md:text-5xl font-black text-slate-900 tracking-tighter mb-4">You have questions. <br> We have answers.</h2>
             </div>
 
             <div class="space-y-4">
                 <!-- FAQ 1 -->
-                <div class="bg-white border border-slate-100 rounded-3xl overflow-hidden transition-all duration-500 hover:shadow-xl hover:shadow-slate-200/50" :class="active === 1 ? 'ring-2 ring-emerald-500/20 border-emerald-500/30 shadow-2xl shadow-emerald-900/5' : ''">
+                <div class="bg-slate-50 border border-slate-100 rounded-3xl overflow-hidden transition-all duration-500" :class="active === 1 ? 'bg-white ring-2 ring-emerald-500/20 border-emerald-500/30' : ''">
                     <button @click="active = (active === 1 ? null : 1)" class="w-full px-8 py-7 text-left flex justify-between items-center group">
-                        <span class="text-lg font-semibold text-slate-900 tracking-tight group-hover:text-emerald-600 transition-colors">How long does the initial setup take?</span>
-                        <div class="w-10 h-10 bg-slate-50 rounded-xl flex items-center justify-center group-hover:bg-emerald-50 transition-colors">
+                        <span class="text-lg font-bold text-slate-900 tracking-tight group-hover:text-emerald-600 transition-colors">Who owns my patient data?</span>
+                        <div class="w-10 h-10 bg-white rounded-xl flex items-center justify-center group-hover:bg-emerald-50 transition-colors shadow-sm">
                              <i data-lucide="plus" class="w-5 h-5 text-slate-400 transition-transform duration-500" :class="active === 1 ? 'rotate-45 text-emerald-600' : ''"></i>
                         </div>
                     </button>
                     <div x-show="active === 1" x-collapse x-cloak>
                         <div class="px-8 pb-8 text-slate-500 text-base font-medium leading-relaxed pt-2">
-                            Most clinics are fully operational within 30 minutes. Our automated setup wizard guides you through branding, doctor profiles, and scheduling configuration without requiring technical help.
+                            You do. MedOS is merely the custodian of your data. You can export your patient records, clinical history, and billing data at any time in standard formats.
                         </div>
                     </div>
                 </div>
 
                 <!-- FAQ 2 -->
-                <div class="bg-white border border-slate-100 rounded-3xl overflow-hidden transition-all duration-500 hover:shadow-xl hover:shadow-slate-200/50" :class="active === 2 ? 'ring-2 ring-emerald-500/20 border-emerald-500/30 shadow-2xl shadow-emerald-900/5' : ''">
+                <div class="bg-slate-50 border border-slate-100 rounded-3xl overflow-hidden transition-all duration-500" :class="active === 2 ? 'bg-white ring-2 ring-emerald-500/20 border-emerald-500/30' : ''">
                     <button @click="active = (active === 2 ? null : 2)" class="w-full px-8 py-7 text-left flex justify-between items-center group">
-                        <span class="text-lg font-semibold text-slate-900 tracking-tight group-hover:text-emerald-600 transition-colors">Is my patient data secure?</span>
-                        <div class="w-10 h-10 bg-slate-50 rounded-xl flex items-center justify-center group-hover:bg-emerald-50 transition-colors">
+                        <span class="text-lg font-bold text-slate-900 tracking-tight group-hover:text-emerald-600 transition-colors">How hard is staff training?</span>
+                        <div class="w-10 h-10 bg-white rounded-xl flex items-center justify-center group-hover:bg-emerald-50 transition-colors shadow-sm">
                              <i data-lucide="plus" class="w-5 h-5 text-slate-400 transition-transform duration-500" :class="active === 2 ? 'rotate-45 text-emerald-600' : ''"></i>
                         </div>
                     </button>
                     <div x-show="active === 2" x-collapse x-cloak>
                         <div class="px-8 pb-8 text-slate-500 text-base font-medium leading-relaxed pt-2">
-                            Security is our priority. MedOS uses HIPAA-compliant data encryption and is hosted on enterprise-grade AWS infrastructure with automated daily backups and 99.9% uptime.
+                            We designed MedOS for zero training. If your staff can use a smartphone, they can use MedOS. Most teams are proficient within the first afternoon of usage.
                         </div>
                     </div>
                 </div>
 
                 <!-- FAQ 3 -->
-                <div class="bg-white border border-slate-100 rounded-3xl overflow-hidden transition-all duration-500 hover:shadow-xl hover:shadow-slate-200/50" :class="active === 3 ? 'ring-2 ring-emerald-500/20 border-emerald-500/30 shadow-2xl shadow-emerald-900/5' : ''">
+                <div class="bg-slate-50 border border-slate-100 rounded-3xl overflow-hidden transition-all duration-500" :class="active === 3 ? 'bg-white ring-2 ring-emerald-500/20 border-emerald-500/30' : ''">
                     <button @click="active = (active === 3 ? null : 3)" class="w-full px-8 py-7 text-left flex justify-between items-center group">
-                        <span class="text-lg font-semibold text-slate-900 tracking-tight group-hover:text-emerald-600 transition-colors">Can I migrate from my current software?</span>
-                        <div class="w-10 h-10 bg-slate-50 rounded-xl flex items-center justify-center group-hover:bg-emerald-50 transition-colors">
+                        <span class="text-lg font-bold text-slate-900 tracking-tight group-hover:text-emerald-600 transition-colors">Does it work offline?</span>
+                        <div class="w-10 h-10 bg-white rounded-xl flex items-center justify-center group-hover:bg-emerald-50 transition-colors shadow-sm">
                              <i data-lucide="plus" class="w-5 h-5 text-slate-400 transition-transform duration-500" :class="active === 3 ? 'rotate-45 text-emerald-600' : ''"></i>
                         </div>
                     </button>
                     <div x-show="active === 3" x-collapse x-cloak>
                         <div class="px-8 pb-8 text-slate-500 text-base font-medium leading-relaxed pt-2">
-                            Yes! We provide bulk import tools for patient records and history. Our team can also assist with custom data migrations to ensure you don't lose any clinical data during the transition.
+                            MedOS is a cloud-native platform for maximum security and sync. While it requires an internet connection, it is optimized for low-bandwidth environments to ensure clinical continuity.
                         </div>
                     </div>
                 </div>
@@ -250,40 +283,27 @@ require_once 'core/init.php';
         </div>
     </section>
 
-    <!-- Final CTA -->
-    <section class="py-24 bg-white relative overflow-hidden">
-        <div class="max-w-6xl mx-auto px-6 relative z-10">
-            <div class="bg-[#0b1120] rounded-[3.5rem] p-10 md:p-20 text-center relative overflow-hidden shadow-2xl border border-white/5">
-                <div class="absolute -top-[10%] -left-[10%] w-[50%] h-[50%] bg-emerald-500/20 rounded-full blur-[100px] pointer-events-none animate-pulse"></div>
-                <div class="absolute -bottom-[10%] -right-[10%] w-[50%] h-[50%] bg-emerald-600/10 rounded-full blur-[100px] pointer-events-none animate-pulse" style="animation-delay: 1s;"></div>
-                
-                <div class="relative z-10">
-                    <div class="inline-flex items-center gap-2 px-3 py-1 bg-emerald-500/10 border border-emerald-500/20 rounded-full text-[10px] font-black text-emerald-400 uppercase tracking-widest mb-8">
-                        Get Started Today
-                    </div>
-                    
-                    <h2 class="text-4xl md:text-5xl lg:text-6xl font-black text-white tracking-tightest mb-8 leading-[1.1]">
-                        Ready to transform <br> your practice?
-                    </h2>
-                    
-                    <p class="text-lg text-slate-400 max-w-xl mx-auto mb-12 font-medium leading-relaxed">
-                        Join over 3,200 medical professionals who run their practices without stress. Set up in under an hour.
-                    </p>
-                    
-                    <div class="flex flex-col sm:flex-row items-center justify-center gap-5">
-                        <a href="login.php" class="w-full sm:w-auto px-10 py-5 bg-white text-slate-900 rounded-full font-black text-xs uppercase tracking-widest hover:scale-105 active:scale-95 transition-all shadow-xl shadow-white/10 flex items-center justify-center gap-2 group">
-                            Launch Your Practice
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="group-hover:translate-x-1 transition-transform"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-                        </a>
-                        <a href="contact.php" class="w-full sm:w-auto px-10 py-5 border border-white/20 text-white rounded-full font-black text-xs uppercase tracking-widest hover:bg-white/5 transition-all flex items-center justify-center gap-2">
-                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-                            Talk to Our Team
-                        </a>
-                    </div>
-                </div>
+    <!-- Final CTA (Green Theme Sync) -->
+    <section class="py-32 bg-emerald-600 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(circle, white 1px, transparent 1px); background-size: 20px 20px;"></div>
+        <div class="max-w-6xl mx-auto px-6 text-center relative z-10">
+            <h2 class="text-5xl md:text-7xl font-black text-white tracking-tightest mb-12 leading-[1.1]">
+                Your modern practice <br> starts right here.
+            </h2>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-6 mb-16">
+                <a href="login.php" class="w-full sm:w-auto px-10 py-5 bg-white text-emerald-600 rounded-2xl font-black text-xs uppercase tracking-widest shadow-2xl shadow-emerald-900/20 hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-2">
+                    Launch MedOS Now
+                </a>
+                <a href="contact.php" class="w-full sm:w-auto px-10 py-5 bg-emerald-800 text-white rounded-2xl font-black text-xs uppercase tracking-widest hover:bg-emerald-900 transition-all flex items-center justify-center gap-2">
+                    Book Implementation
+                </a>
             </div>
+            <p class="text-[10px] font-black text-emerald-100 uppercase tracking-[0.4em] opacity-60">
+                No hidden fees. No patient limits. Professional standards only.
+            </p>
         </div>
     </section>
+
 
     <!-- Footer -->
     <footer class="bg-white border-t border-slate-100 pt-24 pb-12">
@@ -292,7 +312,7 @@ require_once 'core/init.php';
             <div class="md:col-span-4">
                 <a href="index.php" class="flex items-center gap-3 mb-8">
                     <div class="w-10 h-10 emerald-gradient text-white rounded-xl flex items-center justify-center shadow-lg shadow-emerald-500/20">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/><path d="M12 5 9.04 7.96a2.17 2.17 0 0 0 0 3.08v0c.82.82 2.13.82 2.96 0"/><path d="m12 10 2.96 2.96a2.17 2.17 0 0 0 3.08 0v0c.82-.82.82-2.13 0-2.96L15 7"/></svg>
+                        <i data-lucide="heart-pulse" class="w-6 h-6"></i>
                     </div>
                     <span class="text-2xl font-black tracking-tighter uppercase text-slate-900">MED<span class="text-emerald-600">OS</span></span>
                 </a>
@@ -359,3 +379,4 @@ require_once 'core/init.php';
 </body>
 
 </html>
+
