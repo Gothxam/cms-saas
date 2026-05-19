@@ -189,6 +189,625 @@ require_once 'core/init.php';
         </div>
     </section>
 
+    <!-- The "Mistake" Section -->
+    <section class="py-16 bg-[#fbfdfb] relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 relative z-10 text-center">
+            
+            <!-- Warning Badge -->
+            <div class="inline-flex items-center gap-2 px-6 py-2 bg-emerald-600 rounded-full text-xs font-black text-white uppercase tracking-widest mb-8 shadow-lg shadow-emerald-200">
+                <i data-lucide="alert-circle" class="w-4 h-4"></i>
+                Are You Making This Mistake?
+            </div>
+
+            <!-- Main Heading -->
+            <div class="relative mb-12">
+                <h2 class="text-3xl md:text-5xl font-black text-slate-900 tracking-tighter mb-2 leading-tight">
+                    Still Managing Your Clinic <br>
+                    <span class="text-emerald-600">Without Modern Software?</span>
+                </h2>
+                <div class="w-24 h-1 bg-emerald-500/30 mx-auto rounded-full"></div>
+            </div>
+
+            <!-- Grid of Cards -->
+            <div class="grid md:grid-cols-3 gap-6 mb-12">
+                <!-- Card 1 -->
+                <div class="p-8 bg-white border border-emerald-100/50 rounded-[2.5rem] shadow-[0_15px_40px_rgba(16,185,129,0.03)] hover:shadow-[0_30px_60px_rgba(16,185,129,0.06)] hover:border-emerald-600 transition-all duration-500 group text-center cursor-pointer">
+                    <div class="w-20 h-20 bg-emerald-50 rounded-full flex items-center justify-center mx-auto mb-6 text-emerald-600 group-hover:bg-emerald-600 group-hover:text-white transition-all duration-500 shadow-inner">
+                        <i data-lucide="search" class="w-10 h-10"></i>
+                    </div>
+                    <h4 class="text-xl font-black text-slate-900 mb-2 tracking-tight">Patients Search Google First</h4>
+                    <p class="text-slate-500 font-medium leading-relaxed text-sm">
+                        90% of patients check online reviews & software before choosing a doctor. If you're not found, you're losing them to competitors.
+                    </p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="p-8 bg-white border border-emerald-100/50 rounded-[2.5rem] shadow-[0_15px_40px_rgba(16,185,129,0.03)] hover:shadow-[0_30px_60px_rgba(16,185,129,0.06)] hover:border-emerald-600 transition-all duration-500 group text-center cursor-pointer">
+                    <div class="w-20 h-20 bg-emerald-50 rounded-full flex items-center justify-center mx-auto mb-6 text-emerald-600 group-hover:bg-emerald-600 group-hover:text-white transition-all duration-500 shadow-inner">
+                        <i data-lucide="user-minus" class="w-10 h-10"></i>
+                    </div>
+                    <h4 class="text-xl font-black text-slate-900 mb-2 tracking-tight">No Online Presence = Lost Patients</h4>
+                    <p class="text-slate-500 font-medium leading-relaxed text-sm">
+                        Every day without professional software means missed appointments, lower trust, and fewer new patients walking through your door.
+                    </p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="p-8 bg-white border border-emerald-100/50 rounded-[2.5rem] shadow-[0_15px_40px_rgba(16,185,129,0.03)] hover:shadow-[0_30px_60px_rgba(16,185,129,0.06)] hover:border-emerald-600 transition-all duration-500 group text-center cursor-pointer">
+                    <div class="w-20 h-20 bg-emerald-50 rounded-full flex items-center justify-center mx-auto mb-6 text-emerald-600 group-hover:bg-emerald-600 group-hover:text-white transition-all duration-500 shadow-inner">
+                        <i data-lucide="calendar-x" class="w-10 h-10"></i>
+                    </div>
+                    <h4 class="text-xl font-black text-slate-900 mb-2 tracking-tight">Manual Booking = Chaos</h4>
+                    <p class="text-slate-500 font-medium leading-relaxed text-sm">
+                        Phone tag, double bookings, missed calls, and frustrated staff. Your clinic deserves better than outdated software.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Bottom Warning Banner -->
+            <div class="bg-emerald-600 rounded-[2rem] p-6 md:p-8 text-left relative overflow-hidden shadow-xl shadow-emerald-100">
+                <div class="absolute inset-0 bg-gradient-to-r from-black/20 to-transparent"></div>
+                <div class="relative z-10 flex flex-col md:flex-row items-center justify-between gap-6">
+                    <div class="flex items-center gap-5">
+                        <div class="w-10 h-10 bg-white/20 backdrop-blur-md rounded-xl flex items-center justify-center text-white shrink-0">
+                            <i data-lucide="trending-up" class="w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-base md:text-xl font-black text-white tracking-tight leading-tight">
+                                Your competitors are already getting patients online — <br class="hidden md:block"> 
+                                <span class="text-emerald-100/80 text-sm md:text-base">while you're losing them daily.</span>
+                            </h3>
+                        </div>
+                    </div>
+                    <a href="#contact" class="px-6 py-2.5 bg-white text-slate-900 font-black rounded-xl shadow-lg hover:bg-emerald-50 transition-all flex items-center gap-2 shrink-0 text-xs">
+                        <i data-lucide="clock" class="w-4 h-4"></i>
+                        Don't wait
+                    </a>
+                </div>
+            </div>
+
+            <!-- Final CTA Button -->
+            <div class="mt-8 flex flex-col items-center gap-3">
+                <a href="#pricing" class="inline-flex items-center gap-2 px-8 py-4 bg-emerald-600 text-white font-black text-lg rounded-2xl shadow-[0_15px_30px_rgba(16,185,129,0.15)] hover:shadow-[0_20px_40px_rgba(16,185,129,0.25)] hover:-translate-y-0.5 transition-all duration-300">
+                    <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                    Get Your Software Before Patients Go Elsewhere
+                </a>
+                <p class="flex items-center gap-2 text-slate-400 text-[10px] font-black uppercase tracking-widest">
+                    <i data-lucide="lock" class="w-3 h-3"></i>
+                    Free consultation | No obligation
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- The "Everything Included" Section -->
+    <section class="py-24 bg-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 relative z-10 text-center">
+            
+            <!-- Badge -->
+            <div class="inline-flex items-center gap-2 px-6 py-2 bg-emerald-600 rounded-full text-xs font-black text-white uppercase tracking-widest mb-10 shadow-lg shadow-emerald-100">
+                <i data-lucide="package-plus" class="w-4 h-4"></i>
+                Everything Included
+            </div>
+
+            <!-- Main Heading -->
+            <div class="max-w-4xl mx-auto mb-16">
+                <h2 class="text-3xl md:text-5xl font-black text-slate-900 tracking-tighter mb-6 leading-tight">
+                    Everything Included in <br class="hidden md:block">
+                    <span class="text-emerald-600">Your Software Package</span>
+                </h2>
+                <div class="w-24 h-1 bg-emerald-500/30 mx-auto rounded-full mb-8"></div>
+                <p class="text-slate-500 font-medium leading-relaxed text-lg max-w-2xl mx-auto">
+                    No hidden costs. No surprises. Just a complete, ready-to-launch healthcare software platform.
+                </p>
+            </div>
+
+            <!-- Grid of 8 Technical Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-16">
+                <!-- Card 1 -->
+                <div class="p-6 bg-white border border-slate-100 rounded-[2rem] shadow-sm hover:shadow-xl hover:border-emerald-600 transition-all duration-500 group text-center">
+                    <div class="w-12 h-12 bg-emerald-50 rounded-xl flex items-center justify-center mb-6 text-emerald-600 group-hover:bg-emerald-600 group-hover:text-white transition-all duration-500 mx-auto">
+                        <i data-lucide="user-cog" class="w-6 h-6"></i>
+                    </div>
+                    <h4 class="text-sm font-black text-slate-900 mb-2">Doctor Profile Pages</h4>
+                    <p class="text-slate-400 text-xs leading-relaxed">Individual profiles with qualifications, experience, and hours.</p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="p-6 bg-white border border-slate-100 rounded-[2rem] shadow-sm hover:shadow-xl hover:border-emerald-600 transition-all duration-500 group text-center">
+                    <div class="w-12 h-12 bg-emerald-50 rounded-xl flex items-center justify-center mb-6 text-emerald-600 group-hover:bg-emerald-600 group-hover:text-white transition-all duration-500 mx-auto">
+                        <i data-lucide="message-circle" class="w-6 h-6"></i>
+                    </div>
+                    <h4 class="text-sm font-black text-slate-900 mb-2">WhatsApp Integration</h4>
+                    <p class="text-slate-400 text-xs leading-relaxed">Click-to-chat WhatsApp button. Patients message you directly.</p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="p-6 bg-white border border-slate-100 rounded-[2rem] shadow-sm hover:shadow-xl hover:border-emerald-600 transition-all duration-500 group text-center">
+                    <div class="w-12 h-12 bg-emerald-50 rounded-xl flex items-center justify-center mb-6 text-emerald-600 group-hover:bg-emerald-600 group-hover:text-white transition-all duration-500 mx-auto">
+                        <i data-lucide="map-pin" class="w-6 h-6"></i>
+                    </div>
+                    <h4 class="text-sm font-black text-slate-900 mb-2">Google Map Integration</h4>
+                    <p class="text-slate-400 text-xs leading-relaxed">Interactive map with directions, location details & reviews.</p>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="p-6 bg-white border border-slate-100 rounded-[2rem] shadow-sm hover:shadow-xl hover:border-emerald-600 transition-all duration-500 group text-center">
+                    <div class="w-12 h-12 bg-emerald-50 rounded-xl flex items-center justify-center mb-6 text-emerald-600 group-hover:bg-emerald-600 group-hover:text-white transition-all duration-500 mx-auto">
+                        <i data-lucide="search" class="w-6 h-6"></i>
+                    </div>
+                    <h4 class="text-sm font-black text-slate-900 mb-2">SEO Optimized Pages</h4>
+                    <p class="text-slate-400 text-xs leading-relaxed">Meta tags, headings, and local SEO setup for "near me" searches.</p>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="p-6 bg-white border border-slate-100 rounded-[2rem] shadow-sm hover:shadow-xl hover:border-emerald-600 transition-all duration-500 group text-center">
+                    <div class="w-12 h-12 bg-emerald-50 rounded-xl flex items-center justify-center mb-6 text-emerald-600 group-hover:bg-emerald-600 group-hover:text-white transition-all duration-500 mx-auto">
+                        <i data-lucide="zap" class="w-6 h-6"></i>
+                    </div>
+                    <h4 class="text-sm font-black text-slate-900 mb-2">Fast Loading Software</h4>
+                    <p class="text-slate-400 text-xs leading-relaxed">Optimized images and CDN for < 2s load time on mobile.</p>
+                </div>
+
+                <!-- Card 6 -->
+                <div class="p-6 bg-white border border-slate-100 rounded-[2rem] shadow-sm hover:shadow-xl hover:border-emerald-600 transition-all duration-500 group text-center">
+                    <div class="w-12 h-12 bg-emerald-50 rounded-xl flex items-center justify-center mb-6 text-emerald-600 group-hover:bg-emerald-600 group-hover:text-white transition-all duration-500 mx-auto">
+                        <i data-lucide="layout-dashboard" class="w-6 h-6"></i>
+                    </div>
+                    <h4 class="text-sm font-black text-slate-900 mb-2">Admin Dashboard</h4>
+                    <p class="text-slate-400 text-xs leading-relaxed">Easy-to-use interface to manage doctors and patient data.</p>
+                </div>
+
+                <!-- Card 7 -->
+                <div class="p-6 bg-white border border-slate-100 rounded-[2rem] shadow-sm hover:shadow-xl hover:border-emerald-600 transition-all duration-500 group text-center">
+                    <div class="w-12 h-12 bg-emerald-50 rounded-xl flex items-center justify-center mb-6 text-emerald-600 group-hover:bg-emerald-600 group-hover:text-white transition-all duration-500 mx-auto">
+                        <i data-lucide="lock" class="w-6 h-6"></i>
+                    </div>
+                    <h4 class="text-sm font-black text-slate-900 mb-2">SSL & Security</h4>
+                    <p class="text-slate-400 text-xs leading-relaxed">Bank-level encryption and daily backups are included.</p>
+                </div>
+
+                <!-- Card 8 -->
+                <div class="p-6 bg-white border border-slate-100 rounded-[2rem] shadow-sm hover:shadow-xl hover:border-emerald-600 transition-all duration-500 group text-center">
+                    <div class="w-12 h-12 bg-emerald-50 rounded-xl flex items-center justify-center mb-6 text-emerald-600 group-hover:bg-emerald-600 group-hover:text-white transition-all duration-500 mx-auto">
+                        <i data-lucide="tablet-smartphone" class="w-6 h-6"></i>
+                    </div>
+                    <h4 class="text-sm font-black text-slate-900 mb-2">Mobile App Ready</h4>
+                    <p class="text-slate-400 text-xs leading-relaxed">Works perfectly as a web app on all iOS and Android devices.</p>
+                </div>
+            </div>
+
+            <!-- Bonus Footer -->
+            <div class="inline-flex flex-wrap items-center justify-center gap-8 py-4 px-8 bg-slate-50 rounded-full border border-slate-100">
+                <div class="flex items-center gap-2">
+                    <div class="w-2 h-2 bg-emerald-500 rounded-full"></div>
+                    <span class="text-[10px] font-black text-slate-600 uppercase tracking-widest">Bonus: Email Integration</span>
+                </div>
+                <div class="flex items-center gap-2 border-l border-slate-200 pl-8">
+                    <i data-lucide="infinity" class="w-4 h-4 text-slate-400"></i>
+                    <span class="text-[10px] font-black text-slate-600 uppercase tracking-widest">No Hidden Fees</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- The "Professional Suite" (Solution) Section -->
+    <section class="py-24 bg-[#fbfdfc] relative overflow-hidden">
+        <!-- Subtle Premium Ambient Accents -->
+        <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-emerald-100/20 rounded-full blur-[120px] -z-10"></div>
+        <div class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-emerald-50/30 rounded-full blur-[120px] -z-10"></div>
+
+        <div class="max-w-7xl mx-auto px-6 relative z-10 text-center">
+            
+            <!-- Suite Badge -->
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 bg-white border border-emerald-100 rounded-full text-[10px] font-black text-emerald-600 uppercase tracking-[0.2em] mb-8 shadow-sm">
+                <i data-lucide="layers" class="w-3 h-3"></i>
+                Professional Suite
+            </div>
+
+            <!-- Main Heading -->
+            <div class="max-w-4xl mx-auto mb-20">
+                <h2 class="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter mb-6 leading-[1.05]">
+                    One software. <br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-emerald-400">Every part of your clinic.</span>
+                </h2>
+                <p class="text-slate-500 font-medium leading-relaxed text-lg max-w-2xl mx-auto italic">
+                    From the first booking to the final payment — MedOS handles <br class="hidden md:block"> everything for your whole team in one place.
+                </p>
+            </div>
+
+            <!-- Grid of 6 Suite Cards -->
+            <div class="grid md:grid-cols-3 gap-8 mb-20">
+                <!-- Card 1: Online Bookings -->
+                <div class="p-10 bg-white border border-slate-100 rounded-[3rem] shadow-[0_15px_40px_rgba(0,0,0,0.02)] hover:shadow-[0_40px_80px_rgba(16,185,129,0.12)] hover:-translate-y-2 transition-all duration-700 text-left group cursor-pointer relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-emerald-50/50 rounded-full -mr-16 -mt-16 blur-2xl group-hover:bg-emerald-100 transition-colors"></div>
+                    <div class="w-16 h-16 bg-gradient-to-br from-emerald-50 to-white rounded-2xl flex items-center justify-center mb-8 text-emerald-600 shadow-sm border border-emerald-50 group-hover:from-emerald-600 group-hover:to-emerald-500 group-hover:text-white transition-all duration-500 relative z-10">
+                        <i data-lucide="calendar" class="w-8 h-8"></i>
+                    </div>
+                    <h4 class="text-2xl font-black text-slate-900 mb-4 tracking-tight relative z-10">Online Bookings</h4>
+                    <p class="text-slate-500 font-medium leading-relaxed mb-12 text-sm relative z-10">
+                        Patients can book online. We send automatic reminders to their phone so they don't forget.
+                    </p>
+                    <div class="pt-6 border-t border-slate-50 flex items-center relative z-10">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 bg-emerald-50 rounded-full">
+                            <div class="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse"></div>
+                            <span class="text-[10px] font-black text-emerald-600 uppercase tracking-widest">Saves 4hrs / day</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2: Patient Records -->
+                <div class="p-10 bg-white border border-slate-100 rounded-[3rem] shadow-[0_15px_40px_rgba(0,0,0,0.02)] hover:shadow-[0_40px_80px_rgba(16,185,129,0.12)] hover:-translate-y-2 transition-all duration-700 text-left group cursor-pointer relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-emerald-50/50 rounded-full -mr-16 -mt-16 blur-2xl group-hover:bg-emerald-100 transition-colors"></div>
+                    <div class="w-16 h-16 bg-gradient-to-br from-emerald-50 to-white rounded-2xl flex items-center justify-center mb-8 text-emerald-600 shadow-sm border border-emerald-50 group-hover:from-emerald-600 group-hover:to-emerald-500 group-hover:text-white transition-all duration-500 relative z-10">
+                        <i data-lucide="file-text" class="w-8 h-8"></i>
+                    </div>
+                    <h4 class="text-2xl font-black text-slate-900 mb-4 tracking-tight relative z-10">Patient Records</h4>
+                    <p class="text-slate-500 font-medium leading-relaxed mb-12 text-sm relative z-10">
+                        See patient history and reports instantly. Write your notes faster with easy clinical templates.
+                    </p>
+                    <div class="pt-6 border-t border-slate-50 flex items-center relative z-10">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 bg-emerald-50 rounded-full">
+                            <div class="w-1.5 h-1.5 bg-emerald-500 rounded-full"></div>
+                            <span class="text-[10px] font-black text-emerald-600 uppercase tracking-widest">Safe Storage</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3: Digital Prescriptions -->
+                <div class="p-10 bg-white border border-slate-100 rounded-[3rem] shadow-[0_15px_40px_rgba(0,0,0,0.02)] hover:shadow-[0_40px_80px_rgba(16,185,129,0.12)] hover:-translate-y-2 transition-all duration-700 text-left group cursor-pointer relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-emerald-50/50 rounded-full -mr-16 -mt-16 blur-2xl group-hover:bg-emerald-100 transition-colors"></div>
+                    <div class="w-16 h-16 bg-gradient-to-br from-emerald-50 to-white rounded-2xl flex items-center justify-center mb-8 text-emerald-600 shadow-sm border border-emerald-50 group-hover:from-emerald-600 group-hover:to-emerald-500 group-hover:text-white transition-all duration-500 relative z-10">
+                        <i data-lucide="stethoscope" class="w-8 h-8"></i>
+                    </div>
+                    <h4 class="text-2xl font-black text-slate-900 mb-4 tracking-tight relative z-10">Digital Prescriptions</h4>
+                    <p class="text-slate-500 font-medium leading-relaxed mb-12 text-sm relative z-10">
+                        Create and send prescriptions in seconds. They are clear, safe, and easy for patients to get.
+                    </p>
+                    <div class="pt-6 border-t border-slate-50 flex items-center relative z-10">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 bg-emerald-50 rounded-full">
+                            <div class="w-1.5 h-1.5 bg-emerald-500 rounded-full"></div>
+                            <span class="text-[10px] font-black text-emerald-600 uppercase tracking-widest">Fast & Easy</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 4: Live Patient Queue -->
+                <div class="p-10 bg-white border border-slate-100 rounded-[3rem] shadow-[0_15px_40px_rgba(0,0,0,0.02)] hover:shadow-[0_40px_80px_rgba(16,185,129,0.12)] hover:-translate-y-2 transition-all duration-700 text-left group cursor-pointer relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-emerald-50/50 rounded-full -mr-16 -mt-16 blur-2xl group-hover:bg-emerald-100 transition-colors"></div>
+                    <div class="w-16 h-16 bg-gradient-to-br from-emerald-50 to-white rounded-2xl flex items-center justify-center mb-8 text-emerald-600 shadow-sm border border-emerald-50 group-hover:from-emerald-600 group-hover:to-emerald-500 group-hover:text-white transition-all duration-500 relative z-10">
+                        <i data-lucide="users" class="w-8 h-8"></i>
+                    </div>
+                    <h4 class="text-2xl font-black text-slate-900 mb-4 tracking-tight relative z-10">Live Patient Queue</h4>
+                    <p class="text-slate-500 font-medium leading-relaxed mb-12 text-sm relative z-10">
+                        Track patients live and show their status on a TV. No more waiting room mess or confusion.
+                    </p>
+                    <div class="pt-6 border-t border-slate-50 flex items-center relative z-10">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 bg-emerald-50 rounded-full">
+                            <div class="w-1.5 h-1.5 bg-emerald-500 rounded-full"></div>
+                            <span class="text-[10px] font-black text-emerald-600 uppercase tracking-widest">Real-time sync</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 5: Online Video Calls -->
+                <div class="p-10 bg-white border border-slate-100 rounded-[3rem] shadow-[0_15px_40px_rgba(0,0,0,0.02)] hover:shadow-[0_40px_80px_rgba(16,185,129,0.12)] hover:-translate-y-2 transition-all duration-700 text-left group cursor-pointer relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-emerald-50/50 rounded-full -mr-16 -mt-16 blur-2xl group-hover:bg-emerald-100 transition-colors"></div>
+                    <div class="w-16 h-16 bg-gradient-to-br from-emerald-50 to-white rounded-2xl flex items-center justify-center mb-8 text-emerald-600 shadow-sm border border-emerald-50 group-hover:from-emerald-600 group-hover:to-emerald-500 group-hover:text-white transition-all duration-500 relative z-10">
+                        <i data-lucide="video" class="w-8 h-8"></i>
+                    </div>
+                    <h4 class="text-2xl font-black text-slate-900 mb-4 tracking-tight relative z-10">Online Video Calls</h4>
+                    <p class="text-slate-500 font-medium leading-relaxed mb-12 text-sm relative z-10">
+                        Talk to patients over high-quality video inside the software. No need for extra apps or links.
+                    </p>
+                    <div class="pt-6 border-t border-slate-50 flex items-center relative z-10">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 bg-emerald-50 rounded-full">
+                            <div class="w-1.5 h-1.5 bg-emerald-500 rounded-full"></div>
+                            <span class="text-[10px] font-black text-emerald-600 uppercase tracking-widest">Easy Video</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 6: Easy Billing -->
+                <div class="p-10 bg-white border border-slate-100 rounded-[3rem] shadow-[0_15px_40px_rgba(0,0,0,0.02)] hover:shadow-[0_40px_80px_rgba(16,185,129,0.12)] hover:-translate-y-2 transition-all duration-700 text-left group cursor-pointer relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-emerald-50/50 rounded-full -mr-16 -mt-16 blur-2xl group-hover:bg-emerald-100 transition-colors"></div>
+                    <div class="w-16 h-16 bg-gradient-to-br from-emerald-50 to-white rounded-2xl flex items-center justify-center mb-8 text-emerald-600 shadow-sm border border-emerald-50 group-hover:from-emerald-600 group-hover:to-emerald-500 group-hover:text-white transition-all duration-500 relative z-10">
+                        <i data-lucide="credit-card" class="w-8 h-8"></i>
+                    </div>
+                    <h4 class="text-2xl font-black text-slate-900 mb-4 tracking-tight relative z-10">Easy Billing</h4>
+                    <p class="text-slate-500 font-medium leading-relaxed mb-12 text-sm relative z-10">
+                        Create simple bills and track payments instantly. Manage your money without extra accounting software.
+                    </p>
+                    <div class="pt-6 border-t border-slate-50 flex items-center relative z-10">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 bg-emerald-50 rounded-full">
+                            <div class="w-1.5 h-1.5 bg-emerald-500 rounded-full"></div>
+                            <span class="text-[10px] font-black text-emerald-600 uppercase tracking-widest">Money Tracking</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Suite Footer -->
+            <p class="text-[10px] font-black text-slate-300 uppercase tracking-[0.3em]">
+                Built for real clinics — not confusing hospital systems
+            </p>
+
+        </div>
+    </section>
+
+    <!-- The "Comparison" Section -->
+    <section class="py-24 bg-white relative overflow-hidden">
+        <div class="max-w-5xl mx-auto px-6 relative z-10 text-center">
+            
+            <!-- Badge -->
+            <div class="inline-flex items-center gap-2 px-6 py-2 bg-emerald-500/10 border border-emerald-500/20 rounded-full text-xs font-black text-emerald-600 uppercase tracking-widest mb-10">
+                <i data-lucide="star" class="w-4 h-4"></i>
+                MedOS Advantages
+            </div>
+
+            <!-- Main Heading -->
+            <div class="mb-16">
+                <h2 class="text-3xl md:text-5xl font-black text-slate-900 tracking-tighter mb-4 leading-tight">
+                    Stop Running Your Clinic on <br class="hidden md:block"> 
+                    <span class="text-emerald-600">Software That Slows You Down</span>
+                </h2>
+                <p class="text-slate-500 font-medium leading-relaxed max-w-2xl mx-auto">
+                    MedOS replaces manual busywork with smart automation, giving your team hours back every single day.
+                </p>
+            </div>
+
+            <!-- Comparison Table -->
+            <div class="bg-slate-50/50 border border-slate-100 rounded-[2.5rem] overflow-hidden shadow-sm">
+                <div class="grid grid-cols-1 md:grid-cols-2 text-left">
+                    
+                    <!-- Others Column (NOW LEFT) -->
+                    <div class="p-8 md:p-12 border-b md:border-b-0 md:border-r border-slate-200 opacity-80 grayscale-[0.5] bg-slate-50/30">
+                        <div class="flex items-center gap-4 mb-10">
+                            <div class="w-12 h-12 bg-slate-200 rounded-2xl flex items-center justify-center text-slate-600">
+                                <i data-lucide="x-circle" class="w-6 h-6"></i>
+                            </div>
+                            <h3 class="text-2xl font-black text-slate-600 tracking-tight">Other Legacy Methods</h3>
+                        </div>
+
+                        <ul class="space-y-8">
+                            <li class="flex items-start gap-4">
+                                <div class="w-6 h-6 bg-rose-50 rounded-full flex items-center justify-center text-rose-500 shrink-0 mt-1">
+                                    <i data-lucide="x" class="w-4 h-4"></i>
+                                </div>
+                                <div>
+                                    <span class="font-black text-slate-400 block text-lg">Wasting Time Searching</span>
+                                    <span class="text-slate-400 text-sm">Struggling to find files while patients wait at the front desk.</span>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-4">
+                                <div class="w-6 h-6 bg-rose-50 rounded-full flex items-center justify-center text-rose-500 shrink-0 mt-1">
+                                    <i data-lucide="x" class="w-4 h-4"></i>
+                                </div>
+                                <div>
+                                    <span class="font-black text-slate-400 block text-lg">Non-Stop Phone Calls</span>
+                                    <span class="text-slate-400 text-sm">Staff tied to the desk handling routine bookings manually.</span>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-4">
+                                <div class="w-6 h-6 bg-rose-50 rounded-full flex items-center justify-center text-rose-500 shrink-0 mt-1">
+                                    <i data-lucide="x" class="w-4 h-4"></i>
+                                </div>
+                                <div>
+                                    <span class="font-black text-slate-400 block text-lg">High Risk of Data Loss</span>
+                                    <span class="text-slate-400 text-sm">One hardware failure could wipe out years of patient history.</span>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-4">
+                                <div class="w-6 h-6 bg-rose-50 rounded-full flex items-center justify-center text-rose-500 shrink-0 mt-1">
+                                    <i data-lucide="x" class="w-4 h-4"></i>
+                                </div>
+                                <div>
+                                    <span class="font-black text-slate-400 block text-lg">Office-Only Access</span>
+                                    <span class="text-slate-400 text-sm">You’re stuck at your desk just to check a simple patient detail.</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Our Software Column (NOW RIGHT) -->
+                    <div class="p-8 md:p-12 bg-emerald-50/30">
+                        <div class="flex items-center gap-4 mb-10">
+                            <div class="w-12 h-12 bg-emerald-600 rounded-2xl flex items-center justify-center text-white shadow-lg shadow-emerald-200">
+                                <i data-lucide="sparkles" class="w-6 h-6"></i>
+                            </div>
+                            <h3 class="text-2xl font-black text-slate-900 tracking-tight">Our Modern Software</h3>
+                        </div>
+
+                        <ul class="space-y-8">
+                            <li class="flex items-start gap-4">
+                                <div class="w-6 h-6 bg-emerald-100 rounded-full flex items-center justify-center text-emerald-600 shrink-0 mt-1">
+                                    <i data-lucide="check" class="w-4 h-4"></i>
+                                </div>
+                                <div>
+                                    <span class="font-black text-slate-900 block text-lg">Find Any Record Instantly</span>
+                                    <span class="text-slate-500 text-sm">Access complete patient histories in two seconds, not ten minutes.</span>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-4">
+                                <div class="w-6 h-6 bg-emerald-100 rounded-full flex items-center justify-center text-emerald-600 shrink-0 mt-1">
+                                    <i data-lucide="check" class="w-4 h-4"></i>
+                                </div>
+                                <div>
+                                    <span class="font-black text-slate-900 block text-lg">Bookings That Manage Themselves</span>
+                                    <span class="text-slate-500 text-sm">Patients schedule online 24/7, reducing front-desk calls by 60%.</span>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-4">
+                                <div class="w-6 h-6 bg-emerald-100 rounded-full flex items-center justify-center text-emerald-600 shrink-0 mt-1">
+                                    <i data-lucide="check" class="w-4 h-4"></i>
+                                </div>
+                                <div>
+                                    <span class="font-black text-slate-900 block text-lg">Data That’s Always Safe</span>
+                                    <span class="text-slate-500 text-sm">Automatic cloud backups mean you never have to worry about a crash.</span>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-4">
+                                <div class="w-6 h-6 bg-emerald-100 rounded-full flex items-center justify-center text-emerald-600 shrink-0 mt-1">
+                                    <i data-lucide="check" class="w-4 h-4"></i>
+                                </div>
+                                <div>
+                                    <span class="font-black text-slate-900 block text-lg">Manage From Anywhere</span>
+                                    <span class="text-slate-500 text-sm">Check your schedule and patient notes from your phone or home office.</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Proof Line & CTA -->
+            <div class="mt-12 flex flex-col items-center gap-8">
+                <div class="px-6 py-3 bg-emerald-50 rounded-2xl border border-emerald-100 flex items-center gap-3">
+                    <div class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></div>
+                    <p class="text-emerald-900 font-bold text-sm">
+                        Clinics save an average of 12+ hours of admin work every week using MedOS.
+                    </p>
+                </div>
+
+                <div class="flex flex-col items-center gap-4">
+                    <a href="#contact" class="px-10 py-5 bg-emerald-600 text-white font-black text-xl rounded-2xl shadow-[0_20px_40px_rgba(16,185,129,0.2)] hover:shadow-[0_25px_50px_rgba(16,185,129,0.3)] hover:-translate-y-1 transition-all duration-300 flex items-center gap-3">
+                        Get Started Now
+                        <i data-lucide="chevron-right" class="w-6 h-6"></i>
+                    </a>
+                    <p class="text-slate-400 font-bold text-sm uppercase tracking-widest">
+                        Join 500+ modern clinics today
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- The "Testimonials" Section -->
+    <section class="py-24 bg-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 relative z-10 text-center">
+            
+            <!-- Badge -->
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 bg-emerald-50 border border-emerald-100 rounded-full text-[10px] font-black text-emerald-600 uppercase tracking-[0.2em] mb-8">
+                Customer Stories
+            </div>
+
+            <!-- Main Heading -->
+            <div class="max-w-3xl mx-auto mb-20">
+                <h2 class="text-3xl md:text-5xl font-black text-slate-900 tracking-tighter mb-6 leading-tight">
+                    Trusted by Modern Clinics <br class="hidden md:block">
+                    Every Single Day
+                </h2>
+                <p class="text-slate-500 font-medium leading-relaxed text-lg">
+                    See how MedOS is helping doctors spend less time on admin <br class="hidden md:block"> and more time with their patients.
+                </p>
+            </div>
+
+            <!-- Testimonial Grid -->
+            <div class="grid md:grid-cols-3 gap-8">
+                
+                <!-- Testimonial 1 -->
+                <div class="p-10 bg-emerald-50/30 border border-emerald-100/50 rounded-[3rem] shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-500 text-left relative flex flex-col justify-between group">
+                    <div class="mb-8">
+                        <!-- Stars -->
+                        <div class="flex gap-1 text-emerald-500 mb-6">
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        </div>
+                        <p class="text-slate-600 font-medium leading-relaxed italic">
+                            "We used to lose hours every day just managing phone calls and paper files. Since switching to MedOS, our front desk is finally calm, and I have more time for my patients."
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-4 pt-8 border-t border-emerald-100/50">
+                        <div class="w-12 h-12 bg-emerald-100 rounded-full flex items-center justify-center text-emerald-700 font-bold">
+                            SC
+                        </div>
+                        <div>
+                            <h4 class="font-black text-slate-900 text-sm">Dr. Sarah Chen</h4>
+                            <p class="text-emerald-600 text-[10px] font-bold uppercase tracking-widest">Chen Family Clinic</p>
+                        </div>
+                    </div>
+                    <i data-lucide="quote" class="absolute top-10 right-10 w-12 h-12 text-emerald-500/10 group-hover:text-emerald-500/20 transition-colors"></i>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="p-10 bg-white border border-slate-100 rounded-[3rem] shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-500 text-left relative flex flex-col justify-between group">
+                    <div class="mb-8">
+                        <!-- Stars -->
+                        <div class="flex gap-1 text-emerald-500 mb-6">
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        </div>
+                        <p class="text-slate-600 font-medium leading-relaxed italic">
+                            "Finding a patient history used to take 10 minutes of digging through drawers. Now it's instant. The staff learned it in one afternoon—it really is that simple."
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-4 pt-8 border-t border-slate-50">
+                        <div class="w-12 h-12 bg-slate-100 rounded-full flex items-center justify-center text-slate-700 font-bold">
+                            JW
+                        </div>
+                        <div>
+                            <h4 class="font-black text-slate-900 text-sm">Dr. James Wilson</h4>
+                            <p class="text-emerald-600 text-[10px] font-bold uppercase tracking-widest">City Wellness Center</p>
+                        </div>
+                    </div>
+                    <i data-lucide="quote" class="absolute top-10 right-10 w-12 h-12 text-slate-500/5 group-hover:text-emerald-500/10 transition-colors"></i>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="p-10 bg-emerald-50/30 border border-emerald-100/50 rounded-[3rem] shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-500 text-left relative flex flex-col justify-between group">
+                    <div class="mb-8">
+                        <!-- Stars -->
+                        <div class="flex gap-1 text-emerald-500 mb-6">
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        </div>
+                        <p class="text-slate-600 font-medium leading-relaxed italic">
+                            "I was worried about moving everything online, but it was the best decision for my practice. Everything from booking to billing is just smoother now."
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-4 pt-8 border-t border-emerald-100/50">
+                        <div class="w-12 h-12 bg-emerald-100 rounded-full flex items-center justify-center text-emerald-700 font-bold">
+                            MR
+                        </div>
+                        <div>
+                            <h4 class="font-black text-slate-900 text-sm">Dr. Maria Rodriguez</h4>
+                            <p class="text-emerald-600 text-[10px] font-bold uppercase tracking-widest">Grace Pediatrics</p>
+                        </div>
+                    </div>
+                    <i data-lucide="quote" class="absolute top-10 right-10 w-12 h-12 text-emerald-500/10 group-hover:text-emerald-500/20 transition-colors"></i>
+                </div>
+
+            </div>
+
+            <!-- Verified Line -->
+            <div class="mt-16 flex items-center justify-center gap-3">
+                <div class="flex -space-x-3">
+                    <div class="w-8 h-8 rounded-full border-2 border-white bg-emerald-500 flex items-center justify-center text-[10px] text-white font-bold">A</div>
+                    <div class="w-8 h-8 rounded-full border-2 border-white bg-slate-800 flex items-center justify-center text-[10px] text-white font-bold">B</div>
+                    <div class="w-8 h-8 rounded-full border-2 border-white bg-emerald-600 flex items-center justify-center text-[10px] text-white font-bold">C</div>
+                </div>
+                <p class="text-slate-400 font-bold text-xs uppercase tracking-widest flex items-center gap-2">
+                    <i data-lucide="shield-check" class="w-4 h-4 text-emerald-500"></i>
+                    Over 500 verified clinic reviews
+                </p>
+            </div>
+
+        </div>
+    </section>
+
     <section class="py-32 bg-[#0b1120] text-white relative overflow-hidden">
         <!-- Premium Mesh Gradient Background -->
         <div class="absolute inset-0 overflow-hidden pointer-events-none">
@@ -316,241 +935,6 @@ require_once 'core/init.php';
             </div>
 
 
-        </div>
-    </section>
-    <section class="py-32 bg-[#f8fafc] relative overflow-hidden">
-        <!-- Modern Background Accents -->
-        <div class="absolute top-0 left-1/4 w-96 h-96 bg-emerald-100/30 rounded-full blur-[100px] -z-10 animate-pulse"></div>
-        <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-emerald-50/50 rounded-full blur-[100px] -z-10 animate-pulse" style="animation-delay: 2s;"></div>
-        
-        <div class="max-w-7xl mx-auto px-6 relative z-10">
-            <!-- HEADER -->
-            <div class="text-center mb-28">
-                <div class="inline-flex items-center gap-2 px-3 py-1 bg-emerald-500/5 border border-emerald-500/10 rounded-full text-[10px] font-black text-emerald-600 uppercase tracking-widest mb-6">
-                    Professional Suite
-                </div>
-                <h2 class="text-5xl md:text-6xl font-black text-slate-900 tracking-tightest mb-8 leading-tight">
-                    One system. <br>
-                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-emerald-400">Every part of your clinic.</span>
-                </h2>
-                <p class="text-slate-500 text-xl max-w-2xl mx-auto font-medium leading-relaxed">
-                    From the first booking to the final payment — MedOS handles everything for your whole team in one place.
-                </p>
-            </div>            <!-- GRID -->
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
-
-                <!-- APPOINTMENT SYSTEM -->
-                <div class="group p-10 rounded-[3rem] bg-white border border-slate-100/50 shadow-[0_20px_50px_rgba(0,0,0,0.02)] hover:shadow-[0_40px_80px_rgba(16,185,129,0.08)] hover:-translate-y-2 transition-all duration-700 relative overflow-hidden">
-                    <div class="absolute top-0 right-0 w-32 h-32 bg-emerald-50 rounded-full blur-3xl -mr-16 -mt-16 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
-                    
-                    <div class="w-16 h-16 bg-emerald-50 text-emerald-600 rounded-2xl flex items-center justify-center mb-10 shadow-sm border border-emerald-100 group-hover:bg-emerald-500 group-hover:text-white group-hover:shadow-lg group-hover:shadow-emerald-500/20 transition-all duration-500">
-                        <i data-lucide="calendar-check" class="w-8 h-8"></i>
-                    </div>
-                    <h3 class="text-2xl font-black text-slate-900 mb-4 tracking-tight">Online Bookings</h3>
-                    <p class="text-slate-500 text-sm leading-relaxed mb-10 font-medium">
-                        Patients can book online. We send automatic reminders to their phone so they don't forget.
-                    </p>
-                    <div class="pt-8 border-t border-slate-50 flex items-center justify-between">
-                        <div class="flex items-center gap-2">
-                            <div class="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse"></div>
-                            <span class="text-[10px] font-black text-emerald-600 uppercase tracking-widest">Saves 4hrs / Day</span>
-                        </div>
-                        <i data-lucide="arrow-right" class="w-4 h-4 text-slate-300 group-hover:text-emerald-500 group-hover:translate-x-1 transition-all"></i>
-                    </div>
-                </div>
-
-                <!-- CLINICAL RECORDS -->
-                <div class="group p-10 rounded-[3rem] bg-white border border-slate-100/50 shadow-[0_20px_50px_rgba(0,0,0,0.02)] hover:shadow-[0_40px_80px_rgba(16,185,129,0.08)] hover:-translate-y-2 transition-all duration-700 relative overflow-hidden">
-                    <div class="absolute top-0 right-0 w-32 h-32 bg-emerald-50 rounded-full blur-3xl -mr-16 -mt-16 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
-                    
-                    <div class="w-16 h-16 bg-emerald-50 text-emerald-600 rounded-2xl flex items-center justify-center mb-10 shadow-sm border border-emerald-100 group-hover:bg-emerald-500 group-hover:text-white group-hover:shadow-lg group-hover:shadow-emerald-500/20 transition-all duration-500">
-                        <i data-lucide="file-text" class="w-8 h-8"></i>
-                    </div>
-                    <h3 class="text-2xl font-black text-slate-900 mb-4 tracking-tight">Patient Records</h3>
-                    <p class="text-slate-500 text-sm leading-relaxed mb-10 font-medium">
-                        See patient history and reports instantly. Write your notes faster with easy templates.
-                    </p>
-                    <div class="pt-8 border-t border-slate-50 flex items-center justify-between">
-                        <div class="flex items-center gap-2">
-                            <div class="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse"></div>
-                            <span class="text-[10px] font-black text-emerald-600 uppercase tracking-widest">Safe Storage</span>
-                        </div>
-                        <i data-lucide="arrow-right" class="w-4 h-4 text-slate-300 group-hover:text-emerald-500 group-hover:translate-x-1 transition-all"></i>
-                    </div>
-                </div>
-
-                <!-- E-PRESCRIPTIONS -->
-                <div class="group p-10 rounded-[3rem] bg-white border border-slate-100/50 shadow-[0_20px_50px_rgba(0,0,0,0.02)] hover:shadow-[0_40px_80px_rgba(16,185,129,0.08)] hover:-translate-y-2 transition-all duration-700 relative overflow-hidden">
-                    <div class="absolute top-0 right-0 w-32 h-32 bg-emerald-50 rounded-full blur-3xl -mr-16 -mt-16 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
-                    
-                    <div class="w-16 h-16 bg-emerald-50 text-emerald-600 rounded-2xl flex items-center justify-center mb-10 shadow-sm border border-emerald-100 group-hover:bg-emerald-500 group-hover:text-white group-hover:shadow-lg group-hover:shadow-emerald-500/20 transition-all duration-500">
-                        <i data-lucide="stethoscope" class="w-8 h-8"></i>
-                    </div>
-                    <h3 class="text-2xl font-black text-slate-900 mb-4 tracking-tight">Digital Prescriptions</h3>
-                    <p class="text-slate-500 text-sm leading-relaxed mb-10 font-medium">
-                        Create and send prescriptions in seconds. They are clear, safe, and easy for patients to get on their phones.
-                    </p>
-                    <div class="pt-8 border-t border-slate-50 flex items-center justify-between">
-                        <div class="flex items-center gap-2">
-                            <div class="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse"></div>
-                            <span class="text-[10px] font-black text-emerald-600 uppercase tracking-widest">Fast & Easy</span>
-                        </div>
-                        <i data-lucide="arrow-right" class="w-4 h-4 text-slate-300 group-hover:text-emerald-500 group-hover:translate-x-1 transition-all"></i>
-                    </div>
-                </div>
-
-                <!-- SMART QUEUE -->
-                <div class="group p-10 rounded-[3rem] bg-white border border-slate-100/50 shadow-[0_20px_50px_rgba(0,0,0,0.02)] hover:shadow-[0_40px_80px_rgba(16,185,129,0.08)] hover:-translate-y-2 transition-all duration-700 relative overflow-hidden">
-                    <div class="absolute top-0 right-0 w-32 h-32 bg-emerald-50 rounded-full blur-3xl -mr-16 -mt-16 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
-                    
-                    <div class="w-16 h-16 bg-emerald-50 text-emerald-600 rounded-2xl flex items-center justify-center mb-10 shadow-sm border border-emerald-100 group-hover:bg-emerald-500 group-hover:text-white group-hover:shadow-lg group-hover:shadow-emerald-500/20 transition-all duration-500">
-                        <i data-lucide="users" class="w-8 h-8"></i>
-                    </div>
-                    <h3 class="text-2xl font-black text-slate-900 mb-4 tracking-tight">Live Patient Queue</h3>
-                    <p class="text-slate-500 text-sm leading-relaxed mb-10 font-medium">
-                        Track patients live and show their status on a TV. No more waiting room mess.
-                    </p>
-                    <div class="pt-8 border-t border-slate-50 flex items-center justify-between">
-                        <div class="flex items-center gap-2">
-                            <div class="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse"></div>
-                            <span class="text-[10px] font-black text-emerald-600 uppercase tracking-widest">Real-time Sync</span>
-                        </div>
-                        <i data-lucide="arrow-right" class="w-4 h-4 text-slate-300 group-hover:text-emerald-500 group-hover:translate-x-1 transition-all"></i>
-                    </div>
-                </div>
-
-                <!-- TELEHEALTH -->
-                <div class="group p-10 rounded-[3rem] bg-white border border-slate-100/50 shadow-[0_20px_50px_rgba(0,0,0,0.02)] hover:shadow-[0_40px_80px_rgba(16,185,129,0.08)] hover:-translate-y-2 transition-all duration-700 relative overflow-hidden">
-                    <div class="absolute top-0 right-0 w-32 h-32 bg-emerald-50 rounded-full blur-3xl -mr-16 -mt-16 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
-                    
-                    <div class="w-16 h-16 bg-emerald-50 text-emerald-600 rounded-2xl flex items-center justify-center mb-10 shadow-sm border border-emerald-100 group-hover:bg-emerald-500 group-hover:text-white group-hover:shadow-lg group-hover:shadow-emerald-500/20 transition-all duration-500">
-                        <i data-lucide="video" class="w-8 h-8"></i>
-                    </div>
-                    <h3 class="text-2xl font-black text-slate-900 mb-4 tracking-tight">Online Video Calls</h3>
-                    <p class="text-slate-500 text-sm leading-relaxed mb-10 font-medium">
-                        Talk to patients over high-quality video inside the system. No need for extra apps.
-                    </p>
-                    <div class="pt-8 border-t border-slate-50 flex items-center justify-between">
-                        <div class="flex items-center gap-2">
-                            <div class="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse"></div>
-                            <span class="text-[10px] font-black text-emerald-600 uppercase tracking-widest">Easy Video</span>
-                        </div>
-                        <i data-lucide="arrow-right" class="w-4 h-4 text-slate-300 group-hover:text-emerald-500 group-hover:translate-x-1 transition-all"></i>
-                    </div>
-                </div>
-
-                <!-- BILLING -->
-                <div class="group p-10 rounded-[3rem] bg-white border border-slate-100/50 shadow-[0_20px_50px_rgba(0,0,0,0.02)] hover:shadow-[0_40px_80px_rgba(16,185,129,0.08)] hover:-translate-y-2 transition-all duration-700 relative overflow-hidden">
-                    <div class="absolute top-0 right-0 w-32 h-32 bg-emerald-50 rounded-full blur-3xl -mr-16 -mt-16 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
-                    
-                    <div class="w-16 h-16 bg-emerald-50 text-emerald-600 rounded-2xl flex items-center justify-center mb-10 shadow-sm border border-emerald-100 group-hover:bg-emerald-500 group-hover:text-white group-hover:shadow-lg group-hover:shadow-emerald-500/20 transition-all duration-500">
-                        <i data-lucide="credit-card" class="w-8 h-8"></i>
-                    </div>
-                    <h3 class="text-2xl font-black text-slate-900 mb-4 tracking-tight">Easy Billing</h3>
-                    <p class="text-slate-500 text-sm leading-relaxed mb-10 font-medium">
-                        Create simple bills and track payments instantly. Manage your money without extra software.
-                    </p>
-                    <div class="pt-8 border-t border-slate-50 flex items-center justify-between">
-                        <div class="flex items-center gap-2">
-                            <div class="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse"></div>
-                            <span class="text-[10px] font-black text-emerald-600 uppercase tracking-widest">Money Tracking</span>
-                        </div>
-                        <i data-lucide="arrow-right" class="w-4 h-4 text-slate-300 group-hover:text-emerald-500 group-hover:translate-x-1 transition-all"></i>
-                    </div>
-                </div>
-            </div>
-
-            <!-- BOTTOM TRUST LINE -->
-            <p class="text-center text-[10px] font-black text-slate-400 mt-20 uppercase tracking-[0.3em]">
-                Built for real clinics — not confusing hospital systems
-            </p>
-
-        </div>
-    </section>
-
-    <!-- Customer Stories Section -->
-    <section class="py-20 bg-white relative overflow-hidden">
-        <div class="max-w-6xl mx-auto px-6 relative z-10">
-            <div class="text-center mb-16">
-                <div class="inline-flex items-center gap-2 px-3 py-1 border border-slate-100 rounded-full text-[10px] font-black text-slate-500 uppercase tracking-widest mb-6">
-                    Customer Stories
-                </div>
-                <h2 class="text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 tracking-tightest mb-6 leading-[1.1]">
-                    Trusted by Clinics <br> Across the Globe
-                </h2>
-                <p class="text-lg text-slate-500 max-w-xl mx-auto font-medium">From solo practitioners to multi-branch networks — here’s what our customers say.</p>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-6">
-                <!-- Testimonial 1 -->
-                <div class="p-8 rounded-[2rem] bg-white border border-slate-100 shadow-[0_20px_50px_rgba(0,0,0,0.02)] hover:shadow-[0_40px_80px_rgba(0,0,0,0.05)] transition-all duration-500 flex flex-col justify-between group">
-                    <div>
-                        <div class="flex gap-1 mb-8">
-                            <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i>
-                            <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i>
-                            <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i>
-                            <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i>
-                            <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i>
-                        </div>
-                        <p class="text-slate-600 text-base font-medium leading-relaxed italic mb-8">
-                            "MedOS has completely transformed how we manage our clinic. We went from manual paper records to a fully automated system in just 45 minutes."
-                        </p>
-                    </div>
-                    <div class="flex items-center gap-3 pt-6 border-t border-slate-50">
-                        <div class="w-10 h-10 bg-sky-500 text-white rounded-full flex items-center justify-center font-black text-[10px] shadow-lg shadow-sky-500/20 group-hover:scale-110 transition-transform">RK</div>
-                        <div>
-                            <h4 class="font-black text-slate-900 text-xs tracking-tight">Dr. Rajesh Kumar</h4>
-                            <p class="text-[8px] font-black text-slate-400 uppercase tracking-widest">Medical Director, City Clinic</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Testimonial 2 -->
-                <div class="p-8 rounded-[2rem] bg-white border border-slate-100 shadow-[0_20px_50px_rgba(0,0,0,0.02)] hover:shadow-[0_40px_80px_rgba(0,0,0,0.05)] transition-all duration-500 flex flex-col justify-between group">
-                    <div>
-                        <div class="flex gap-1 mb-8">
-                            <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i>
-                            <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i>
-                            <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i>
-                            <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i>
-                            <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i>
-                        </div>
-                        <p class="text-slate-600 text-base font-medium leading-relaxed italic mb-8">
-                            "The multi-branch sync is incredibly powerful. I can track all three of my clinics from one dashboard in real-time. It's a lifesaver."
-                        </p>
-                    </div>
-                    <div class="flex items-center gap-3 pt-6 border-t border-slate-50">
-                        <div class="w-10 h-10 bg-violet-500 text-white rounded-full flex items-center justify-center font-black text-[10px] shadow-lg shadow-violet-500/20 group-hover:scale-110 transition-transform">SM</div>
-                        <div>
-                            <h4 class="font-black text-slate-900 text-xs tracking-tight">Sarah Miller</h4>
-                            <p class="text-[8px] font-black text-slate-400 uppercase tracking-widest">Ops Manager, HealthFirst</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Testimonial 3 -->
-                <div class="p-8 rounded-[2rem] bg-white border border-slate-100 shadow-[0_20px_50px_rgba(0,0,0,0.02)] hover:shadow-[0_40px_80px_rgba(0,0,0,0.05)] transition-all duration-500 flex flex-col justify-between group">
-                    <div>
-                        <div class="flex gap-1 mb-8">
-                            <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i>
-                            <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i>
-                            <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i>
-                            <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i>
-                            <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i>
-                        </div>
-                        <p class="text-slate-600 text-base font-medium leading-relaxed italic mb-8">
-                            "Billing used to be our biggest headache. With MedOS, we've reduced our errors to zero. It's the best investment we've made."
-                        </p>
-                    </div>
-                    <div class="flex items-center gap-3 pt-6 border-t border-slate-50">
-                        <div class="w-10 h-10 bg-emerald-500 text-white rounded-full flex items-center justify-center font-black text-[10px] shadow-lg shadow-emerald-500/20 group-hover:scale-110 transition-transform">AB</div>
-                        <div>
-                            <h4 class="font-black text-slate-900 text-xs tracking-tight">Amit Bhardwaj</h4>
-                            <p class="text-[8px] font-black text-slate-400 uppercase tracking-widest">Owner, LifeLine Diagnostics</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </section>
 
@@ -745,65 +1129,32 @@ require_once 'core/init.php';
         </div>
     </section>
 
-    <!-- Final CTA -->
-    <section class="py-24 bg-white relative overflow-hidden">
-        <!-- Professional Emerald Background Glows -->
-        <div class="absolute top-1/2 left-0 w-[600px] h-[600px] bg-emerald-500/10 rounded-full blur-[120px] -translate-x-1/2 -translate-y-1/2 -z-10 animate-pulse"></div>
-        <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-emerald-500/5 rounded-full blur-[120px] translate-x-1/3 -translate-y-1/3 -z-10 animate-pulse" style="animation-delay: 1.5s;"></div>
+    <!-- Final CTA (Emerald Theme) -->
+    <section class="py-32 bg-emerald-600 relative overflow-hidden">
+        <!-- Subtle Dot Pattern Overlay -->
+        <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(circle, white 1px, transparent 1px); background-size: 20px 20px;"></div>
         
-        <div class="max-w-6xl mx-auto px-6 relative z-10">
-            <div class="bg-[#0b1120] rounded-[2.5rem] p-10 md:p-20 text-center relative overflow-hidden shadow-2xl border border-white/5">
-                <!-- Emerald Internal Glows -->
-                <div class="absolute -top-[10%] -left-[10%] w-[50%] h-[50%] bg-emerald-500/20 rounded-full blur-[100px] pointer-events-none animate-pulse"></div>
-                <div class="absolute -bottom-[10%] -right-[10%] w-[50%] h-[50%] bg-emerald-600/10 rounded-full blur-[100px] pointer-events-none animate-pulse" style="animation-delay: 1s;"></div>
-                
-                <div class="relative z-10">
-                    <div class="inline-flex items-center gap-2 px-3 py-1 bg-emerald-500/10 border border-emerald-500/20 rounded-full text-[10px] font-black text-emerald-400 uppercase tracking-widest mb-8">
-                        Get Started Today
-                    </div>
-                    
-                    <h2 class="text-4xl md:text-5xl lg:text-6xl font-black text-white tracking-tightest mb-8 leading-[1.1]">
-                        Ready to transform <br> your practice?
-                    </h2>
-                    
-                    <p class="text-lg text-slate-400 max-w-xl mx-auto mb-12 font-medium leading-relaxed">
-                        Join over 3,200 medical professionals who run their practices without stress. Set up in under an hour.
-                    </p>
-                    
-                    <div class="flex flex-col sm:flex-row items-center justify-center gap-5 mb-16">
-                        <a href="login.php" class="w-full sm:w-auto px-10 py-5 bg-white text-slate-900 rounded-full font-black text-xs uppercase tracking-widest hover:scale-105 active:scale-95 transition-all shadow-xl shadow-white/10 flex items-center justify-center gap-2 group">
-                            Start Your Free Trial
-                            <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
-                        </a>
-                        <a href="contact.php" class="w-full sm:w-auto px-10 py-5 border border-white/20 text-white rounded-full font-black text-xs uppercase tracking-widest hover:bg-white/5 transition-all flex items-center justify-center gap-2">
-                            <i data-lucide="mail" class="w-4 h-4"></i>
-                            Talk to Our Team
-                        </a>
-                    </div>
-                    
-                    <!-- Trust Bar (Compact) -->
-                    <div class="flex flex-wrap items-center justify-center gap-x-8 gap-y-4 pt-10 border-t border-white/5">
-                        <div class="flex items-center gap-2 text-slate-500 text-[9px] font-black uppercase tracking-widest">
-                            <i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500"></i>
-                            No credit card
-                        </div>
-                        <div class="flex items-center gap-2 text-slate-500 text-[9px] font-black uppercase tracking-widest">
-                            <i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500"></i>
-                            Free forever (≤2 docs)
-                        </div>
-                        <div class="flex items-center gap-2 text-slate-500 text-[9px] font-black uppercase tracking-widest">
-                            <i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500"></i>
-                            Cancel anytime
-                        </div>
-                        <div class="flex items-center gap-2 text-slate-500 text-[9px] font-black uppercase tracking-widest">
-                            <i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500"></i>
-                            Enterprise Security
-                        </div>
-                    </div>
-                </div>
+        <div class="max-w-6xl mx-auto px-6 text-center relative z-10">
+            <h2 class="text-5xl md:text-7xl font-black text-white tracking-tightest mb-12 leading-[1.1]">
+                Your modern practice <br> starts right here.
+            </h2>
+            
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-6 mb-16">
+                <a href="login.php" class="w-full sm:w-auto px-10 py-5 bg-white text-emerald-600 rounded-2xl font-black text-xs uppercase tracking-widest shadow-2xl shadow-emerald-900/20 hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-2">
+                    Launch MedOS Now
+                </a>
+                <a href="contact.php" class="w-full sm:w-auto px-10 py-5 bg-emerald-800 text-white rounded-2xl font-black text-xs uppercase tracking-widest hover:bg-emerald-900 transition-all flex items-center justify-center gap-2">
+                    Book Implementation
+                </a>
             </div>
+            
+            <!-- Trust Note (Minimalist) -->
+            <p class="text-[10px] font-black text-emerald-100 uppercase tracking-[0.4em] opacity-60">
+                No hidden fees. No patient limits. Professional standards only.
+            </p>
         </div>
     </section>
+
 
     <!-- Footer -->
     <footer class="bg-white border-t border-slate-100 pt-24 pb-12">

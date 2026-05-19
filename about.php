@@ -8,7 +8,7 @@ require_once 'core/init.php';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us | MedOS Modern Healthcare</title>
+    <title>About Our Mission | MedOS Modern Healthcare</title>
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -18,9 +18,6 @@ require_once 'core/init.php';
 
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
-
-    <!-- Alpine.js -->
-    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
     <script>
         tailwind.config = {
@@ -42,8 +39,6 @@ require_once 'core/init.php';
         .glass { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(12px); }
         .emerald-gradient { background: linear-gradient(135deg, #059669 0%, #10b981 100%); }
         .text-gradient { background: linear-gradient(135deg, #064e3b 0%, #059669 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .animate-float { animation: float 6s ease-in-out infinite; }
-        @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-10px); } 100% { transform: translateY(0px); } }
     </style>
 </head>
 
@@ -74,7 +69,7 @@ require_once 'core/init.php';
         </div>
     </nav>
 
-    <!-- Page Header -->
+    <!-- Immersive Hero -->
     <header class="relative pt-48 pb-32 overflow-hidden bg-white">
         <!-- Ambient Background Glows -->
         <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full -z-10">
@@ -83,91 +78,74 @@ require_once 'core/init.php';
         </div>
 
         <div class="max-w-5xl mx-auto px-6 text-center relative z-10">
-            <div class="inline-flex items-center gap-2 px-4 py-1.5 bg-white border border-slate-100 rounded-full shadow-sm mb-12">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 bg-emerald-50 border border-emerald-100 rounded-full shadow-sm mb-12">
                 <span class="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse"></span>
-                <span class="text-[10px] font-black text-slate-900 uppercase tracking-widest">Our Story</span>
+                <span class="text-[10px] font-black text-emerald-600 uppercase tracking-[0.2em]">Designing the Future</span>
             </div>
-            <h1 class="text-5xl md:text-6xl lg:text-7xl font-black text-slate-900 tracking-tightest mb-10 leading-[1.05]">
-                We're on a mission to <br>
-                <span class="text-emerald-600">modernize healthcare.</span>
+            <h1 class="text-5xl md:text-7xl lg:text-8xl font-black text-slate-900 tracking-tightest mb-10 leading-[1.05]">
+                We build for the <br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-emerald-400">next era of care.</span>
             </h1>
-            <p class="text-lg md:text-xl text-slate-500 font-medium leading-relaxed max-w-2xl mx-auto mb-20">
-                MedOS was built with a single goal: to return the doctor's focus to the patient by eliminating the administrative static of legacy systems.
+            <p class="text-xl md:text-2xl text-slate-500 font-medium leading-relaxed max-w-3xl mx-auto mb-16 italic">
+                MedOS was built to return the doctor's focus to the patient by eliminating the administrative static of legacy systems.
             </p>
-
-            <!-- Core Value Boxes -->
-            <div class="flex flex-wrap items-center justify-center gap-4">
-                <!-- Value 1 -->
-                <div class="flex items-center gap-4 px-6 py-4 bg-white border border-slate-100 rounded-2xl shadow-sm hover:shadow-md hover:border-emerald-100 transition-all group">
-                    <div class="w-10 h-10 bg-emerald-50 text-emerald-600 rounded-xl flex items-center justify-center group-hover:bg-emerald-500 group-hover:text-white transition-all duration-500 shadow-sm">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
-                    </div>
-                    <div class="text-left">
-                        <p class="text-[9px] font-black text-slate-400 uppercase tracking-widest leading-none mb-1">Our Focus</p>
-                        <p class="text-xs font-bold text-slate-900">Patient-First Care</p>
-                    </div>
-                </div>
-
-                <!-- Value 2 -->
-                <div class="flex items-center gap-4 px-6 py-4 bg-white border border-slate-100 rounded-2xl shadow-sm hover:shadow-md hover:border-emerald-100 transition-all group">
-                    <div class="w-10 h-10 bg-emerald-50 text-emerald-600 rounded-xl flex items-center justify-center group-hover:bg-emerald-500 group-hover:text-white transition-all duration-500 shadow-sm">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-                    </div>
-                    <div class="text-left">
-                        <p class="text-[9px] font-black text-slate-400 uppercase tracking-widest leading-none mb-1">Our Drive</p>
-                        <p class="text-xs font-bold text-slate-900">Constant Innovation</p>
-                    </div>
-                </div>
-
-                <!-- Value 3 -->
-                <div class="flex items-center gap-4 px-6 py-4 bg-white border border-slate-100 rounded-2xl shadow-sm hover:shadow-md hover:border-emerald-100 transition-all group">
-                    <div class="w-10 h-10 bg-emerald-50 text-emerald-600 rounded-xl flex items-center justify-center group-hover:bg-emerald-500 group-hover:text-white transition-all duration-500 shadow-sm">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                    </div>
-                    <div class="text-left">
-                        <p class="text-[9px] font-black text-slate-400 uppercase tracking-widest leading-none mb-1">Our Promise</p>
-                        <p class="text-xs font-bold text-slate-900">Bank-Level Security</p>
-                    </div>
-                </div>
+            
+            <!-- Trust Banner -->
+            <div class="flex flex-wrap items-center justify-center gap-8 opacity-40 grayscale group hover:grayscale-0 hover:opacity-100 transition-all duration-700">
+                <span class="text-sm font-black tracking-widest uppercase">Verified Security</span>
+                <span class="text-sm font-black tracking-widest uppercase">Cloud Native</span>
+                <span class="text-sm font-black tracking-widest uppercase">HIPAA Compliant</span>
             </div>
         </div>
     </header>
 
-    <!-- The Mission Section -->
-    <section class="py-32 relative overflow-hidden">
+    <!-- The Problem Narrative -->
+    <section class="py-32 bg-white relative overflow-hidden">
         <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-24 items-center">
-            <!-- Visual Side -->
-            <div class="relative group">
-                <!-- 3D Mission Workflow Image -->
-                <div class="relative w-full aspect-square rounded-[3rem] overflow-hidden">
-                    <img src="about.png" alt="MedOS Mission Workflow" class="w-full h-full object-contain mix-blend-multiply">
+            <!-- Visual Content -->
+            <div class="relative">
+                <div class="relative w-full aspect-square bg-emerald-50 rounded-[4rem] overflow-hidden group">
+                    <img src="about.png" alt="Mission Workflow" class="w-full h-full object-contain mix-blend-multiply group-hover:scale-110 transition-transform duration-1000">
+                    <div class="absolute inset-0 bg-gradient-to-t from-emerald-500/10 to-transparent"></div>
                 </div>
-
-                <!-- Accent Glow -->
-                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-emerald-500/10 rounded-full blur-[120px] -z-10 "></div>
+                <!-- Floating Card -->
+                <div class="absolute -bottom-10 -right-10 bg-white p-8 rounded-3xl shadow-2xl border border-slate-100 max-w-xs animate-bounce" style="animation-duration: 4s;">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-12 h-12 bg-emerald-500 rounded-2xl flex items-center justify-center text-white">
+                            <i data-lucide="zap" class="w-6 h-6"></i>
+                        </div>
+                        <h4 class="font-black text-slate-900 text-lg">Instant Sync</h4>
+                    </div>
+                    <p class="text-sm text-slate-500 font-medium leading-relaxed">Our clinical engine synchronizes patient data across every clinic in real-time.</p>
+                </div>
             </div>
 
-            <!-- Content Side -->
-            <div class="space-y-12">
-                <div class="space-y-8">
+            <!-- Text Content -->
+            <div class="space-y-10">
+                <div class="space-y-6">
                     <div class="inline-flex items-center gap-2 px-3 py-1 bg-emerald-500/5 border border-emerald-500/10 rounded-full text-[10px] font-black text-emerald-600 uppercase tracking-widest">
-                        The Problem
+                        Our Genesis
                     </div>
-                    <h2 class="text-3xl md:text-4xl font-black text-slate-900 tracking-tight leading-tight">
-                        Returning the focus <br>to healing.
+                    <h2 class="text-4xl md:text-5xl font-black text-slate-900 tracking-tighter leading-tight">
+                        Doctors should <br>
+                        <span class="text-emerald-600 italic">be doctors again.</span>
                     </h2>
                     <p class="text-lg text-slate-500 font-medium leading-relaxed">
-                        Medical professionals spend up to 40% of their workday on administrative tasks. We believe that time should be spent with patients. MedOS automates the friction of clinical management, from scheduling to high-fidelity records, so doctors can be doctors again.
+                        In 2021, we noticed a dangerous trend: doctors were spending more time with keyboards than with patients. Clunky legacy systems, manual paperwork, and fragmented data were slowing down the healing process.
+                    </p>
+                    <p class="text-lg text-slate-500 font-medium leading-relaxed">
+                        We built MedOS to be the operating system for modern clinics. A platform so intuitive it disappears, allowing medical professionals to focus on what matters most—human lives.
                     </p>
                 </div>
-                
-                <div class="grid sm:grid-cols-2 gap-8 pt-8 border-t border-slate-100">
-                    <div class="p-8 bg-white border border-slate-100 rounded-[2rem] shadow-sm hover:shadow-md transition-shadow">
-                        <h4 class="text-4xl lg:text-5xl font-black text-emerald-600 tracking-tightest mb-2">3,200+</h4>
-                        <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Clinics Powered</p>
+
+                <div class="flex items-center gap-6 pt-10 border-t border-slate-50">
+                    <div>
+                        <h3 class="text-5xl font-black text-emerald-600 tracking-tightest">500+</h3>
+                        <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Clinics Modernized</p>
                     </div>
-                    <div class="p-8 bg-white border border-slate-100 rounded-[2rem] shadow-sm hover:shadow-md transition-shadow">
-                        <h4 class="text-4xl lg:text-5xl font-black text-emerald-600 tracking-tightest mb-2">10M+</h4>
+                    <div class="w-px h-12 bg-slate-100"></div>
+                    <div>
+                        <h3 class="text-5xl font-black text-emerald-600 tracking-tightest">1M+</h3>
                         <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Lives Impacted</p>
                     </div>
                 </div>
@@ -175,112 +153,168 @@ require_once 'core/init.php';
         </div>
     </section>
 
-    <!-- Our Values Section -->
-    <section class="py-32 bg-[#0b1120] relative overflow-hidden">
-        <!-- High-Fidelity Ambient Glows -->
-        <div class="absolute top-0 right-0 w-[800px] h-[800px] bg-emerald-500/10 rounded-full blur-[150px] translate-x-1/4 -translate-y-1/4 animate-pulse"></div>
-        <div class="absolute bottom-0 left-0 w-[800px] h-[800px] bg-emerald-600/5 rounded-full blur-[150px] -translate-x-1/4 translate-y-1/4 animate-pulse" style="animation-delay: 2s;"></div>
+    <!-- The "MedOS Way" Values -->
+    <section class="py-32 bg-slate-900 relative overflow-hidden">
+        <!-- Ambient Mesh Background -->
+        <div class="absolute inset-0 overflow-hidden pointer-events-none opacity-50">
+            <div class="absolute -top-[20%] -left-[10%] w-[60%] h-[60%] bg-emerald-500/10 rounded-full blur-[120px]"></div>
+            <div class="absolute -bottom-[20%] -right-[10%] w-[60%] h-[60%] bg-emerald-600/5 rounded-full blur-[120px]"></div>
+        </div>
 
         <div class="max-w-7xl mx-auto px-6 relative z-10">
             <div class="text-center mb-24">
-                <div class="inline-flex items-center gap-2 px-3 py-1 bg-emerald-500/10 border border-emerald-500/20 rounded-full text-[10px] font-black text-emerald-400 uppercase tracking-widest mb-8">
-                    The Emerald Standard
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 bg-white/5 border border-white/10 rounded-full text-[10px] font-black text-emerald-400 uppercase tracking-[0.2em] mb-8 shadow-sm">
+                    The MedOS Way
                 </div>
-                <h2 class="text-3xl md:text-4xl lg:text-5xl font-black text-white tracking-tightest mb-6 leading-tight">
-                    The principles that drive the <br>
-                    <span class="text-emerald-500">Emerald Standard.</span>
+                <h2 class="text-4xl md:text-6xl font-black text-white tracking-tighter mb-8 leading-tight">
+                    The values that guide <br> our every decision.
                 </h2>
-                <p class="text-slate-400 text-base md:text-lg font-medium max-w-xl mx-auto leading-relaxed">
-                    We're committed to building tools that prioritize doctors and their patients above all else.
+                <p class="text-slate-400 font-medium text-xl max-w-2xl mx-auto">
+                    We don't just build features; we build solutions that honor the gravity of healthcare.
                 </p>
             </div>
 
-            <div class="grid lg:grid-cols-3 gap-8">
+            <div class="grid md:grid-cols-3 gap-8">
                 <!-- Value 1 -->
-                <div class="group relative p-10 bg-white/[0.03] border border-white/10 rounded-[2.5rem] hover:bg-white/[0.06] hover:border-emerald-500/30 transition-all duration-700 overflow-hidden shadow-2xl">
-                    <div class="absolute -top-12 -right-12 w-32 h-32 bg-emerald-500/10 rounded-full blur-3xl group-hover:bg-emerald-500/20 transition-all"></div>
-                    
-                    <div class="relative z-10">
-                        <div class="w-14 h-14 bg-emerald-500/10 text-emerald-500 rounded-[1.25rem] flex items-center justify-center mb-8 shadow-inner group-hover:scale-110 transition-transform duration-500">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
-                        </div>
-                        <h5 class="text-xl font-bold text-white mb-4">Patient-First Thinking</h5>
-                        <p class="text-slate-400 text-base leading-relaxed font-medium">Every feature we build is designed to improve the patient experience. If it doesn't help the patient, it doesn't belong in MedOS.</p>
+                <div class="p-12 bg-white/[0.03] border border-white/10 rounded-[3.5rem] hover:bg-white/[0.05] hover:border-emerald-500/50 transition-all duration-700 group relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-emerald-500/10 rounded-full blur-3xl -mr-16 -mt-16 group-hover:bg-emerald-500/20 transition-all"></div>
+                    <div class="w-16 h-16 bg-emerald-500/10 text-emerald-400 rounded-2xl flex items-center justify-center mb-10 shadow-inner group-hover:scale-110 transition-transform duration-500">
+                        <i data-lucide="shield-check" class="w-8 h-8"></i>
                     </div>
+                    <h3 class="text-2xl font-black text-white mb-4 tracking-tight">Security as a Right</h3>
+                    <p class="text-slate-400 text-base leading-relaxed font-medium">Healthcare data is sacred. We treat security not as a feature, but as a fundamental human right for every patient.</p>
                 </div>
 
                 <!-- Value 2 -->
-                <div class="group relative p-10 bg-white/[0.03] border border-white/10 rounded-[2.5rem] hover:bg-white/[0.06] hover:border-emerald-500/30 transition-all duration-700 overflow-hidden shadow-2xl">
-                    <div class="absolute -top-12 -right-12 w-32 h-32 bg-emerald-500/10 rounded-full blur-3xl group-hover:bg-emerald-500/20 transition-all"></div>
-
-                    <div class="relative z-10">
-                        <div class="w-14 h-14 bg-emerald-500/10 text-emerald-500 rounded-[1.25rem] flex items-center justify-center mb-8 shadow-inner group-hover:scale-110 transition-transform duration-500">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m13 2-2 10h9L11 22l2-10H4l9-10z"/></svg>
-                        </div>
-                        <h5 class="text-xl font-bold text-white mb-4">Zero-Friction Design</h5>
-                        <p class="text-slate-400 text-base leading-relaxed font-medium">We obsess over clicks. We minimize steps. We ensure that clinical documentation is fast, intuitive, and high-fidelity.</p>
+                <div class="p-12 bg-white/[0.03] border border-white/10 rounded-[3.5rem] hover:bg-white/[0.05] hover:border-emerald-500/50 transition-all duration-700 group relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-emerald-500/10 rounded-full blur-3xl -mr-16 -mt-16 group-hover:bg-emerald-500/20 transition-all"></div>
+                    <div class="w-16 h-16 bg-emerald-500/10 text-emerald-400 rounded-2xl flex items-center justify-center mb-10 shadow-inner group-hover:scale-110 transition-transform duration-500">
+                        <i data-lucide="zap" class="w-8 h-8"></i>
                     </div>
+                    <h3 class="text-2xl font-black text-white mb-4 tracking-tight">Zero-Friction UI</h3>
+                    <p class="text-slate-400 text-base leading-relaxed font-medium">We obsess over every click. If a workflow takes three steps, we find a way to make it one. Speed is everything.</p>
                 </div>
 
                 <!-- Value 3 -->
-                <div class="group relative p-10 bg-white/[0.03] border border-white/10 rounded-[2.5rem] hover:bg-white/[0.06] hover:border-emerald-500/30 transition-all duration-700 overflow-hidden shadow-2xl">
-                    <div class="absolute -top-12 -right-12 w-32 h-32 bg-emerald-500/10 rounded-full blur-3xl group-hover:bg-emerald-500/20 transition-all"></div>
+                <div class="p-12 bg-white/[0.03] border border-white/10 rounded-[3.5rem] hover:bg-white/[0.05] hover:border-emerald-500/50 transition-all duration-700 group relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-emerald-500/10 rounded-full blur-3xl -mr-16 -mt-16 group-hover:bg-emerald-500/20 transition-all"></div>
+                    <div class="w-16 h-16 bg-emerald-500/10 text-emerald-400 rounded-2xl flex items-center justify-center mb-10 shadow-inner group-hover:scale-110 transition-transform duration-500">
+                        <i data-lucide="users" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-2xl font-black text-white mb-4 tracking-tight">Patient-First Focus</h3>
+                    <p class="text-slate-400 text-base leading-relaxed font-medium">Every tool we build is ultimately for the person in the waiting room. We build software that makes people feel seen.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-                    <div class="relative z-10">
-                        <div class="w-14 h-14 bg-emerald-500/10 text-emerald-500 rounded-[1.25rem] flex items-center justify-center mb-8 shadow-inner group-hover:scale-110 transition-transform duration-500">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+    <!-- Bold Vision Section -->
+    <section class="py-40 bg-white relative overflow-hidden text-center">
+        <div class="max-w-5xl mx-auto px-6 relative z-10">
+            <h2 class="text-5xl md:text-7xl lg:text-9xl font-black text-slate-100 tracking-tightest absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-10 select-none">
+                OUR VISION
+            </h2>
+            <div class="space-y-10">
+                <h3 class="text-3xl md:text-6xl font-black text-slate-900 tracking-tighter leading-tight">
+                    Healthcare should be <br>
+                    <span class="text-emerald-600">invisible.</span>
+                </h3>
+                <p class="text-xl md:text-2xl text-slate-500 font-medium leading-relaxed max-w-3xl mx-auto italic">
+                    "When technology is at its best, it disappears. Our vision is a world where doctors never have to worry about their software again."
+                </p>
+                <div class="pt-10">
+                    <a href="index.php" class="inline-flex items-center gap-3 text-emerald-600 font-black uppercase tracking-widest text-xs group">
+                        See the product in action
+                        <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-2 transition-transform"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Security Standards (Refined) -->
+    <section class="py-32 bg-slate-50 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-24 items-center">
+                <div>
+                    <div class="inline-flex items-center gap-2 px-3 py-1 bg-emerald-500/5 border border-emerald-500/10 rounded-full text-[10px] font-black text-emerald-600 uppercase tracking-widest mb-8">
+                        The Emerald Vault
+                    </div>
+                    <h2 class="text-4xl md:text-5xl font-black text-slate-900 tracking-tighter mb-8 leading-tight">
+                        Your clinical data, <br>
+                        <span class="text-emerald-600">protected.</span>
+                    </h2>
+                    <p class="text-lg text-slate-500 font-medium leading-relaxed mb-10">
+                        We understand the weight of clinical responsibility. That's why we built MedOS with bank-level encryption and decentralized architectures.
+                    </p>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="p-6 bg-white border border-slate-100 rounded-3xl">
+                            <h6 class="font-black text-emerald-600 text-[10px] uppercase tracking-widest mb-2">HIPAA</h6>
+                            <p class="text-xs font-bold text-slate-400 tracking-widest uppercase">Certified</p>
                         </div>
-                        <h5 class="text-xl font-bold text-white mb-4">Absolute Privacy</h5>
-                        <p class="text-slate-400 text-base leading-relaxed font-medium">Healthcare data is sacred. We use industry-leading encryption and decentralized architectures to protect patient privacy at all costs.</p>
+                        <div class="p-6 bg-white border border-slate-100 rounded-3xl">
+                            <h6 class="font-black text-emerald-600 text-[10px] uppercase tracking-widest mb-2">GDPR</h6>
+                            <p class="text-xs font-bold text-slate-400 tracking-widest uppercase">Compliant</p>
+                        </div>
                     </div>
                 </div>
+                <div class="relative">
+                    <div class="p-12 bg-white rounded-[3rem] border border-slate-100 shadow-2xl relative z-10">
+                        <div class="space-y-8">
+                            <div class="flex items-center gap-6">
+                                <div class="w-14 h-14 bg-emerald-50 rounded-2xl flex items-center justify-center text-emerald-600 shadow-sm">
+                                    <i data-lucide="lock" class="w-7 h-7"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-black text-slate-900">End-to-End Encryption</h4>
+                                    <p class="text-xs text-slate-500 font-medium">AES-256 military-grade protection.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-6">
+                                <div class="w-14 h-14 bg-emerald-50 rounded-2xl flex items-center justify-center text-emerald-600 shadow-sm">
+                                    <i data-lucide="database" class="w-7 h-7"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-black text-slate-900">Cloud Isolation</h4>
+                                    <p class="text-xs text-slate-500 font-medium">Your data, completely siloed and secure.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Decor -->
+                    <div class="absolute -top-10 -right-10 w-40 h-40 bg-emerald-500/10 rounded-full blur-3xl -z-10"></div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Security Standards -->
-    <section class="py-32 bg-white relative overflow-hidden">
-        <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
-            <div class="inline-flex items-center gap-3 px-6 py-3 bg-emerald-50 rounded-full text-emerald-700 text-[10px] font-black uppercase tracking-widest mb-10 border border-emerald-100/50">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-                Bank-Level Security Standards
-            </div>
-            <h2 class="text-4xl md:text-5xl font-black text-slate-900 tracking-tightest mb-8 leading-tight">
-                Your clinical data, protected <br>by the <span class="text-emerald-600">Emerald Vault.</span>
+    <!-- Final CTA (Green Theme Sync) -->
+    <section class="py-32 bg-emerald-600 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(circle, white 1px, transparent 1px); background-size: 20px 20px;"></div>
+        <div class="max-w-6xl mx-auto px-6 text-center relative z-10">
+            <h2 class="text-5xl md:text-7xl font-black text-white tracking-tightest mb-12 leading-[1.1]">
+                Your modern practice <br> starts right here.
             </h2>
-            <p class="text-lg text-slate-500 font-medium leading-relaxed mb-16 max-w-2xl mx-auto">
-                We understand the responsibility of managing health data. That's why we built MedOS on a cloud-native architecture with 256-bit AES encryption at rest and in transit.
-            </p>
-            
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                <div class="p-8 bg-slate-50 border border-slate-100 rounded-3xl group hover:bg-white hover:shadow-xl hover:shadow-slate-200/50 transition-all duration-300">
-                    <h6 class="font-black text-slate-900 text-[10px] uppercase tracking-widest mb-3 text-emerald-600">HIPAA</h6>
-                    <p class="text-xs text-slate-400 font-bold uppercase tracking-widest">Compliant</p>
-                </div>
-                <div class="p-8 bg-slate-50 border border-slate-100 rounded-3xl group hover:bg-white hover:shadow-xl hover:shadow-slate-200/50 transition-all duration-300">
-                    <h6 class="font-black text-slate-900 text-[10px] uppercase tracking-widest mb-3 text-emerald-600">GDPR</h6>
-                    <p class="text-xs text-slate-400 font-bold uppercase tracking-widest">Compliant</p>
-                </div>
-                <div class="p-8 bg-slate-50 border border-slate-100 rounded-3xl group hover:bg-white hover:shadow-xl hover:shadow-slate-200/50 transition-all duration-300">
-                    <h6 class="font-black text-slate-900 text-[10px] uppercase tracking-widest mb-3 text-emerald-600">AES-256</h6>
-                    <p class="text-xs text-slate-400 font-bold uppercase tracking-widest">Encrypted</p>
-                </div>
-                <div class="p-8 bg-slate-50 border border-slate-100 rounded-3xl group hover:bg-white hover:shadow-xl hover:shadow-slate-200/50 transition-all duration-300">
-                    <h6 class="font-black text-slate-900 text-[10px] uppercase tracking-widest mb-3 text-emerald-600">SLA</h6>
-                    <p class="text-xs text-slate-400 font-bold uppercase tracking-widest">99.9% Uptime</p>
-                </div>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-6 mb-16">
+                <a href="login.php" class="w-full sm:w-auto px-10 py-5 bg-white text-emerald-600 rounded-2xl font-black text-xs uppercase tracking-widest shadow-2xl shadow-emerald-900/20 hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-2">
+                    Launch MedOS Now
+                </a>
+                <a href="contact.php" class="w-full sm:w-auto px-10 py-5 bg-emerald-800 text-white rounded-2xl font-black text-xs uppercase tracking-widest hover:bg-emerald-900 transition-all flex items-center justify-center gap-2">
+                    Book Implementation
+                </a>
             </div>
+            <p class="text-[10px] font-black text-emerald-100 uppercase tracking-[0.4em] opacity-60">
+                No hidden fees. No patient limits. Professional standards only.
+            </p>
         </div>
-    </section>
-
-    <!-- Footer -->
+    </section>    <!-- Footer -->
     <footer class="bg-white border-t border-slate-100 pt-24 pb-12">
         <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-12 gap-16 mb-24">
             <!-- Brand Column -->
             <div class="md:col-span-4">
                 <a href="index.php" class="flex items-center gap-3 mb-8">
                     <div class="w-10 h-10 emerald-gradient text-white rounded-xl flex items-center justify-center shadow-lg shadow-emerald-500/20">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/><path d="M12 5 9.04 7.96a2.17 2.17 0 0 0 0 3.08v0c.82.82 2.13.82 2.96 0"/><path d="m12 10 2.96 2.96a2.17 2.17 0 0 0 3.08 0v0c.82-.82.82-2.13 0-2.96L15 7"/></svg>
+                        <i data-lucide="heart-pulse" class="w-6 h-6"></i>
                     </div>
                     <span class="text-2xl font-black tracking-tighter uppercase text-slate-900">MED<span class="text-emerald-600">OS</span></span>
                 </a>
@@ -347,3 +381,4 @@ require_once 'core/init.php';
 </body>
 
 </html>
+ml>
